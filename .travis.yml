@@ -1,0 +1,44 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+#before_script:
+#  - docker run -t -v $(pwd)/tests:/var/www/tests -v $(pwd)/src:/var/www/src -v $(pwd)/config:/var/www/config theomathieu/backend-dev composer run-script fix
+# ICI On devrait linter le code mais il faudrait pull/run l'image de dev ça prend beaucoup de temps juste pour du lint...
+# Peut-être un pre-git commit hook à mettre en place ?
+# Peut-être mettre en commun avec la remarque ci-dessous.
+
+install:
+  - docker pull theomathieu/frontend-dev
+  
+# -p 8100:8100 -p 53703:53703
+script:
+  - ./bin/run.sh test
+  - ./bin/run.sh prod-browser
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+      docker build -f Dockerfile.production -t theomathieu/frontend-prod:integration .;
+    fi
+  - if [ "$TRAVIS_BRANCH" == "master"  ] && [ -z "$TRAVIS_TAG"  ]; then
+      docker build -f Dockerfile.production -t theomathieu/frontend-prod:${TRAVIS_TAG} .;
+    fi
+  #- docker run -v $(pwd)/phpunit.xml.dist:/var/www/phpunit.xml.dist -v $(pwd)/tests:/var/www/tests -v $(pwd)/bin:/var/www/bin -t theomathieu/backend-prod bash -c "composer update;php bin/console init-db -e test;vendor/bin/phpunit"
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push theomathieu/frontend-prod:integration;
+      curl -sS https://gist.githubusercontent.com/Mokto/82d6009300decd715c6c42bdf3e73b3a/raw/commit-changelog.sh | bash;
+    fi
+
+  - if [ -n "$TRAVIS_TAG"  ]; then
+      REPO="frontend-prod";
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push theomathieu/${REPO}:${TRAVIS_TAG};
+      curl -sS https://gist.githubusercontent.com/Mokto/d0707180ae34c1ed67c26fefc2f576c1/raw/commit-changelog-preprod.sh | bash -s $REPO;
+    fi
+
+notifications:
+  slack: bhvr-bs:Momkig1fctiUVZHEOosGerv

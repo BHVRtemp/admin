@@ -1,0 +1,7 @@
+{
+  "name": "Test",
+  "app_id": "4b2f12fd",
+  "v2": true,
+  "typescript": true,
+  "defaultBrowser": "Chrome"
+}
