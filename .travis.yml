@@ -21,7 +21,7 @@ script:
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
       docker build -f Dockerfile.production -t theomathieu/admin-prod:integration .;
     fi
-  - if [ "$TRAVIS_BRANCH" == "master"  ] && [ -z "$TRAVIS_TAG"  ]; then
+  - if [ -n "$TRAVIS_TAG"  ]; then
       docker build -f Dockerfile.production -t theomathieu/admin-prod:${TRAVIS_TAG} .;
     fi
   #- docker run -v $(pwd)/phpunit.xml.dist:/var/www/phpunit.xml.dist -v $(pwd)/tests:/var/www/tests -v $(pwd)/bin:/var/www/bin -t theomathieu/backend-prod bash -c "composer update;php bin/console init-db -e test;vendor/bin/phpunit"
