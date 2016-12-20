@@ -9,5 +9,5 @@ if [ $1 = "android" ]; then
 fi
 
 if [ $1 = "test"  ] || [ $1 = "testwatch" ] || [ $1 = "prod-browser" ] || [ $1 = "bash" ]; then
-    docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www theomathieu/frontend-dev $1
+    docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www theomathieu/frontend-dev $1
 fi
