@@ -19,12 +19,12 @@ script:
   - ./bin/run.sh test
   - ./bin/run.sh prod-browser
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-      docker build -f Dockerfile.production -t theomathieu/admin-prod:integration .;
+      TAG="integration"
     fi
   - if [ -n "$TRAVIS_TAG"  ]; then
-      docker build -f Dockerfile.production -t theomathieu/admin-prod:${TRAVIS_TAG} .;
+      TAG="${TRAVIS_TAG}"
     fi
-  #- docker run -v $(pwd)/phpunit.xml.dist:/var/www/phpunit.xml.dist -v $(pwd)/tests:/var/www/tests -v $(pwd)/bin:/var/www/bin -t theomathieu/backend-prod bash -c "composer update;php bin/console init-db -e test;vendor/bin/phpunit"
+  - docker build -f Dockerfile.production -t theomathieu/admin-prod:${TAG} .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
