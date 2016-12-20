@@ -19,12 +19,11 @@ script:
   - ./bin/run.sh test
   - ./bin/run.sh prod-browser
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-      TAG="integration"
+      docker build -f Dockerfile.production -t theomathieu/admin-prod:integration .;
     fi
   - if [ -n "$TRAVIS_TAG"  ]; then
-      TAG="${TRAVIS_TAG}"
+      docker build -f Dockerfile.production -t theomathieu/admin-prod:${TRAVIS_TAG} .;
     fi
-  - docker build -f Dockerfile.production -t theomathieu/admin-prod:${TAG} .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
