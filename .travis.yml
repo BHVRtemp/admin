@@ -12,29 +12,29 @@ services:
 # Peut-être mettre en commun avec la remarque ci-dessous.
 
 install:
-  - docker pull theomathieu/frontend-dev
+  - docker pull theomathieu/admin-dev
   
 # -p 8100:8100 -p 53703:53703
 script:
   - ./bin/run.sh test
   - ./bin/run.sh prod-browser
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-      docker build -f Dockerfile.production -t theomathieu/frontend-prod:integration .;
+      docker build -f Dockerfile.production -t theomathieu/admin-prod:integration .;
     fi
   - if [ "$TRAVIS_BRANCH" == "master"  ] && [ -z "$TRAVIS_TAG"  ]; then
-      docker build -f Dockerfile.production -t theomathieu/frontend-prod:${TRAVIS_TAG} .;
+      docker build -f Dockerfile.production -t theomathieu/admin-prod:${TRAVIS_TAG} .;
     fi
   #- docker run -v $(pwd)/phpunit.xml.dist:/var/www/phpunit.xml.dist -v $(pwd)/tests:/var/www/tests -v $(pwd)/bin:/var/www/bin -t theomathieu/backend-prod bash -c "composer update;php bin/console init-db -e test;vendor/bin/phpunit"
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "develop" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push theomathieu/frontend-prod:integration;
+      docker push theomathieu/admin-prod:integration;
       curl -sS https://gist.githubusercontent.com/Mokto/82d6009300decd715c6c42bdf3e73b3a/raw/commit-changelog.sh | bash;
     fi
 
   - if [ -n "$TRAVIS_TAG"  ]; then
-      REPO="frontend-prod";
+      REPO="admin-prod";
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker push theomathieu/${REPO}:${TRAVIS_TAG};
       curl -sS https://gist.githubusercontent.com/Mokto/d0707180ae34c1ed67c26fefc2f576c1/raw/commit-changelog-preprod.sh | bash -s $REPO;
