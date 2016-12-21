@@ -34,7 +34,6 @@
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
-    "@ionic/cloud-angular": "^0.8.0",
     "@ionic/storage": "1.1.7",
     "bootstrap": "^4.0.0-alpha.5",
     "ionic-angular": "2.0.0-rc.4",
@@ -86,7 +85,6 @@
     "ghooks": {
       "commit-msg": "validate-commit-msg"
     },
-    "ionic_webpack": "./config/webpack.config.js",
     "ionic_sass": "./config/sass.config.js"
   },
   "engines": {
