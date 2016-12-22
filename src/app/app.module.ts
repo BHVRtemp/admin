@@ -10,8 +10,6 @@ import { ContactPage } from '../pages/contact/contact.page';
 import { HomePage } from '../pages/home/home.page';
 import { TabsPage } from '../pages/tabs/tabs.page';
 
-import { FacebookService } from '../bridge/facebook';
-
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 };
@@ -50,7 +48,7 @@ export function createTranslateLoader(http: Http) {
 		TabsPage,
 	],
 	providers: [
-		FacebookService,
+		
 	],
 })
 export class AppModule {}
