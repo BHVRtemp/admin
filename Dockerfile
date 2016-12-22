@@ -33,9 +33,6 @@ RUN cordova prepare
 ADD package.json /app/package.json
 RUN cd /app && npm install
 
-# COMMON Frontend
-RUN git clone https://github.com/BHVRtemp/common-frontend && cd common-frontend && npm link && cd .. && npm link common-frontend
-
 
 # Project files
 ADD config /app/config

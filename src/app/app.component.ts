@@ -18,13 +18,6 @@ export class MyApp {
 		translate.setDefaultLang('en');
 		translate.use('en');
 
-		translate.setTranslation('en', {
-			HELLO: 'Hello {{name}} !',
-		});
-		translate.setTranslation('fr', {
-			HELLO: 'Salut {{name}} !',
-		});
-
 		platform.ready().then(() => {
 			if (!platform.is('core')) {
 				StatusBar.styleDefault();
