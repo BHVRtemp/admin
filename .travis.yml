@@ -13,7 +13,7 @@ services:
 
 install:
   - docker pull theomathieu/admin-dev
-  - cd .. && git clone https://github.com/BHVRtemp/common-frontend && cd frontend
+  - cd .. && git clone https://github.com/BHVRtemp/common-frontend && cd admin
   
 # -p 8100:8100 -p 53703:53703
 script:
