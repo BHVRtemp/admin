@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd common-frontend && npm link && cd ..
+npm link common-frontend
+
 if [ $1 = "serve" ]; then
     ionic serve --nolivereload --port 3000 --liveReloadPort 8005
 fi

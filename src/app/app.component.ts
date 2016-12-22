@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
+import { Logger } from 'common-frontend/index';
 
 import { TabsPage } from '../pages/tabs/tabs.page';
 
@@ -11,7 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs.page';
 export class MyApp {
 	rootPage = TabsPage;
 
-	constructor(platform: Platform, translate: TranslateService) {
+	constructor(platform: Platform, translate: TranslateService, logger: Logger) {
 		console.log(platform.platforms());
 
 		translate.setDefaultLang('en');

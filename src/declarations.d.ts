@@ -38,4 +38,13 @@ declare module 'lodash-es/*'
 declare module 'lodash-es'
 declare module '*.json'
 
-declare var window: Window; 
+declare var logger: {
+    error: (message?: any, ...optionalParams: any[]) => void;
+	warn: (message?: any, ...optionalParams: any[]) => void;
+	info: (message?: any, ...optionalParams: any[]) => void;
+	debug: (message?: any, ...optionalParams: any[]) => void;
+	log: (message?: any, ...optionalParams: any[]) => void;
+	store: () => void;
+	unstore: () => void;
+    level: Number
+};
