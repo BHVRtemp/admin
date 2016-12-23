@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Http } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
-import { CommonModule } from 'common-frontend';
+import { Logger } from '../../modules/common-frontend';
 
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about.page';

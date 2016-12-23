@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
-import { Logger } from 'common-frontend/index';
+import { Logger } from '../../modules/common-frontend';
 
 import { TabsPage } from '../pages/tabs/tabs.page';
 

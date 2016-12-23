@@ -85,7 +85,9 @@
     "ghooks": {
       "commit-msg": "validate-commit-msg"
     },
-    "ionic_sass": "./config/sass.config.js"
+    "ionic_sass": "./config/sass.config.js",
+    "ionic_watch": "./config/watch.config.js",
+    "ionic_webpack": "./config/webpack.config.js"
   },
   "engines": {
     "node": ">= 6.0.0",
