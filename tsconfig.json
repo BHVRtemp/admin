@@ -15,7 +15,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "common-frontend/**/*.ts"
+    "modules/common-frontend/**/*.ts"
   ],
   "exclude": [
     "node_modules",
