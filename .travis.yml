@@ -12,7 +12,14 @@ services:
 # Peut-être mettre en commun avec la remarque ci-dessous.
 
 install:
-  - cd .. && git clone https://github.com/BHVRtemp/common-frontend && cd admin
+  - cd .. && git clone https://github.com/BHVRtemp/common-frontend && cd common-frontend
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+      git checkout develop;
+    fi
+  - if [ -n "$TRAVIS_TAG"  ]; then
+      git checkout tags/${TRAVIS_TAG};
+    fi
+  - cd ../frontend  
   - docker pull theomathieu/admin-dev
   
 # -p 8100:8100 -p 53703:53703
