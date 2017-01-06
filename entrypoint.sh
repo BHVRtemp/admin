@@ -1,5 +1,8 @@
 #!/bin/bash
 
+service nginx reload
+service nginx restart
+
 if [ $1 = "serve" ]; then
     ionic serve --nolivereload --port 3000 --liveReloadPort 8005
 fi

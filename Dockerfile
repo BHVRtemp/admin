@@ -41,6 +41,10 @@ ADD tsconfig.json /app/tsconfig.json
 ADD tslint.json /app/tslint.json
 ADD karma.conf.js /app/karma.conf.js
 
+#NGINX
+RUN apt-get install nginx -y
+RUN ls
+COPY config/dev.conf /etc/nginx/sites-available/default
 
 ADD entrypoint.sh /app/entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
