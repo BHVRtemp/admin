@@ -1,9 +1,19 @@
 #!/bin/bash
 
-service nginx reload
-service nginx restart
+
+
+# if [ $1 = "package-android" ]; then
+#     npm run ionic:build
+#     ionic package build android --profile cogecotemp
+# fi
+if [ $1 = "package-ios" ]; then
+    npm run ionic:build
+    ionic package build ios --profile cogecotemp
+fi
 
 if [ $1 = "serve" ]; then
+    service nginx reload
+    service nginx restart
     ionic serve --nolivereload --port 3000 --liveReloadPort 8005
 fi
 
