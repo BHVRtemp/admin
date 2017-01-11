@@ -17,4 +17,4 @@ if [ $1 = "package-android"  ]; then
     exit 1
 fi
 
-docker run --rm -ti --name=frontend --link cogecobackend_backendapp_1:backend --net cogecobackend_default -p 8080:8080 -p 8005:8005 -p 53703:53703 -v $(pwd)/../common-frontend/src:/app/modules/common-frontend -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www theomathieu/admin-dev $1
+docker run --rm -ti --name=frontend --link cogego_backend:backend --net backend_default -p 8080:8080 -p 8005:8005 -p 53703:53703 -v $(pwd)/../common-frontend/src:/app/modules/common-frontend -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www theomathieu/admin-dev $1
