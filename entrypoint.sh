@@ -23,8 +23,7 @@ if [ $1 = "android" ]; then
 fi
 
 if [ $1 = "prod-browser" ]; then
-    #ionic add browser
-    ionic build browser --prod
+    npm run ionic:build --prod
 fi
 if [ $1 = "test" ]; then
     npm test
