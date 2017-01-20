@@ -1,0 +1,54 @@
+<form [formGroup]="form" (submit)="submit()">
+    <ion-list>
+
+        <ion-item>
+            <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+            <ion-input type="email" name="email" id="email" [formControl]="email"></ion-input>
+        </ion-item>
+        <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'FIRSTNAME' | translate }}</ion-label>
+            <ion-input type="text" name="firstName" id="firstName" [formControl]="firstName"></ion-input>
+        </ion-item>
+        <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'LASTNAME' | translate }}</ion-label>
+            <ion-input type="text" name="lastName" id="lastName" [formControl]="lastName"></ion-input>
+        </ion-item>
+        <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" name="password" id="password" [formControl]="password"></ion-input>
+        </ion-item>
+        <form-error [field]="password" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'PASSWORD_REPEAT' | translate }}</ion-label>
+            <ion-input type="password" name="password2" id="password2" [formControl]="password2"></ion-input>
+        </ion-item>
+        <form-error [field]="password2" [formSubmitted]="submitted"></form-error>
+
+        <div padding>
+            <button ion-button color="primary" block type="submit">{{ 'SIGNUP_BUTTON' | translate }}</button>
+        </div>
+
+        <ion-item text-wrap *ngIf="success">
+            {{ 'SIGNUP_SUCCESS_EMAIL_SENT' | translate }}
+        </ion-item>
+
+        <ion-item text-wrap *ngIf="error">
+            {{ error | translate }}
+        </ion-item>
+    </ion-list>
+
+    <div padding *ngIf="success">
+        <h4>Test lien</h4>
+
+        <a ion-button block [href]="token" target="_blank">Click to activate account</a>
+
+    </div>
+
+</form>

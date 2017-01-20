@@ -29,6 +29,46 @@ require('rxjs/Rx');
 var testing = require('@angular/core/testing');
 var browser = require('@angular/platform-browser-dynamic/testing');
 
+logger = {
+    info: function() {},
+    warn: function() {},
+    log: function() {},
+    error: function() {}
+};
+
+FB = {
+    login: function() {
+        return { status: 'connected' };
+    }
+};
+
+gapi = {
+    load: function(type, cb) {cb()},
+    auth2: {
+        init: function() {},
+        getAuthInstance: function() {
+            return {
+                signIn: function() {
+                    return {
+                        then: function(cb) {cb()}
+                    };
+                },
+                currentUser: {
+                    get: function() {
+                        return {
+                            getAuthResponse: function() {
+                                return {
+                                    id_token: 'test'
+                                };
+                            }
+                        };
+                    }
+                }
+            };   
+        }
+    }
+}
+
 testing.TestBed.initTestEnvironment(
     browser.BrowserDynamicTestingModule,
     browser.platformBrowserDynamicTesting()

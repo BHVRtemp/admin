@@ -1,0 +1,26 @@
+<form (submit)="submit()">
+    <ion-list>
+
+        <ion-item>
+            <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+            <ion-input type="email" name="email" id="email" [formControl]="email"></ion-input>
+        </ion-item>
+        <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" name="password" id="password" [formControl]="password"></ion-input>
+        </ion-item>
+        <form-error [field]="password" [formSubmitted]="submitted"></form-error>
+
+        <div padding>
+            <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        </div>
+
+        <ion-item text-wrap *ngIf="error">
+            {{ "BAD_CREDENTIALS" | translate }}
+        </ion-item>
+
+        a
+    </ion-list>
+</form>

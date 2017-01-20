@@ -2,32 +2,25 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
+import { Logger } from '../common';
 
 import { TabsPage } from '../pages/tabs/tabs.page';
+import { EntryPage } from '../pages/entry/entry.page';
 
 @Component({
 	template: `<ion-nav [root]="rootPage"></ion-nav>`,
 })
 export class MyApp {
-	rootPage = TabsPage;
+	rootPage = EntryPage;
 
-	constructor(platform: Platform, translate: TranslateService) {
+	constructor(platform: Platform, translate: TranslateService, logger: Logger) {
 		console.log(platform.platforms());
 
 		translate.setDefaultLang('en');
 		translate.use('en');
 
-		translate.setTranslation('en', {
-			HELLO: 'Hello {{name}} !',
-		});
-		translate.setTranslation('fr', {
-			HELLO: 'Salut {{name}} !',
-		});
-
 		platform.ready().then(() => {
-			if (!platform.is('core')) {
-				// Okay, so the platform is ready and our plugins are available.
-				// Here you can do any higher level native things you might need.
+			if (platform.is('cordova')) {
 				StatusBar.styleDefault();
 				Splashscreen.hide();
 			}

@@ -1,42 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import filter from 'lodash-es/filter';
-import { TranslateService } from 'ng2-translate';
-// import { FacebookService } from '../../bridge/facebook';
 
 @Component({
-	selector: 'page-home',
 	templateUrl: 'home.page.html',
 })
 export class HomePage {
-	public user: any;
-	public changeLang;
 	public canvas: any;
 
-	constructor(public navCtrl: NavController,
-				public translate: TranslateService,
-				// public facebookService: FacebookService
-				) {
-
-		const myArr = [
-			{
-				name: 'barney',
-				age: 36,
-				active: true,
-			},
-			{
-				name: 'fred',
-				age: 40,
-				active: false,
-			}];
-
-		this.user = (filter(myArr, o => o.active))[0];
-
-		this.changeLang = (lang: string): void => {
-			translate.use(lang);
-		};
-
-	}
 	ngAfterViewInit() {
 		/*
 		const canvas:any = document.getElementById('canvas');
@@ -84,15 +55,6 @@ export class HomePage {
 		}
 			*/
 
-	}
-	facebookLogin() {
-		console.log('plouf');
-		/*
-		Facebook.login(["email"])
-		.then(response=>{
-			console.log(response);
-		});
-		*/
 	}
 
 }
