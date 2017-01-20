@@ -18,9 +18,9 @@ RUN echo 'y' | android update sdk -u -a -t platform-tools,build-tools-23.0.2,and
 
 
 # Project files
-ADD hooks /app/hooks
-ADD config.xml /app/config.xml
-ADD resources /app/resources
+COPY hooks /app/hooks
+COPY config.xml /app/config.xml
+COPY resources /app/resources
 
 WORKDIR /app
 
@@ -31,17 +31,17 @@ RUN cordova prepare
 RUN ls
 
 # NPM deps
-ADD package.json /app/package.json
+COPY package.json /app/package.json
 RUN cd /app && npm install
 
 
 # Project files
-ADD config /app/config
-ADD ionic.config.json /app/ionic.config.json
-ADD tsconfig.json /app/tsconfig.json
-ADD tslint.json /app/tslint.json
-ADD karma.conf.js /app/karma.conf.js
+COPY config /app/config
+COPY ionic.config.json /app/ionic.config.json
+COPY tsconfig.json /app/tsconfig.json
+COPY tslint.json /app/tslint.json
+COPY karma.conf.js /app/karma.conf.js
 
-ADD entrypoint.sh /app/entrypoint.sh
+COPY entrypoint.sh /app/entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 
