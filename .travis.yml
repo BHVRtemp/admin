@@ -22,9 +22,10 @@ script:
 after_success:
   - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker build -f Dockerfile.production -t cogecomedia/cms-service .;
+      docker build -f Dockerfile.production -t cogecomedia/cms-service -t cogecomedia/cms-service:${TRAVIS_BUILD_NUMBER} .;
       docker push cogecomedia/cms-service;
-      wget -q -O - "https://gist.github.com/theomathieubhvr/8fea1ec233dd66373a42ebf3253f5b5f/raw/commit-changelog.sh" | bash;
+      docker push cogecomedia/cms-service:${TRAVIS_BUILD_NUMBER};
+      wget -q -O - "https://gist.github.com/theomathieubhvr/8fea1ec233dd66373a42ebf3253f5b5f/raw/commit-changelog.sh" | bash -s "cms-service";
     fi
 
 notifications:
