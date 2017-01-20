@@ -6,7 +6,7 @@ import { GlobalValidator } from '../../form/global-validator';
 
 @Component({
 	selector: 'change-password',
-	template: 'change-password.html',
+	templateUrl: 'change-password.html',
 })
 export class ChangePasswordComponent {
 	oldPassword: FormControl = new FormControl('', [Validators.required]);

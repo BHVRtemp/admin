@@ -8,7 +8,7 @@ import { GlobalValidator } from '../../form/global-validator';
 
 @Component({
 	selector: 'reset-password',
-	template: 'reset-password.html',
+	templateUrl: 'reset-password.html',
 })
 export class ResetPasswordComponent {
 	@Output() onSuccess = new EventEmitter();

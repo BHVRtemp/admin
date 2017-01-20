@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 
 @Component({
 	selector: 'logout-component',
-	template: 'logout.html',
+	templateUrl: 'logout.html',
   	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogoutComponent {

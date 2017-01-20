@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'form-error',
-	template: 'form-error.html',
+	templateUrl: 'form-error.html',
 })
 export class FormErrorComponent {
 	@Input() field: FormControl;

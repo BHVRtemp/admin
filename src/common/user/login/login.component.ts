@@ -7,7 +7,7 @@ import { GlobalValidator } from '../../form/global-validator';
 
 @Component({
 	selector: 'login-component',
-	template: 'login.html',
+	templateUrl: 'login.html',
 })
 export class LoginComponent {
 	@Output() onSuccess = new EventEmitter();

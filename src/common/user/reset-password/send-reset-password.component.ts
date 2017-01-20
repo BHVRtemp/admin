@@ -6,7 +6,7 @@ import { GlobalValidator } from '../../form/global-validator';
 
 @Component({
 	selector: 'send-reset-password',
-	template: 'send-reset-password.html',
+	templateUrl: 'send-reset-password.html',
 })
 export class SendResetPasswordComponent {
 

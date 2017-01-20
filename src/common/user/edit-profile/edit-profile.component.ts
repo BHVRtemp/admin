@@ -6,7 +6,7 @@ import { Api } from '../../api/api';
 
 @Component({
 	selector: 'edit-profile',
-	template: 'edit-profile.html',
+	templateUrl: 'edit-profile.html',
 })
 export class EditProfileComponent {
 
