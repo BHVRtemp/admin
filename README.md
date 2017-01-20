@@ -6,7 +6,7 @@
 nvm install 6.9.1
 npm i
 npm i -g ionic cordova
-mkdir modules
+cordova prepare ios
 
 
 ## Lancement docker

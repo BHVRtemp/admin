@@ -34,7 +34,10 @@ module.exports = (config) => {
     if(process.env.NO_COVERAGE !== 'true') {
         configuration.reporters.push( 'coverage', 'remap-coverage');
         configuration.coverageReporter = {
-            type: 'in-memory'
+            reporters: [
+                {type: 'in-memory'},
+                {type: 'lcov', dir: 'coverage', subdir: '.', file: 'lcov.info'}
+            ]
         };
 
         configuration.remapCoverageReporter = {

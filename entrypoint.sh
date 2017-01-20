@@ -26,6 +26,12 @@ fi
 if [ $1 = "test" ]; then
     npm test
 fi
+
+
+if [ $1 = "send-coverage" ]; then
+    cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+fi
+
 if [ $1 = "testwatch" ]; then
     npm run testwatch
 fi

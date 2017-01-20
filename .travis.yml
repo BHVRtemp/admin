@@ -18,6 +18,7 @@ install:
 script:
   - ./bin/run.sh test
   - ./bin/run.sh prod-browser
+  - ./bin/run.sh send-coverage
 
 after_success:
   - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
