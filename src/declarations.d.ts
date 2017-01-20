@@ -46,5 +46,17 @@ declare var logger: {
 	log: (message?: any, ...optionalParams: any[]) => void;
 	store: () => void;
 	unstore: () => void;
-    level: Number
+    level: Number;
 };
+
+declare var gapi: any;
+
+interface Window {
+	initGooglePlusCallback: any,
+	twitterCallback: any,
+	twitterResolve: any
+}
+interface Screen {
+	left: any,
+	top: any
+}

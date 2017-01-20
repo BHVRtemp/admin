@@ -2,52 +2,30 @@ language: generic
 
 sudo: required
 
+branches:
+    only:
+      - develop
+
 services:
   - docker
 
-#before_script:
-#  - docker run -t -v $(pwd)/tests:/var/www/tests -v $(pwd)/src:/var/www/src -v $(pwd)/config:/var/www/config theomathieu/backend-dev composer run-script fix
-# ICI On devrait linter le code mais il faudrait pull/run l'image de dev ça prend beaucoup de temps juste pour du lint...
-# Peut-être un pre-git commit hook à mettre en place ?
-# Peut-être mettre en commun avec la remarque ci-dessous.
-
 install:
-  - cd .. && git clone https://github.com/BHVRtemp/common-frontend && cd common-frontend
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-      git checkout develop;
-    fi
-  - if [ -n "$TRAVIS_TAG"  ]; then
-      git checkout tags/${TRAVIS_TAG};
-    fi
-  - cd ../admin
-  - docker pull theomathieu/admin-dev
-  - ./bin/build-dev.sh
-  - docker push theomathieu/admin-dev
-  
-# -p 8100:8100 -p 53703:53703
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker pull cogecomedia/cms-build
+  #- ./bin/build.sh
+  #- docker push cogecomedia/cms-build
+
 script:
   - ./bin/run.sh test
   - ./bin/run.sh prod-browser
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-      docker build -f Dockerfile.production -t theomathieu/admin-prod:integration .;
-    fi
-  - if [ -n "$TRAVIS_TAG"  ]; then
-      docker build -f Dockerfile.production -t theomathieu/admin-prod:${TRAVIS_TAG} .;
-    fi
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push theomathieu/admin-prod:integration;
-      curl -sS https://gist.githubusercontent.com/Mokto/82d6009300decd715c6c42bdf3e73b3a/raw/commit-changelog.sh | bash;
-    fi
-
-  - if [ -n "$TRAVIS_TAG"  ]; then
-      REPO="admin-prod";
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push theomathieu/${REPO}:${TRAVIS_TAG};
-      curl -sS https://gist.githubusercontent.com/Mokto/d0707180ae34c1ed67c26fefc2f576c1/raw/commit-changelog-preprod.sh | bash -s $REPO;
+      docker build -f Dockerfile.production -t cogecomedia/cms-service .;
+      docker push cogecomedia/cms-service;
+      wget -q -O - "https://gist.github.com/theomathieubhvr/8fea1ec233dd66373a42ebf3253f5b5f/raw/commit-changelog.sh" | bash;
     fi
 
 notifications:
-  slack: bhvr-bs:Momkig1fctiUVZHEOosGerv
+  slack: bhvr-bs:Momkig1fctiUVZHEOosGervO

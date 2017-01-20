@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 # if [ $1 = "package-android" ]; then
 #     npm run ionic:build
 #     ionic package build android --profile cogecotemp
@@ -40,7 +38,7 @@ if [ $1 = "package-android" ]; then
     ionic build android --prod --release
 
     #https://ionicframework.com/docs/guide/publishing.html
-    jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore build/integration.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk integration
+    jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore build/test.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk integration
     /opt/android-sdk-linux/build-tools/23.0.2/zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk platforms/android/build/outputs/apk/cogeco.apk
     cp platforms/android/build/outputs/apk/cogeco.apk build
     #package build android --profile cogetemp

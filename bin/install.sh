@@ -1,21 +1,12 @@
 #!/bin/bash
 
-# Install homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# Tester toutes les commandes une par une
-
-brew update
-brew install nvm
-echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.profile
-source $(brew --prefix nvm)/nvm.sh
+# NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 nvm install 6.9.1
 nvm alias default 6.9.1
 nvm use 6.9.1
 
-npm install -g ionic cordova yarn
-# git clone
-# cd
-# yarn
+npm install -g ionic cordova yarn ios-deploy
+npm i
 
-brew install android-sdk
+# pip install six

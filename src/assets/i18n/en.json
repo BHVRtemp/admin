@@ -1,3 +1,31 @@
 {
-    "HELLO": "Hello {{name}} !"
+    "HELLO": "Hello {{name}} !",
+
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "OLD_PASSWORD": "Old password",
+    "NEW_PASSWORD1": "New password",
+    "PASSWORD_REPEAT": "Repeat",
+    "FIRSTNAME": "First name",
+    "LASTNAME": "Last name",
+
+    "LOGIN_BUTTON": "Login",
+    "BAD_CREDENTIALS": "Bad credentials",
+
+    "SEND_RESET_PASSWORD_BUTTON": "Ask for a new password",
+    "SEND_RESET_PASSWORD_SUCCESS": "If your email exists in our database, you will receive instructions to reset your password.",
+    "RESET_PASSWORD_BUTTON": "Reset my password",
+    "RESET_PASSWORD_FAILED": "The link you used is invalid.",
+
+    "CHANGE_PASSWORD_BUTTON": "Change my password",
+    "CHANGE_PASSWORD_SUCCESS": "Your password has successfully been changed.",
+
+    "EDIT_PROFILE_BUTTON": "Edit my profile",
+    "EDIT_PROFILE_SUCCESS": "Your profile has successfully been changed.",
+
+    "SIGNUP_BUTTON": "Sign up",
+    "SIGNUP_SUCCESS_EMAIL_SENT": "An email has been sent to your email address. Click on the link to activate your account.",
+    "ACTIVATION_FAILED": "The link you used is invalid.",
+
+    "UNKNOWN_ERROR": "An unknown error occured. Try again please."
 }

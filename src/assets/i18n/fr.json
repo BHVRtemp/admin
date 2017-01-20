@@ -1,3 +1,7 @@
 {
-    "HELLO": "Salut {{name}} !"
+    "HELLO": "Salut {{name}} !",
+    "LOGIN_BUTTON": "Se connecter",
+    "LOGIN_ERROR": "Identifiants incorrects.",
+    "EMAIL": "Email",
+    "PASSWORD": "Mot de passe"
 }

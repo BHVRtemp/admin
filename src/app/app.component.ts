@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
-import { Logger } from '../../modules/common-frontend';
+import { Logger } from '../common';
 
 import { TabsPage } from '../pages/tabs/tabs.page';
+import { EntryPage } from '../pages/entry/entry.page';
 
 @Component({
 	template: `<ion-nav [root]="rootPage"></ion-nav>`,
 })
 export class MyApp {
-	rootPage = TabsPage;
+	rootPage = EntryPage;
 
 	constructor(platform: Platform, translate: TranslateService, logger: Logger) {
 		console.log(platform.platforms());
@@ -19,7 +20,7 @@ export class MyApp {
 		translate.use('en');
 
 		platform.ready().then(() => {
-			if (!platform.is('core')) {
+			if (platform.is('cordova')) {
 				StatusBar.styleDefault();
 				Splashscreen.hide();
 			}

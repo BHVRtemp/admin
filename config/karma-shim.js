@@ -36,6 +36,39 @@ logger = {
     error: function() {}
 };
 
+FB = {
+    login: function() {
+        return { status: 'connected' };
+    }
+};
+
+gapi = {
+    load: function(type, cb) {cb()},
+    auth2: {
+        init: function() {},
+        getAuthInstance: function() {
+            return {
+                signIn: function() {
+                    return {
+                        then: function(cb) {cb()}
+                    };
+                },
+                currentUser: {
+                    get: function() {
+                        return {
+                            getAuthResponse: function() {
+                                return {
+                                    id_token: 'test'
+                                };
+                            }
+                        };
+                    }
+                }
+            };   
+        }
+    }
+}
+
 testing.TestBed.initTestEnvironment(
     browser.BrowserDynamicTestingModule,
     browser.platformBrowserDynamicTesting()
@@ -51,16 +84,15 @@ testing.TestBed.initTestEnvironment(
  * we say do this recursively
  */
 var testContext = require.context('../src', true, /\.spec\.ts/);
-var testContext2 = require.context('../modules', true, /\.spec\.ts/);
 
 /*
  * get all the files, for each file, call the context function
  * that will require the file and load it up here. Context will
  * loop and require those spec files here
  */
-function requireAll(requireContext, requireContext2) {
-    return requireContext.keys().map(requireContext).concat(requireContext2.keys().map(requireContext2));
+function requireAll(requireContext) {
+    return requireContext.keys().map(requireContext);
 }
 
 // requires and returns all modules that match
-var modules = requireAll(testContext, testContext2);
+var modules = requireAll(testContext);

@@ -1,0 +1,29 @@
+<form (submit)="submit()">
+    <ion-list>
+
+        <ion-item>
+            <ion-label fixed>{{ 'FIRSTNAME' | translate }}</ion-label>
+            <ion-input type="text" name="firstName" id="firstName" [formControl]="firstName"></ion-input>
+        </ion-item>
+        <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+
+        <ion-item>
+            <ion-label fixed>{{ 'LASTNAME' | translate }}</ion-label>
+            <ion-input type="text" name="lastName" id="lastName" [formControl]="lastName"></ion-input>
+        </ion-item>
+        <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+
+        <div padding>
+            <button ion-button color="primary" block>{{ 'EDIT_PROFILE_BUTTON' | translate }}</button>
+        </div>
+
+        <ion-item text-wrap *ngIf="success">
+            {{ 'EDIT_PROFILE_SUCCESS' | translate }}
+        </ion-item>
+
+        <ion-item text-wrap *ngIf="error">
+            {{ error | translate }}
+        </ion-item>
+
+    </ion-list>
+</form>

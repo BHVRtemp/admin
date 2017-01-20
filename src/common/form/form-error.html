@@ -1,0 +1,15 @@
+<ion-item no-lines *ngIf="!field.valid && (!field.untouched || formSubmitted)">
+    <ion-icon name="alert" item-left></ion-icon>
+    <p [hidden]="!field.hasError('minlength')">
+        Too short.
+    </p>
+    <p [hidden]="!field.hasError('required')">
+        Required.
+    </p>
+    <p [hidden]="!field.hasError('areEqual')">
+        Not the same password.
+    </p>
+    <p [hidden]="!field.hasError('email')">
+        Not an email.
+    </p>
+</ion-item>

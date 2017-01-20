@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <h1>Cogeco Media</h1>
+    <p>
+        Create an account to get a personalized experience and start accumulating reward points.
+    </p>
+    <p><strong>Continue with</strong></p>
+    <facebook-login (onSuccess)="goHome()"></facebook-login>
+    <google-login (onSuccess)="goHome()"></google-login>
+	<twitter-login (onSuccess)="goHome()"></twitter-login>
+    <hr>
+    <button ion-button block outline color="dark" (click)="goLogin()">Login</button>
+    <button ion-button block outline color="dark" (click)="goSignUp()">Email signup</button>
+    <hr>
+    <button ion-button block outline color="danger" (click)="goHome()">Skip</button>
+    
+</ion-content>
