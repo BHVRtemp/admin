@@ -24,7 +24,7 @@ export class UserService {
 	}
 
 	public waitUntilReady(cb) {
-		if(this.ready == 2) {
+		if (this.ready === 2) {
 			cb();
 		} else {
 			this.readyCbs.push(cb);
@@ -58,7 +58,7 @@ export class UserService {
 
 	private callIsReady() {
 		this.ready++;
-		if (this.ready == 2) {
+		if (this.ready === 2) {
 			this.readyCbs.forEach(cb => {
 				cb();
 			});
