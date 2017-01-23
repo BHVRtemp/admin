@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { UserService } from '../user.service';
@@ -11,12 +11,13 @@ import { GlobalValidator } from '../../form/global-validator';
 })
 export class LoginComponent {
 	@Output() onSuccess = new EventEmitter();
+	@Input('maximum-level') maximumLevel: number;
 
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
 	password: FormControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
 
 	submitted: Boolean = false;
-	error: Boolean = false;
+	error: string;
 
 	form: FormGroup = this.formBuilder.group({
 		email: this.email,
@@ -34,11 +35,16 @@ export class LoginComponent {
 		
 		sub.map(res => res.json())
 			.subscribe(res => {
+				if(this.maximumLevel && res.user.role.level > this.maximumLevel) {
+					this.error = "ROLE_TOO_LOW";
+					return;
+				}
+				
 				this.userService.loggedIn(res);
 				this.onSuccess.emit();
 
 			}, e => {
-				this.error = true;
+				this.error = "BAD_CREDENTIALS";
 				logger.warn(e);
 			});
 
@@ -49,7 +55,7 @@ export class LoginComponent {
 
 	submit() {
 		this.submitted = true;
-		this.error = false;
+		this.error = null;
 		if (!this.form.valid) return;
 
 		return this.login();

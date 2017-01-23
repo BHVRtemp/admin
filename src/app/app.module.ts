@@ -2,32 +2,31 @@ import { NgModule } from '@angular/core';
 import { Http } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { MaterialModule } from '@angular/material';
 // import { CloudModule } from '@ionic/cloud-angular';
 
 import { CommonModule } from '../common';
 
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about.page';
-import { ProfilePage } from '../pages/profile/profile.page';
-import { HomePage } from '../pages/home/home.page';
-import { TabsPage } from '../pages/tabs/tabs.page';
-import { SignupPage } from '../pages/signup/signup.page';
-import { SendResetPasswordPage } from '../pages/reset-password/send-reset-password.page';
-import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
-import { LoginPage } from '../pages/login/login.page';
-import { ChangePasswordPage } from '../pages/profile/change-password.page';
-import { EditProfilePage } from '../pages/profile/edit-profile.page';
+
+import { NavigationLink } from '../components/navigation/link.component';
+
 import { EntryPage } from '../pages/entry/entry.page';
 
+import { LoginPage } from '../pages/login/login.page';
+import { UsersPage } from '../pages/users/users.page';
+import { StationsPage } from '../pages/stations/stations.page';
+
+import { DashboardPage } from '../pages/dashboard/dashboard.page';
+import { ProfilePage } from '../pages/profile/profile.page';
+import { AuthPage } from '../pages/auth/auth.page';
+import { SendResetPasswordPage } from '../pages/reset-password/send-reset-password.page';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
+import { ChangePasswordPage } from '../pages/profile/change-password.page';
+import { EditProfilePage } from '../pages/profile/edit-profile.page';
+
+
 import { TranslateComponent } from '../components/translate/translate.component';
-import { FacebookComponent } from '../components/facebook/facebook.component';
-import { FacebookService } from '../components/facebook/facebook.service';
-import { GoogleComponent } from '../components/google/google.component';
-import { GoogleService } from '../components/google/google.service';
-import { TwitterComponent } from '../components/twitter/twitter.component';
-import { TwitterService } from '../components/twitter/twitter.service';
-import { SignupComponent } from '../components/signup/signup.component';
-import { UserActivateComponent } from '../components/signup/activate.component';
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -36,38 +35,33 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
 	declarations: [
 		MyApp,
-		AboutPage,
+		DashboardPage,
 		ProfilePage,
-		HomePage,
-		TabsPage,
-		FacebookComponent,
-		TwitterComponent,
-		GoogleComponent,
+		AuthPage,
 		TranslateComponent,
-		SignupComponent,
-		SignupPage,
 		SendResetPasswordPage,
 		ResetPasswordPage,
-		LoginPage,
 		EntryPage,
 		ChangePasswordPage,
 		EditProfilePage,
-		UserActivateComponent,
+		LoginPage,
+		UsersPage,
+		StationsPage,
+		NavigationLink,
 	],
 	entryComponents: [
 		MyApp,
-		AboutPage,
+		DashboardPage,
 		ProfilePage,
-		HomePage,
-		TabsPage,
+		AuthPage,
 		ResetPasswordPage,
-		SignupPage,
 		SendResetPasswordPage,
-		LoginPage,
 		EntryPage,
 		ChangePasswordPage,
 		EditProfilePage,
-		UserActivateComponent,
+		LoginPage,
+		UsersPage,
+		StationsPage,
 	],
 	imports: [
 		IonicModule.forRoot(MyApp, {
@@ -75,18 +69,21 @@ export function createTranslateLoader(http: Http) {
 		}, {
 			links: [
 				{ component: EntryPage, name: 'Entry', segment: 'entry' },
-				{ component: LoginPage, name: 'Login', segment: 'login', defaultHistory: [EntryPage] },
-				{ component: SendResetPasswordPage, name: 'Send reset password', segment: 'send-reset-password', defaultHistory: [EntryPage, LoginPage] },
-				{ component: ResetPasswordPage, name: 'Reset Password', segment: 'reset-password/:token' },
-				{ component: SignupPage, name: 'Signup', segment: 'signup', defaultHistory: [EntryPage] },
-				{ component: UserActivateComponent, name: 'Signup activation', segment: 'user/activate/:token' },
-				
 
-				{ component: HomePage, name: 'Home', segment: 'home' },
+				{ component: AuthPage, name: 'Auth', segment: 'auth' },
+				{ component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
+				{ component: UsersPage, name: 'Users', segment: 'users' },
+				{ component: StationsPage, name: 'Stations', segment: 'stations' },
+
+
+				{ component: LoginPage, name: 'Login', segment: 'login' },
+				{ component: SendResetPasswordPage, name: 'Send reset password', segment: 'send-reset-password', defaultHistory: [EntryPage] },
+				{ component: ResetPasswordPage, name: 'Reset Password', segment: 'reset-password/:token' },
+				
 				{ component: ProfilePage, name: 'Profile', segment: 'profile' },
 				{ component: ChangePasswordPage, name: 'Change password', segment: 'change-password', defaultHistory: [ProfilePage] },
 				{ component: EditProfilePage, name: 'Edit Profile', segment: 'edit-profile', defaultHistory: [ProfilePage] },
-				{ component: AboutPage, name: 'About', segment: 'about' },
+				
 			],
 		}),
 
@@ -102,12 +99,11 @@ export function createTranslateLoader(http: Http) {
 			deps: [Http],
 		}),
 		CommonModule,
+		MaterialModule.forRoot(),
 	],
 	bootstrap: [IonicApp],
 	providers: [
-		FacebookService,
-		GoogleService,
-		TwitterService,
+		
 	],
 })
 export class AppModule {}

@@ -11,6 +11,7 @@
 
     "LOGIN_BUTTON": "Login",
     "BAD_CREDENTIALS": "Bad credentials",
+    "ROLE_TOO_LOW": "Not authorized",
 
     "SEND_RESET_PASSWORD_BUTTON": "Ask for a new password",
     "SEND_RESET_PASSWORD_SUCCESS": "If your email exists in our database, you will receive instructions to reset your password.",

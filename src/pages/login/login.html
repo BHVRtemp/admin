@@ -3,14 +3,12 @@
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
-  	<login-component (onSuccess)="goHome()"></login-component>
+<ion-content padding>
+    <login-component (onSuccess)="goHome()" maximum-level="3"></login-component>
 
     <hr>
 
     <div padding>
       <button ion-button block outline color="dark" (click)="goForgotPassword()">Forgot password ?</button>
-      <button ion-button block outline color="dark" (click)="goSignUp()">I don't have an account yet.</button>
     </div>
-    
 </ion-content>

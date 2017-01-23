@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs.page';
-import { SignupPage } from '../signup/signup.page';
+import { AuthPage } from '../auth/auth.page';
 import { LoginPage } from '../login/login.page';
+import { UserService } from '../../common';
 
 @Component({
-	templateUrl: 'entry.html',
+	template: '',
 })
 export class EntryPage {
-	constructor(public navCtrl: NavController, private _app: App) {}
+	
+	constructor(private navCtrl: NavController, private app: App, private userService: UserService) {}
 
-	goHome() {
-		this._app.getRootNav().setRoot(TabsPage);
-	}
+	ngOnInit() {
 
-	goSignUp() {
-		this.navCtrl.push(SignupPage);
-	}
-	goLogin() {
-		this.navCtrl.push(LoginPage);
+		this.userService.waitUntilReady(() => {
+			if (this.userService.user) {
+				this.app.getRootNav().setRoot(AuthPage);
+			} else {
+				this.app.getRootNav().setRoot(LoginPage);
+			}
+		});
 	}
 }

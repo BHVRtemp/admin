@@ -1,0 +1,48 @@
+<md-toolbar class="main-toolbar" color="primary">
+  <button (click)="start.toggle()" md-icon-button>
+    <md-icon>menu</md-icon>
+  </button>
+  <button (click)="end.toggle()" md-icon-button>
+    <md-icon>notifications</md-icon>
+    <span class="notification-label">5</span>
+  </button>
+  <button [md-menu-trigger-for]="user" md-icon-button>
+    <md-icon>person</md-icon>
+  </button>
+  <md-menu #user="mdMenu" x-position="before">
+    <button md-menu-item>
+      <md-icon>settings</md-icon>
+      Settings
+    </button>
+    <button md-menu-item>
+      <md-icon>account_box</md-icon>
+      Profile
+    </button>
+    <button md-menu-item>
+      <md-icon>notifications_off</md-icon>
+      Disable notifications
+    </button>
+    <button md-menu-item (click)="logout()">
+      <md-icon>exit_to_app</md-icon>
+      Sign Out
+    </button>
+  </md-menu>
+</md-toolbar>
+
+<md-sidenav-layout class="main-view">
+
+  <md-sidenav #start [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" class="left-sidenav">
+    <md-nav-list>
+      <navigation-link page="DashboardPage" icon="dashboard" title="Dashboard" [nav]="nav"></navigation-link>
+      <navigation-link page="UsersPage" icon="people" title="Users" [nav]="nav"></navigation-link>
+      <navigation-link page="StationsPage" icon="radio" title="Stations" [nav]="nav"></navigation-link>
+    </md-nav-list>
+  </md-sidenav>
+
+  <md-sidenav #end align="end" class="right-sidenav">
+    End Sidenav.
+  </md-sidenav>
+
+  <ion-nav #nav [root]="rootPage"></ion-nav>
+
+</md-sidenav-layout>

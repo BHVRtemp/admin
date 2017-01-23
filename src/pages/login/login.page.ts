@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs.page';
-import { SignupPage } from '../signup/signup.page';
+import { AuthPage } from '../auth/auth.page';
 import { SendResetPasswordPage } from '../reset-password/send-reset-password.page';
 
 @Component({
@@ -12,15 +11,10 @@ export class LoginPage {
 	constructor(public navCtrl: NavController, private _app: App) {}
 
 	goHome() {
-		this._app.getRootNav().setRoot(TabsPage);
+		this._app.getRootNav().setRoot(AuthPage);
 	}
 
 	goForgotPassword() {
 		this.navCtrl.push(SendResetPasswordPage);
 	}
-
-	goSignUp() {
-		this.navCtrl.push(SignupPage);
-	}
-
 }
