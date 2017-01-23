@@ -23,6 +23,8 @@ export class TwitterComponent {
 
 			this.twitterService.login()
 				.subscribe(twitterResponse => {
+					logger.info(twitterResponse);
+
 					this.api.post('/twitter-login', twitterResponse)
 						.map(response => response.json())
 						.subscribe(response => {

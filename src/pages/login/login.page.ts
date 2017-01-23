@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs.page';
 import { SignupPage } from '../signup/signup.page';
@@ -9,10 +9,10 @@ import { SendResetPasswordPage } from '../reset-password/send-reset-password.pag
 	templateUrl: 'login.html',
 })
 export class LoginPage {
-	constructor(public navCtrl: NavController) {}
+	constructor(public navCtrl: NavController, private _app: App) {}
 
 	goHome() {
-		this.navCtrl.setRoot(TabsPage);
+		this._app.getRootNav().setRoot(TabsPage);
 	}
 
 	goForgotPassword() {
@@ -22,4 +22,5 @@ export class LoginPage {
 	goSignUp() {
 		this.navCtrl.push(SignupPage);
 	}
+
 }

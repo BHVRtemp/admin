@@ -23,11 +23,10 @@ export class GoogleComponent {
 
 			this.googleService.login()
 			.subscribe(googleResponse => {
-				// console.log(googleResponse);
+
 				this.api.post('/google-login', googleResponse)
 					.map(response => response.json())
 					.subscribe(response => {
-
 						this.userService.loggedIn(response);
 						observer.next();
 						observer.complete();

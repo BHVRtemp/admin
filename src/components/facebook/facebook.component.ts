@@ -26,6 +26,7 @@ export class FacebookComponent {
 				this.api.post('/facebook-login', facebookResponse.authResponse)
 					.map(response => response.json())
 					.subscribe(response => {
+
 						this.userService.loggedIn(response);
 
 						observer.next();
@@ -45,5 +46,6 @@ export class FacebookComponent {
 		});
 
 	}
+
 
 }

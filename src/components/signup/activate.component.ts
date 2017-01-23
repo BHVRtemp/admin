@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 
 import { Api, UserService } from '../../common';
 import { TabsPage } from '../../pages/tabs/tabs.page';
@@ -11,7 +11,7 @@ import { TabsPage } from '../../pages/tabs/tabs.page';
 export class UserActivateComponent {
 	error: string;
 
-	constructor(public navCtrl: NavController, public api: Api, public userService: UserService) { }
+	constructor(public navCtrl: NavController, public api: Api, public userService: UserService, private _app: App) { }
 		
 	
 	ngAfterViewInit() {
@@ -20,7 +20,7 @@ export class UserActivateComponent {
 		this.api.post('/user/activate', { token })
 			.map(resp => resp.json())
 			.subscribe(resp => {
-				this.navCtrl.setRoot(TabsPage);
+				this._app.getRootNav().setRoot(TabsPage);
 				this.userService.loggedIn(resp);
 
 			}, e => {

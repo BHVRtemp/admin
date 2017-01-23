@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { App } from 'ionic-angular';
 
 import { TabsPage } from '../../pages/tabs/tabs.page';
 
@@ -7,9 +7,9 @@ import { TabsPage } from '../../pages/tabs/tabs.page';
 	templateUrl: 'reset-password.html',
 })
 export class ResetPasswordPage {
-	constructor(public navCtrl: NavController) {}
+	constructor(private _app: App) {}
 
 	goTabs() {
-		this.navCtrl.setRoot(TabsPage);
+		this._app.getRootNav().setRoot(TabsPage);
 	}
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { UserService } from '../../common';
 
 import { EntryPage } from '../entry/entry.page';
@@ -12,10 +12,10 @@ import { EditProfilePage } from '../profile/edit-profile.page';
 })
 export class ProfilePage {
 
-	constructor(public navCtrl: NavController, public userService: UserService) {}
+	constructor(public navCtrl: NavController, public userService: UserService, private _app: App) {}
 
 	goEntry() {
-		this.navCtrl.setRoot(EntryPage);
+		this._app.getRootNav().setRoot(EntryPage);
 	}
 	goChangePassword() {
 		this.navCtrl.push(ChangePasswordPage);

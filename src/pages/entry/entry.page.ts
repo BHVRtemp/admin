@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs.page';
 import { SignupPage } from '../signup/signup.page';
@@ -9,12 +9,10 @@ import { LoginPage } from '../login/login.page';
 	templateUrl: 'entry.html',
 })
 export class EntryPage {
-	constructor(public navCtrl: NavController) {}
+	constructor(public navCtrl: NavController, private _app: App) {}
 
 	goHome() {
-		logger.info('go home');
-		this.navCtrl.setRoot(TabsPage);
-		
+		this._app.getRootNav().setRoot(TabsPage);
 	}
 
 	goSignUp() {

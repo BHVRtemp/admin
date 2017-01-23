@@ -7,10 +7,10 @@ import { UserService } from '../user/user.service';
 @Injectable()
 export class Api {
 	// PROD WEB
-	private url: string = window.location.protocol + '//' + window.location.hostname + '/api';
+	// private url: string = window.location.protocol + '//' + window.location.hostname + '/api';
 
 	// DEV
-	// private url: string = window.location.protocol + '//' + window.location.hostname;
+	private url: string = window.location.protocol + '//' + window.location.hostname;
 
 	constructor(public http: Http, public userService: UserService) { }
 
