@@ -20,13 +20,13 @@ RUN npm i -g ionic@latest cordova
 
 # Project files
 COPY hooks /app/hooks
-COPY config.xml /app/config.xml
-COPY resources /app/resources
+# COPY config.xml /app/config.xml
+# COPY resources /app/resources
 
 WORKDIR /app
 
 # RUN cordova telemetry off
-RUN mkdir www
+# RUN mkdir www
 # RUN cordova prepare
 
 # NPM deps

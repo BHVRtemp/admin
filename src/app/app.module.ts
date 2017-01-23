@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Http } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
-import { CloudModule } from '@ionic/cloud-angular';
+// import { CloudModule } from '@ionic/cloud-angular';
 
 import { CommonModule } from '../common';
 
@@ -90,11 +90,11 @@ export function createTranslateLoader(http: Http) {
 			],
 		}),
 
-		CloudModule.forRoot({
-			core: {
-				app_id: 'd0ed91f9',
-			},
-		}),
+		// CloudModule.forRoot({
+		// 	core: {
+		// 		app_id: 'd0ed91f9',
+		// 	},
+		// }),
 
 		TranslateModule.forRoot({
 			provide: TranslateLoader,

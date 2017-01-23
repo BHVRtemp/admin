@@ -15,7 +15,7 @@ elif [ $1 = "test"  ] || [ $1 = "testwatch" ] || [ $1 = "prod-browser" ] || [ $1
     docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www cogecomedia/cms-build $1 $2
 
 elif [ $1 = "send-coverage" ]; then
-    docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www -v $(pwd)/.git:/app/.git cogecomedia/website-build $1 $2
+    docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www -v $(pwd)/.git:/app/.git cogecomedia/cms-build $1 $2
 
 elif [ $1 = "package-android"  ]; then
     docker run --rm -ti -v $(pwd)/src:/app/src -v $(pwd)/build:/app/build cogecomedia/cms-build package-android
