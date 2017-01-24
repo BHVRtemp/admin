@@ -1,15 +1,14 @@
-<ion-item no-lines *ngIf="!field.valid && (!field.untouched || formSubmitted)">
-    <ion-icon name="alert" item-left></ion-icon>
-    <p [hidden]="!field.hasError('minlength')">
+<md-chip-list class="md-chip-list-stacked" *ngIf="!field.valid && (!field.untouched || formSubmitted)">
+    <md-chip selected="true" color="warn" [hidden]="!field.hasError('minlength')">
         Too short.
-    </p>
-    <p [hidden]="!field.hasError('required')">
+    </md-chip>
+    <md-chip selected="true" color="warn" [hidden]="!field.hasError('required')">
         Required.
-    </p>
-    <p [hidden]="!field.hasError('areEqual')">
+    </md-chip>
+    <md-chip selected="true" color="warn" [hidden]="!field.hasError('areEqual')">
         Not the same password.
-    </p>
-    <p [hidden]="!field.hasError('email')">
+    </md-chip>
+    <md-chip selected="true" color="warn" [hidden]="!field.hasError('email')">
         Not an email.
-    </p>
-</ion-item>
+    </md-chip>
+</md-chip-list>

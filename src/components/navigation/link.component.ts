@@ -7,19 +7,19 @@ import { DashboardPage } from '../../pages/dashboard/dashboard.page';
 
 @Component({
 	templateUrl: 'link.html',
-    selector: 'navigation-link'
+	selector: 'navigation-link',
 })
 export class NavigationLink {
-    @Input() nav: NavController;
-    @Input() page: string;
-    @Input() title: string;
-    @Input() icon: string;
+	@Input() nav: NavController;
+	@Input() page: string;
+	@Input() title: string;
+	@Input() icon: string;
 
-    private pages = { UsersPage, StationsPage, DashboardPage };
+	private pages = { UsersPage, StationsPage, DashboardPage };
 
 	constructor() {}
 
-    go() {
-        this.nav.push(this.pages[this.page], {}, { animate: false });
-    }
+	go() {
+		this.nav.push(this.pages[this.page], {}, { animate: false });
+	}
 }

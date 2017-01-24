@@ -11,7 +11,7 @@ elif [ $1 = "ios" ]; then
     cp config.xml .config.xml~
     ionic run ios -lcs --port 3000 --liveReloadPort 3000
 
-elif [ $1 = "test"  ] || [ $1 = "testwatch" ] || [ $1 = "prod-browser" ] || [ $1 = "bash" ]; then
+elif [ $1 = "test"  ] || [ $1 = "testwatch" ] || [ $1 = "prod-browser" ] || [ $1 = "bash" ] || [ $1 = "lint" ]; then
     docker run --rm -ti -v $(pwd)/coverage:/app/coverage -v $(pwd)/src:/app/src -v $(pwd)/www:/app/www cogecomedia/cms-build $1 $2
 
 elif [ $1 = "send-coverage" ]; then

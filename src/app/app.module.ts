@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { MaterialModule } from '@angular/material';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // import { CloudModule } from '@ionic/cloud-angular';
 
 import { CommonModule } from '../common';
@@ -10,6 +11,7 @@ import { CommonModule } from '../common';
 import { MyApp } from './app.component';
 
 import { NavigationLink } from '../components/navigation/link.component';
+import { UserDialogComponent } from '../components/users/user-dialog.component';
 
 import { EntryPage } from '../pages/entry/entry.page';
 
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: Http) {
 		UsersPage,
 		StationsPage,
 		NavigationLink,
+		UserDialogComponent,
 	],
 	entryComponents: [
 		MyApp,
@@ -62,6 +65,7 @@ export function createTranslateLoader(http: Http) {
 		LoginPage,
 		UsersPage,
 		StationsPage,
+		UserDialogComponent,
 	],
 	imports: [
 		IonicModule.forRoot(MyApp, {
@@ -100,6 +104,7 @@ export function createTranslateLoader(http: Http) {
 		}),
 		CommonModule,
 		MaterialModule.forRoot(),
+		NgxDatatableModule,
 	],
 	bootstrap: [IonicApp],
 	providers: [
