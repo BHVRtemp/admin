@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from 'ng2-translate';
 import { Storage } from '@ionic/storage';
+import { MaterialModule } from '@angular/material';
 
 import { Logger } from './logger/logger';
 import { Api } from './api/api';
@@ -19,6 +20,7 @@ import { ResetPasswordComponent } from './user/reset-password/reset-password.com
 	imports: [
 		IonicModule,
 		TranslateModule,
+		MaterialModule,
 	],
 	declarations: [
 		LoginComponent,

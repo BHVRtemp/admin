@@ -35,8 +35,8 @@ export class LoginComponent {
 		
 		sub.map(res => res.json())
 			.subscribe(res => {
-				if(this.maximumLevel && res.user.role.level > this.maximumLevel) {
-					this.error = "ROLE_TOO_LOW";
+				if (this.maximumLevel && res.user.role.level > this.maximumLevel) {
+					this.error = 'ROLE_TOO_LOW';
 					return;
 				}
 				
@@ -44,7 +44,7 @@ export class LoginComponent {
 				this.onSuccess.emit();
 
 			}, e => {
-				this.error = "BAD_CREDENTIALS";
+				this.error = 'BAD_CREDENTIALS';
 				logger.warn(e);
 			});
 
