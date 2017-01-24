@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { MaterialModule } from '@angular/material';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // import { CloudModule } from '@ionic/cloud-angular';
 
 import { CommonModule } from '../common';
@@ -100,6 +101,7 @@ export function createTranslateLoader(http: Http) {
 		}),
 		CommonModule,
 		MaterialModule.forRoot(),
+		NgxDatatableModule,
 	],
 	bootstrap: [IonicApp],
 	providers: [
