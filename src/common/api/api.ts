@@ -71,19 +71,19 @@ export class Api {
 	}
 
 	post(endpoint: string, body: any, options?: RequestOptions) {
-		return this.set("post", endpoint, body, options);
+		return this.set('post', endpoint, body, options);
 	}
 
 	put(endpoint: string, body: any, options?: RequestOptions) {
-		return this.set("put", endpoint, body, options);
+		return this.set('put', endpoint, body, options);
 	}
 
 	delete(endpoint: string, body: any, options?: RequestOptions) {
-		return this.set("delete", endpoint, body, options);
+		return this.set('delete', endpoint, body, options);
 	}
 
 	patch(endpoint: string, body: any, options?: RequestOptions) {
-		return this.set("patch", endpoint, body, options);
+		return this.set('patch', endpoint, body, options);
 	}
 
 	private getAuthorizationHeaders(): Headers {

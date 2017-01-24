@@ -11,7 +11,7 @@ export class UsersPage {
 	public users: User[];
 	public temp: User[];
 	public ready: Boolean = false;
-	private dialogConfig: MdDialogConfig = { disableClose: true, width: "600px" };
+	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 
 	constructor(private api: Api, private dialog: MdDialog) {
 
@@ -30,7 +30,7 @@ export class UsersPage {
 	}
 
 	private add() {
-		const dialogRef : MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
+		const dialogRef: MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
 
 		dialogRef.afterClosed().subscribe(result => {
 			this.users.push(result);
@@ -38,13 +38,15 @@ export class UsersPage {
 	}
  
 	private edit(user: User) {
-		const dialogRef : MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
+		const dialogRef: MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
 		dialogRef.componentInstance.user = user;
 
 		dialogRef.afterClosed().subscribe(result => {
-			if(result) {
-				for(var i in user) {
-					user[i] = result[i];
+			if (result) {
+				for (let i in user) {
+					if (user.hasOwnProperty(i)) {
+						user[i] = result[i];
+					}
 				}
 			}
 		});
@@ -62,11 +64,11 @@ export class UsersPage {
 		const val = event.target.value.toLowerCase();
 
 		this.users = this.temp.filter(function(user) {
-			if(!val) return true; // no value
-			if(user.username.toLowerCase().indexOf(val) !== -1 || user.email.indexOf(val) !== -1) return true; // email && username
+			if (!val) return true; // no value
+			if (user.username.toLowerCase().indexOf(val) !== -1 || user.email.indexOf(val) !== -1) return true; // email && username
 
-			const name1 = user.firstName.toLowerCase() + " " + user.lastName.toLowerCase(); // firstName lastName
-			const name2 = user.lastName.toLowerCase() + " " + user.firstName.toLowerCase(); // lastName firstName
+			const name1 = user.firstName.toLowerCase() + ' ' + user.lastName.toLowerCase(); // firstName lastName
+			const name2 = user.lastName.toLowerCase() + ' ' + user.firstName.toLowerCase(); // lastName firstName
 			return name1.indexOf(val) !== -1 || name2.indexOf(val) !== -1;
 		});
 	}

@@ -10,6 +10,9 @@ fi
 if [ $1 = "test" ]; then
     npm test
 fi
+if [ $1 = "lint" ]; then
+    npm run lint
+fi
 
 if [ $1 = "send-coverage" ]; then
     cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
