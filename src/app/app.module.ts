@@ -11,6 +11,7 @@ import { CommonModule } from '../common';
 import { MyApp } from './app.component';
 
 import { NavigationLink } from '../components/navigation/link.component';
+import { UserDialogComponent } from '../components/users/user-dialog.component';
 
 import { EntryPage } from '../pages/entry/entry.page';
 
@@ -49,6 +50,7 @@ export function createTranslateLoader(http: Http) {
 		UsersPage,
 		StationsPage,
 		NavigationLink,
+		UserDialogComponent,
 	],
 	entryComponents: [
 		MyApp,
@@ -63,6 +65,7 @@ export function createTranslateLoader(http: Http) {
 		LoginPage,
 		UsersPage,
 		StationsPage,
+		UserDialogComponent,
 	],
 	imports: [
 		IonicModule.forRoot(MyApp, {

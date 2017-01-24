@@ -1,15 +1,53 @@
 <h1 class="text-center" *ngIf="!ready">Loading...</h1>
 
-<div *ngIf="ready">
-    <md-input placeholder="Type to filter the name column..." required (keyup)='updateFilter($event)' style="width: 100%" class="mb-1 ml-1 mr-1"></md-input>
-    <ngx-datatable
-        class='material'
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="'auto'"
-        [limit]="10"
-        [rows]='users'>
+<div *ngIf="ready" padding>
+
+    <button md-raised-button class="pull-right" color="primary" (click)="add()">
+        Add <md-icon>add</md-icon>
+    </button>
+
+    <md-input-container>
+        <input md-input placeholder="Type to filter..." (keyup)="updateFilter($event)">
+    </md-input-container>
+
+
+    <ngx-datatable class="material" columnMode="force" headerHeight="32" footerHeight="30" rowHeight="auto" limit="20" [rows]="users">
+
+        <ngx-datatable-column maxWidth="40">
+            <template let-user="row" ngx-datatable-cell-template>
+                <md-icon *ngIf="user.isActive">check</md-icon>
+                <md-icon *ngIf="!user.isActive">clear</md-icon>
+            </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Username"></ngx-datatable-column>
+        <ngx-datatable-column name="First Name"></ngx-datatable-column>
+        <ngx-datatable-column name="Last Name"></ngx-datatable-column>
+        <ngx-datatable-column name="Email"></ngx-datatable-column>
+
+        <ngx-datatable-column maxWidth="80">
+            <template let-user="row" ngx-datatable-cell-template>
+                <div class="text-center">
+                    <button md-icon-button [mdMenuTriggerFor]="menu">
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                    <md-menu #menu="mdMenu">
+                        <button md-menu-item (click)="edit(user)">
+                            <md-icon>mode_edit</md-icon>
+                            <span>Edit</span>
+                        </button>
+                        <button md-menu-item (click)="setActive(user, false)" *ngIf="user.isActive">
+                            <md-icon>visibility_off</md-icon>
+                            <span>Desactivate</span>
+                        </button>
+                        <button md-menu-item (click)="setActive(user, true)" *ngIf="!user.isActive">
+                            <md-icon>visibility_on</md-icon>
+                            <span>Activate</span>
+                        </button>
+                    </md-menu>
+                </div>
+            </template>
+        </ngx-datatable-column>
     </ngx-datatable>
+
+    
 </div>
