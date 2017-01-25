@@ -4,6 +4,8 @@
   min-height: 100vh;
   @include flexbox;
   @include flex-direction(column);
+  height: 100%;
+  overflow-y: auto;
 
   background-color: md-color($primary, 500);
   color: md-contrast($primary, 500);

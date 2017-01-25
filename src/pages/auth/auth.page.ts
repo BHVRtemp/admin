@@ -1,8 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 
-import { App } from 'ionic-angular';
+import { App, NavController } from 'ionic-angular';
+
 import { DashboardPage } from '../dashboard/dashboard.page';
 import { LoginPage } from '../login/login.page';
+import { ProfilePage } from '../profile/profile.page';
 import { UserService } from '../../common';
 
 @Component({
@@ -26,19 +28,14 @@ export class AuthPage {
 		this.app.getRootNav().setRoot(LoginPage);
 	}
 
+	goProfile(navCtrl: NavController) {
+		navCtrl.push(ProfilePage, null, { animate: false });
+	}
+
 	@HostListener('window:resize', ['$event'])
 	onResize() {}
 
 	isOver(): boolean {
 		return window.matchMedia(`(max-width: 960px)`).matches;
-		/* tslint:disable:max-line-length */
-		/*
-		if(this.url === '/apps/messages' || this.url === '/apps/calendar' || this.url === '/apps/media' || this.url === '/maps/leaflet') {
-		return true;
-		} else {
-			return window.matchMedia(`(max-width: 960px)`).matches;
-		}
-		*/
-		/* tslint:enable:max-line-length */
 	}
 }

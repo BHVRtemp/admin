@@ -1,4 +1,4 @@
-<form (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()">
     <md-input-container style="width: 100%">
         <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
     </md-input-container>
@@ -11,6 +11,6 @@
 
     <button md-raised-button color="primary" type="submit" style="width: 100%">{{ 'LOGIN_BUTTON' | translate }}</button>
 
-    <small *ngIf="error">{{ error | translate }}</small>
+    <div class="error-message" *ngIf="error">{{ error | translate }}</div>
 
 </form>

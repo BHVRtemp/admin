@@ -7,7 +7,22 @@
 
 @import '../theme/flexbox-mixins';
 @import '../theme/session-layout';
+@import '../theme/layout';
+@import '../theme/utilities';
 
 a {
     cursor: pointer;
+}
+
+.ion-page.show-page {
+    overflow-y: auto;
+}
+
+.grey-background {
+    background: #fafafa;
+}
+
+.centered-card {
+    width: 500px;
+    margin: 0 auto;
 }

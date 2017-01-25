@@ -20,7 +20,7 @@
       <md-icon>person</md-icon>
     </button>
     <md-menu #user="mdMenu" x-position="before">
-      <button md-menu-item>
+      <button md-menu-item (click)="goProfile(nav)">
         <md-icon>account_box</md-icon>
         Profile
       </button>
