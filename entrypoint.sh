@@ -10,6 +10,7 @@ if [ $1 = "prod-browser" ]; then
     npm run ionic:build --prod
 fi
 if [ $1 = "test" ]; then
+    cp src/env/dev.ts src/env/main.ts
     npm test
 fi
 if [ $1 = "lint" ]; then
@@ -17,10 +18,12 @@ if [ $1 = "lint" ]; then
 fi
 
 if [ $1 = "send-coverage" ]; then
+    cp src/env/dev.ts src/env/main.ts
     cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage  -p . --language typescript
 fi
 
 if [ $1 = "testwatch" ]; then
+    cp src/env/dev.ts src/env/main.ts
     npm run testwatch
 fi
 
