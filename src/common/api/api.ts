@@ -3,17 +3,18 @@ import { Observable } from 'rxjs/Observable';
 import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 // import { Platform } from 'ionic-angular';
 import { UserService } from '../user/user.service';
+import { Environnement } from '../../env/main';
 // import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class Api {
-	// PROD WEB
-	// private url: string = window.location.protocol + '//' + window.location.hostname + '/api';
 
-	// DEV
-	private url: string = window.location.protocol + '//' + window.location.hostname;
-
-	constructor(public http: Http, public userService: UserService) { }
+	private url: string;
+	
+	constructor(public http: Http, public userService: UserService, private environnement: Environnement) {
+		this.url = environnement.url;
+	}
 
 	get(endpoint: string, params?: any, options?: RequestOptions) {
 		

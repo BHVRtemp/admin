@@ -24,11 +24,10 @@ import { ProfilePage } from '../pages/profile/profile.page';
 import { AuthPage } from '../pages/auth/auth.page';
 import { SendResetPasswordPage } from '../pages/reset-password/send-reset-password.page';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
-import { ChangePasswordPage } from '../pages/profile/change-password.page';
-import { EditProfilePage } from '../pages/profile/edit-profile.page';
-
 
 import { TranslateComponent } from '../components/translate/translate.component';
+
+import { Environnement } from '../env/main';
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -44,8 +43,6 @@ export function createTranslateLoader(http: Http) {
 		SendResetPasswordPage,
 		ResetPasswordPage,
 		EntryPage,
-		ChangePasswordPage,
-		EditProfilePage,
 		LoginPage,
 		UsersPage,
 		StationsPage,
@@ -60,8 +57,6 @@ export function createTranslateLoader(http: Http) {
 		ResetPasswordPage,
 		SendResetPasswordPage,
 		EntryPage,
-		ChangePasswordPage,
-		EditProfilePage,
 		LoginPage,
 		UsersPage,
 		StationsPage,
@@ -75,18 +70,16 @@ export function createTranslateLoader(http: Http) {
 				{ component: EntryPage, name: 'Entry', segment: 'entry' },
 
 				{ component: AuthPage, name: 'Auth', segment: 'auth' },
+
 				{ component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
 				{ component: UsersPage, name: 'Users', segment: 'users' },
 				{ component: StationsPage, name: 'Stations', segment: 'stations' },
+				{ component: ProfilePage, name: 'Profile', segment: 'profile' },
 
 
 				{ component: LoginPage, name: 'Login', segment: 'login' },
 				{ component: SendResetPasswordPage, name: 'Send reset password', segment: 'send-reset-password', defaultHistory: [EntryPage] },
 				{ component: ResetPasswordPage, name: 'Reset Password', segment: 'reset-password/:token' },
-				
-				{ component: ProfilePage, name: 'Profile', segment: 'profile' },
-				{ component: ChangePasswordPage, name: 'Change password', segment: 'change-password', defaultHistory: [ProfilePage] },
-				{ component: EditProfilePage, name: 'Edit Profile', segment: 'edit-profile', defaultHistory: [ProfilePage] },
 				
 			],
 		}),
@@ -108,7 +101,7 @@ export function createTranslateLoader(http: Http) {
 	],
 	bootstrap: [IonicApp],
 	providers: [
-		
+		Environnement,
 	],
 })
 export class AppModule {}

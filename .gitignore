@@ -42,3 +42,6 @@ platforms/
 plugins/
 
 test-results.xml
+
+
+src/env/main.ts
