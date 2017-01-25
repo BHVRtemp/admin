@@ -28,5 +28,14 @@
     "SIGNUP_SUCCESS_EMAIL_SENT": "An email has been sent to your email address. Click on the link to activate your account.",
     "ACTIVATION_FAILED": "The link you used is invalid.",
 
-    "UNKNOWN_ERROR": "An unknown error occured. Try again please."
+    "UNKNOWN_ERROR": "An unknown error occured. Try again please.",
+    
+    "STATIONS_DIALOG_TITLE":"Add new station",
+    "STATIONS_DIALOG_NAME":"Name",
+    "STATIONS_DIALOG_LANGUAGE":"Language",
+    "STATIONS_DIALOG_DOMAIN":"Domain",
+    "STATIONS_DIALOG_STYLE":"Style",
+    "STATIONS_DIALOG_THEME":"Theme",
+    "STATIONS_DIALOG_ACTION_OK":"Add",
+    "STATIONS_DIALOG_ACTION_CANCEL":"Cancel"
 }

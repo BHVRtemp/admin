@@ -3,5 +3,14 @@
     "LOGIN_BUTTON": "Se connecter",
     "LOGIN_ERROR": "Identifiants incorrects.",
     "EMAIL": "Email",
-    "PASSWORD": "Mot de passe"
+    "PASSWORD": "Mot de passe",
+    
+    "STATIONS_DIALOG_TITLE":"Ajouter une station",
+    "STATIONS_DIALOG_NAME":"Nom",
+    "STATIONS_DIALOG_LANGUAGE":"Langue",
+    "STATIONS_DIALOG_DOMAIN":"Domaine",
+    "STATIONS_DIALOG_STYLE":"Style",
+    "STATIONS_DIALOG_THEME":"Thème",
+    "STATIONS_DIALOG_ACTION_OK":"Ajouter",
+    "STATIONS_DIALOG_ACTION_CANCEL":"Annuler"
 }

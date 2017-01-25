@@ -27,6 +27,7 @@ import { EditProfilePage } from '../pages/profile/edit-profile.page';
 
 
 import { TranslateComponent } from '../components/translate/translate.component';
+import { StationsDialogComponent } from '../components/stations/stations-dialog.component';
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -39,6 +40,7 @@ export function createTranslateLoader(http: Http) {
 		ProfilePage,
 		AuthPage,
 		TranslateComponent,
+		StationsDialogComponent,
 		SendResetPasswordPage,
 		ResetPasswordPage,
 		EntryPage,
@@ -62,6 +64,7 @@ export function createTranslateLoader(http: Http) {
 		LoginPage,
 		UsersPage,
 		StationsPage,
+		StationsDialogComponent,
 	],
 	imports: [
 		IonicModule.forRoot(MyApp, {
