@@ -1,0 +1,55 @@
+<h2 md-dialog-title class="mt-0">
+    {{ 'STATIONS_DIALOG_TITLE' | translate }}</h2>
+<md-dialog-content class="dialog-form">
+    <form (submit)="submit()" class="full-width">
+        <table cellspacing="0">
+            <tr>
+                <td>
+                    <md-input-container name="name" id="name">
+                        <input md-input placeholder="{{ 'STATIONS_DIALOG_NAME' | translate }}" name="name" id="name" [formControl]="name">
+                    </md-input-container>
+                    <form-error [field]="name" [formSubmitted]="submitted"></form-error>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-input-container name='language' id="language">
+                        <input md-input placeholder="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}" name='language' id="language" [formControl]="language">
+                    </md-input-container>
+                    <form-error [field]="language" [formSubmitted]="submitted"></form-error>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-input-container name='domain' id="domain">
+                        <input md-input placeholder="{{ 'STATIONS_DIALOG_DOMAIN' | translate }}" name='domain' id="domain" [formControl]="domain">
+                    </md-input-container>
+                    <form-error [field]="domain" [formSubmitted]="submitted"></form-error>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-select placeholder="{{ 'STATIONS_DIALOG_STYLE' | translate }}" [(ngModel)]="style" name="style" class="md-dialog-select full-width">
+                        <md-option *ngFor="let style of styles" [value]="style.value">
+                            {{style.viewValue}}
+                        </md-option>
+                    </md-select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-select placeholder="{{ 'STATIONS_DIALOG_THEME' | translate }}" [(ngModel)]="theme" name="theme" class="md-dialog-select full-width">
+                        <md-option *ngFor="let theme of themes" [value]="theme.value">
+                            {{theme.viewValue}}
+                        </md-option>
+                    </md-select>
+                </td>
+            </tr>
+        </table>
+    </form>
+</md-dialog-content>
+<md-dialog-actions class="to-right">
+    <button md-raised-button>{{ 'STATIONS_DIALOG_ACTION_CANCEL' | translate }}</button>
+    <button md-raised-button color="primary">{{ 'STATIONS_DIALOG_ACTION_OK' | translate }}</button>
+
+</md-dialog-actions>
