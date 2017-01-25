@@ -1,3 +1,49 @@
-<div class="button-to-right">
-  <button md-raised-button color="primary" class="ion-md-add" (click)="openDialog()"> {{ 'STATIONS_DIALOG_ACTION_OK' | translate }}</button>
+<md-toolbar color="accent"> Stations</md-toolbar>
+<h1 class="text-center" *ngIf="!ready">{{ 'PAGE_LOADING' | translate }} </h1>
+<div *ngIf="ready" padding>
+  <button md-raised-button color="primary" class="pull-right" (click)="addStation()"> 
+      {{ 'STATIONS_PAGE_ADD' | translate }} <md-icon>add</md-icon>
+   </button>
+ <md-input-container>
+        <input md-input placeholder=" {{ 'STATIONS_PAGE_FILTER_TEXT' | translate }} " (keyup)="updateFilter($event)">
+    </md-input-container>
+
+    <ngx-datatable class="material" columnMode="force" headerHeight="32" footerHeight="30" rowHeight="auto" limit="20" [rows]="stations">
+
+        <ngx-datatable-column maxWidth="40">
+            <template let-station="row" ngx-datatable-cell-template>
+                <md-icon *ngIf="station.isActive">check</md-icon>
+                <md-icon *ngIf="!station.isActive">clear</md-icon>
+            </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Name"></ngx-datatable-column>
+        <ngx-datatable-column name="Language"></ngx-datatable-column>
+        <ngx-datatable-column name="Domain"></ngx-datatable-column>
+        <ngx-datatable-column name="Style"></ngx-datatable-column>
+        <ngx-datatable-column name="Theme"></ngx-datatable-column>
+        
+        <ngx-datatable-column maxWidth="80">
+            <template let-station="row" ngx-datatable-cell-template>
+                <div class="text-center">
+                    <button md-icon-button [mdMenuTriggerFor]="menu">
+                        <md-icon>more_vert</md-icon>
+                    </button>
+                    <md-menu #menu="mdMenu">
+                        <button md-menu-item (click)="editStation(station)">
+                            <md-icon>mode_edit</md-icon>
+                            <span>Edit</span>
+                        </button>
+                        <button md-menu-item (click)="setActive(station, false)" *ngIf="station.isActive">
+                            <md-icon>visibility_off</md-icon>
+                            <span>Desactivate</span>
+                        </button>
+                        <button md-menu-item (click)="setActive(station, true)" *ngIf="!station.isActive">
+                            <md-icon>visibility_on</md-icon>
+                            <span>Activate</span>
+                        </button>
+                    </md-menu>
+                </div>
+            </template>
+        </ngx-datatable-column>
+    </ngx-datatable>
 </div>

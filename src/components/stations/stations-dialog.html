@@ -1,11 +1,12 @@
-<h2 md-dialog-title class="mt-0">
-    {{ 'STATIONS_DIALOG_TITLE' | translate }}</h2>
+<h2 md-dialog-title *ngIf="!station">{{ 'STATIONS_DIALOG_TITLE' | translate }}</h2>
+<h2 md-dialog-title *ngIf="station"> {{ 'STATIONS_DIALOG_EDIT' | translate }} {{station.name}}</h2>
+    
 <md-dialog-content class="dialog-form">
-    <form (submit)="submit()" class="full-width">
-        <table cellspacing="0">
+    <form ((ngSubmit)="submit()" class="full-width">
+        <table cellspacing="0" class="full-width">
             <tr>
                 <td>
-                    <md-input-container name="name" id="name">
+                    <md-input-container name="name" id="name" class="full-width">
                         <input md-input placeholder="{{ 'STATIONS_DIALOG_NAME' | translate }}" name="name" id="name" [formControl]="name">
                     </md-input-container>
                     <form-error [field]="name" [formSubmitted]="submitted"></form-error>
@@ -13,7 +14,7 @@
             </tr>
             <tr>
                 <td>
-                    <md-input-container name='language' id="language">
+                    <md-input-container name='language' id="language" class="full-width">
                         <input md-input placeholder="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}" name='language' id="language" [formControl]="language">
                     </md-input-container>
                     <form-error [field]="language" [formSubmitted]="submitted"></form-error>
@@ -21,7 +22,7 @@
             </tr>
             <tr>
                 <td>
-                    <md-input-container name='domain' id="domain">
+                    <md-input-container name='domain' id="domain" class="full-width">
                         <input md-input placeholder="{{ 'STATIONS_DIALOG_DOMAIN' | translate }}" name='domain' id="domain" [formControl]="domain">
                     </md-input-container>
                     <form-error [field]="domain" [formSubmitted]="submitted"></form-error>
@@ -29,27 +30,29 @@
             </tr>
             <tr>
                 <td>
-                    <md-select placeholder="{{ 'STATIONS_DIALOG_STYLE' | translate }}" [(ngModel)]="style" name="style" class="md-dialog-select full-width">
+                    <md-select placeholder="{{ 'STATIONS_DIALOG_STYLE' | translate }}"  name="style" id="style" class="md-dialog-select full-width"  [formControl]="style">
                         <md-option *ngFor="let style of styles" [value]="style.value">
                             {{style.viewValue}}
                         </md-option>
-                    </md-select>
+                        </md-select>
+                    <form-error [field]="style" [formSubmitted]="submitted"></form-error>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-select placeholder="{{ 'STATIONS_DIALOG_THEME' | translate }}" [(ngModel)]="theme" name="theme" class="md-dialog-select full-width">
+                    <md-select placeholder="{{ 'STATIONS_DIALOG_THEME' | translate }}" name="theme" id="theme" class="md-dialog-select full-width" [formControl]="theme">
                         <md-option *ngFor="let theme of themes" [value]="theme.value">
                             {{theme.viewValue}}
                         </md-option>
                     </md-select>
+                   <form-error [field]="theme" [formSubmitted]="submitted"></form-error> 
                 </td>
             </tr>
         </table>
     </form>
 </md-dialog-content>
-<md-dialog-actions class="to-right">
+<md-dialog-actions class="pull-right">
     <button md-raised-button md-dialog-close>{{ 'STATIONS_DIALOG_ACTION_CANCEL' | translate }}</button>
-    <button md-raised-button color="primary">{{ 'STATIONS_DIALOG_ACTION_OK' | translate }}</button>
-
+    <button md-raised-button color="primary" *ngIf="!station" (click)="submit()">{{ 'STATIONS_DIALOG_ACTION_OK' | translate }}</button>
+    <button md-raised-button color="primary" *ngIf="station" (click)="submit()">{{ 'STATIONS_DIALOG_ACTION_VALIDATE' | translate }}</button>
 </md-dialog-actions>

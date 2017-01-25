@@ -11,11 +11,12 @@ export class UsersPage {
 	public users: User[];
 	public temp: User[];
 	public ready: Boolean = false;
+	private subscription;
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 
 	constructor(private api: Api, private dialog: MdDialog) {
 
-		api.get('/users')
+		this.subscription = api.get('/users')
 			.map(r => r.json())
 			.subscribe(resp => {
 				this.users = resp.data;
@@ -28,12 +29,16 @@ export class UsersPage {
 			});
 
 	}
+	ionViewWillLeave() {
+		this.subscription.unsubscribe();
+	}
 
 	private add() {
 		const dialogRef: MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
 
 		dialogRef.afterClosed().subscribe(result => {
 			this.users.push(result);
+			this.temp.push(result);
 		});
 	}
  

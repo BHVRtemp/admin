@@ -31,12 +31,20 @@
 
     "UNKNOWN_ERROR": "An unknown error occured. Try again please.",
     
+    "PAGE_LOADING":"Loading...",
+    "PAGE_USERS":"Users",
+    "PAGE_DASHBOARD":"Dashboard",
+
+    "STATIONS_PAGE_ADD":"Add",
+    "STATIONS_PAGE_FILTER_TEXT":"Type to filter...",
     "STATIONS_DIALOG_TITLE":"Add new station",
+    "STATIONS_DIALOG_EDIT":"Edit Station : ",
     "STATIONS_DIALOG_NAME":"Name",
     "STATIONS_DIALOG_LANGUAGE":"Language",
     "STATIONS_DIALOG_DOMAIN":"Domain",
     "STATIONS_DIALOG_STYLE":"Style",
     "STATIONS_DIALOG_THEME":"Theme",
     "STATIONS_DIALOG_ACTION_OK":"Add",
+    "STATIONS_DIALOG_ACTION_VALIDATE":"Validate",
     "STATIONS_DIALOG_ACTION_CANCEL":"Cancel"
 }

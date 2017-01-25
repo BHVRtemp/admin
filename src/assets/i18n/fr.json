@@ -5,12 +5,20 @@
     "EMAIL": "Email",
     "PASSWORD": "Mot de passe",
     
+    "PAGE_LOADING":"Chargement...",
+    "PAGE_USERS":"Utilisateurs",
+    "PAGE_DASHBOARD":"Tableau de board",
+
+    "STATIONS_PAGE_ADD":"Ajouter",
+    "STATIONS_PAGE_FILTER_TEXT":"Tapez pour filtrer...",
     "STATIONS_DIALOG_TITLE":"Ajouter une station",
+    "STATIONS_DIALOG_EDIT":"Modifier la station : ",
     "STATIONS_DIALOG_NAME":"Nom",
     "STATIONS_DIALOG_LANGUAGE":"Langue",
     "STATIONS_DIALOG_DOMAIN":"Domaine",
     "STATIONS_DIALOG_STYLE":"Style",
     "STATIONS_DIALOG_THEME":"Thème",
     "STATIONS_DIALOG_ACTION_OK":"Ajouter",
+     "STATIONS_DIALOG_ACTION_VALIDATE":"Valider",
     "STATIONS_DIALOG_ACTION_CANCEL":"Annuler"
 }
