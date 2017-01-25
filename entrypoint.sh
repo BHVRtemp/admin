@@ -17,7 +17,7 @@ if [ $1 = "lint" ]; then
 fi
 
 if [ $1 = "send-coverage" ]; then
-    cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+    cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage  -p . --language typescript
 fi
 
 if [ $1 = "testwatch" ]; then
