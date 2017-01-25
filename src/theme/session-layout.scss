@@ -1,0 +1,30 @@
+.session {
+  position: relative;
+  z-index: 4000;
+  min-height: 100vh;
+  @include flexbox;
+  @include flex-direction(column);
+  height: 100%;
+  overflow-y: auto;
+
+  background-color: md-color($primary, 500);
+  color: md-contrast($primary, 500);
+}
+
+.session-content {
+  padding: 40px 100px;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex(1 0 auto);
+  @include flex-direction(column);
+  min-height: 100%;
+}
+
+.session-wrapper {
+  @include flex(none);
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+

@@ -1,29 +1,22 @@
-<form (submit)="submit()">
-    <ion-list>
+<form [formGroup]="form" (submit)="submit()">
 
-        <ion-item>
-            <ion-label fixed>{{ 'FIRSTNAME' | translate }}</ion-label>
-            <ion-input type="text" name="firstName" id="firstName" [formControl]="firstName"></ion-input>
-        </ion-item>
-        <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+    <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'FIRSTNAME' | translate }}" type="text" name="firstName" id="firstName" [formControl]="firstName">
+    </md-input-container>
+    <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+    
+    <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'LASTNAME' | translate }}" type="text" name="lastName" id="lastName" [formControl]="lastName">
+    </md-input-container>
+    <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
 
-        <ion-item>
-            <ion-label fixed>{{ 'LASTNAME' | translate }}</ion-label>
-            <ion-input type="text" name="lastName" id="lastName" [formControl]="lastName"></ion-input>
-        </ion-item>
-        <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
 
-        <div padding>
-            <button ion-button color="primary" block>{{ 'EDIT_PROFILE_BUTTON' | translate }}</button>
-        </div>
+    <button md-raised-button color="primary" type="submit" style="width: 100%">{{ 'EDIT_PROFILE_BUTTON' | translate }}</button>
 
-        <ion-item text-wrap *ngIf="success">
-            {{ 'EDIT_PROFILE_SUCCESS' | translate }}
-        </ion-item>
+    <div class="error-message" *ngIf="error">{{ error | translate }}</div>
 
-        <ion-item text-wrap *ngIf="error">
-            {{ error | translate }}
-        </ion-item>
+    <div class="success-message" *ngIf="success">
+        {{ 'EDIT_PROFILE_SUCCESS' | translate }}
+    </div>
 
-    </ion-list>
 </form>

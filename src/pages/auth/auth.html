@@ -1,32 +1,34 @@
 <md-toolbar class="main-toolbar" color="primary">
+
   <button (click)="start.toggle()" md-icon-button>
     <md-icon>menu</md-icon>
   </button>
+
+  &nbsp;&nbsp;
+  <span>Cogeco Media</span>
+
+  <span class="toolbar-spacer"></span>
+
   <button (click)="end.toggle()" md-icon-button>
-    <md-icon>notifications</md-icon>
-    <span class="notification-label">5</span>
-  </button>
-  <button [md-menu-trigger-for]="user" md-icon-button>
-    <md-icon>person</md-icon>
-  </button>
-  <md-menu #user="mdMenu" x-position="before">
-    <button md-menu-item>
-      <md-icon>settings</md-icon>
-      Settings
+      <md-icon>notifications</md-icon>
+      <span class="notification-label">5</span>
     </button>
-    <button md-menu-item>
-      <md-icon>account_box</md-icon>
-      Profile
+
+    &nbsp;
+
+    <button [md-menu-trigger-for]="user" md-icon-button>
+      <md-icon>person</md-icon>
     </button>
-    <button md-menu-item>
-      <md-icon>notifications_off</md-icon>
-      Disable notifications
-    </button>
-    <button md-menu-item (click)="logout()">
-      <md-icon>exit_to_app</md-icon>
-      Sign Out
-    </button>
-  </md-menu>
+    <md-menu #user="mdMenu" x-position="before">
+      <button md-menu-item (click)="goProfile(nav)">
+        <md-icon>account_box</md-icon>
+        Profile
+      </button>
+      <button md-menu-item (click)="logout()">
+        <md-icon>exit_to_app</md-icon>
+        Sign Out
+      </button>
+    </md-menu>
 </md-toolbar>
 
 <md-sidenav-layout class="main-view">
@@ -40,7 +42,7 @@
   </md-sidenav>
 
   <md-sidenav #end align="end" class="right-sidenav">
-    End Sidenav.
+    Notifications TODO
   </md-sidenav>
 
   <ion-nav #nav [root]="rootPage"></ion-nav>
