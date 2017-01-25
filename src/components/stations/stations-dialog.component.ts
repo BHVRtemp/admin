@@ -24,9 +24,10 @@ export class StationsDialogComponent {
         style: this.style,
         theme: this.theme,
 	}); 
+
   //Themes and Styles to be added to the two Select Input Fields dynamically
   themes=[
-            {value: 'sidebar_menu',      viewValue:'Sidebar Menu' },
+            {value: 'sidebar_menu',       viewValue:'Sidebar Menu' },
             {value: 'no_sidebar_menu',    viewValue:'No Sidebar Menu' },
             {value: 'no_sidebar_no_menu', viewValue:'No Sidebar No Menu' },
             {value: 'sidebar_no_menu',    viewValue:'Sidebar No Menu' }

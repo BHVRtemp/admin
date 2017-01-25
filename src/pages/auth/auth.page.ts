@@ -9,34 +9,36 @@ import { UserService } from '../../common';
 	templateUrl: 'auth.html',
 })
 export class AuthPage {
-    private rootPage = DashboardPage;
+	private rootPage = DashboardPage;
 
 	constructor(private app: App, private userService: UserService) {}
 
-    ngOnInit() {
+	ngOnInit() {
 		this.userService.waitUntilReady(() => {
 			if (!this.userService.user) {
 				this.app.getRootNav().setRoot(LoginPage);
-            }
+			}
 		});
 	}
 
-    logout() {
-        this.userService.logout();
-        this.app.getRootNav().setRoot(LoginPage);
-    }
+	logout() {
+		this.userService.logout();
+		this.app.getRootNav().setRoot(LoginPage);
+	}
 
-    @HostListener('window:resize', ['$event'])
-    onResize() {}
+	@HostListener('window:resize', ['$event'])
+	onResize() {}
 
-    isOver(): boolean {
-        return window.matchMedia(`(max-width: 960px)`).matches;
-        /*
-        if(this.url === '/apps/messages' || this.url === '/apps/calendar' || this.url === '/apps/media' || this.url === '/maps/leaflet') {
-        return true;
-        } else {
-            return window.matchMedia(`(max-width: 960px)`).matches;
-        }
-        */
-    }
+	isOver(): boolean {
+		return window.matchMedia(`(max-width: 960px)`).matches;
+		/* tslint:disable:max-line-length */
+		/*
+		if(this.url === '/apps/messages' || this.url === '/apps/calendar' || this.url === '/apps/media' || this.url === '/maps/leaflet') {
+		return true;
+		} else {
+			return window.matchMedia(`(max-width: 960px)`).matches;
+		}
+		*/
+		/* tslint:enable:max-line-length */
+	}
 }

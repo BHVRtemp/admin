@@ -1,5 +1,7 @@
 @import 'bootstrap-grid';
-@import 'prebuilt/deeppurple-amber.scss';
+@import 'prebuilt/deeppurple-amber.scss'; // material 
+@import 'datatable'; // ngx base
+@import 'material'; // ngx material
 
 .main-toolbar {
     position: fixed;
@@ -24,6 +26,7 @@
 .right-sidenav {
     width: 300px;
 }
+<<<<<<< HEAD
 .dialog-form {
   font-size: 16px;
 }
@@ -41,4 +44,17 @@
 .button-to-right{
     float: right;
     padding: 5px;
+=======
+
+.text-center {
+    text-align: center;
+}
+
+.pull-right {
+    float: right;
+}
+
+.hidden {
+    visibility: hidden;
+>>>>>>> origin/develop
 }
