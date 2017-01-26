@@ -29,7 +29,7 @@ export class LoginComponent {
 		public userService: UserService) {}
 
 	ngOnInit() {
-		if(this.type == "username") {
+		if (this.type === 'username') {
 			this.form = this.formBuilder.group({
 				username: this.username,
 				password: this.password,
