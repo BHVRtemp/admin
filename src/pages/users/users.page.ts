@@ -23,7 +23,7 @@ export class UsersPage {
 				this.temp = [...this.users];
 				this.ready = true;
 
-				this.edit(this.users[0]);
+				// this.edit(this.users[0]);
 			}, err => {
 				logger.info(err);
 			});

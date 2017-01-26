@@ -6,7 +6,7 @@
             <div style="padding: 0 10px;width: 100%">
                 <md-button-toggle-group vertical style="width: 100%" #roleValue="mdButtonToggleGroup">
                     <md-button-toggle [value]="role" *ngFor="let role of rolesList" color="primary">
-                        {{role.name}}
+                        {{role.name | translate}}
                     </md-button-toggle>
                 </md-button-toggle-group>    
             </div>
@@ -33,7 +33,7 @@
         <h3 md-subheader>Rôles</h3>
         <md-list-item *ngFor="let role of value">
             <md-icon md-list-avatar>accessibility</md-icon>
-            <h4 md-line>{{getRoleLabel(role.roleId)}}</h4>
+            <h4 md-line>{{getRoleLabel(role.roleId) | translate}}</h4>
             <p md-line>
                 <span *ngFor="let stationId of role.stationIds; let isLast = last">
                     {{getStationLabel(stationId)}}

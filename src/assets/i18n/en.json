@@ -29,5 +29,9 @@
     "SIGNUP_SUCCESS_EMAIL_SENT": "An email has been sent to your email address. Click on the link to activate your account.",
     "ACTIVATION_FAILED": "The link you used is invalid.",
 
-    "UNKNOWN_ERROR": "An unknown error occured. Try again please."
+    "UNKNOWN_ERROR": "An unknown error occured. Try again please.",
+
+    "ADMIN": "Administrateur",
+    "SU": "Super utilisateur",
+    "ANIMATOR": "Animateur"
 }

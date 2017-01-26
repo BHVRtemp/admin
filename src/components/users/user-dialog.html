@@ -32,7 +32,8 @@
             
 
 
-                <roles-chooser name="roles" [formControl]="roles" [value]="[]"></roles-chooser>
+            <roles-chooser name="roles" [formControl]="roles" [value]="[]"></roles-chooser>
+            <form-error [field]="roles" [formSubmitted]="submitted"></form-error>
 
 
 
