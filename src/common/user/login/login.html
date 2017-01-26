@@ -1,25 +1,16 @@
-<form (submit)="submit()">
-    <ion-list>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
+    </md-input-container>
+    <form-error [field]="email" [formSubmitted]="submitted"></form-error>
 
-        <ion-item>
-            <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-            <ion-input type="email" name="email" id="email" [formControl]="email"></ion-input>
-        </ion-item>
-        <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+    <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'PASSWORD' | translate }}" type="password" name="password" id="password" [formControl]="password">
+    </md-input-container>
+    <form-error [field]="password" [formSubmitted]="submitted"></form-error>
 
-        <ion-item>
-            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-            <ion-input type="password" name="password" id="password" [formControl]="password"></ion-input>
-        </ion-item>
-        <form-error [field]="password" [formSubmitted]="submitted"></form-error>
+    <button md-raised-button color="primary" type="submit" style="width: 100%">{{ 'LOGIN_BUTTON' | translate }}</button>
 
-        <div padding>
-            <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
-        </div>
+    <div class="error-message" *ngIf="error">{{ error | translate }}</div>
 
-        <ion-item text-wrap *ngIf="error">
-            {{ error | translate }}
-        </ion-item>
-
-    </ion-list>
 </form>

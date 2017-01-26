@@ -1,14 +1,20 @@
-<md-chip-list class="md-chip-list-stacked" *ngIf="!field.valid && (!field.untouched || formSubmitted)">
-    <md-chip selected="true" color="warn" [hidden]="!field.hasError('minlength')">
+<div *ngIf="!field.valid && (!field.untouched || formSubmitted)" style="color: #f44336;margin-bottom: 20px;">
+
+    <small [hidden]="!field.hasError('minlength')">
         Too short.
-    </md-chip>
-    <md-chip selected="true" color="warn" [hidden]="!field.hasError('required')">
+    </small>
+    <small [hidden]="!field.hasError('required')">
         Required.
-    </md-chip>
-    <md-chip selected="true" color="warn" [hidden]="!field.hasError('areEqual')">
+    </small>
+    <small [hidden]="!field.hasError('areEqual')">
         Not the same password.
-    </md-chip>
-    <md-chip selected="true" color="warn" [hidden]="!field.hasError('email')">
+    </small>
+    <small [hidden]="!field.hasError('email')">
         Not an email.
-    </md-chip>
-</md-chip-list>
+    </small>
+    <small [hidden]="!field.hasError('notEmpty')">
+        Ne peut être vide.
+    </small>
+    
+
+</div>

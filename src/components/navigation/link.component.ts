@@ -20,6 +20,6 @@ export class NavigationLink {
 	constructor() {}
 
 	go() {
-		this.nav.push(this.pages[this.page], {}, { animate: false });
+		this.nav.push(this.pages[this.page], null, { animate: false });
 	}
 }

@@ -13,8 +13,10 @@ export class UsersPage {
 	public ready: Boolean = false;
 	private subscription;
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
+	private subscription;
 
 	constructor(private api: Api, private dialog: MdDialog) {
+
 
 		this.subscription = api.get('/users')
 			.map(r => r.json())
@@ -23,13 +25,17 @@ export class UsersPage {
 				this.temp = [...this.users];
 				this.ready = true;
 
-				this.edit(this.users[0]);
+				// this.edit(this.users[0]);
 			}, err => {
 				logger.info(err);
 			});
 
 	}
 	ionViewWillLeave() {
+		this.subscription.unsubscribe();
+	}
+
+ 	ionViewWillLeave() {
 		this.subscription.unsubscribe();
 	}
 

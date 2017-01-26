@@ -27,9 +27,18 @@
             </md-input-container>
             <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
 
-            TODO ROLE
-            <br>
-            TODO STATION
+            <hr>
+
+            
+
+
+            <roles-chooser name="roles" [formControl]="roles" [value]="[]"></roles-chooser>
+            <form-error [field]="roles" [formSubmitted]="submitted"></form-error>
+
+
+
+
+
             <button md-raised-button color="primary" type="submit" class="hidden">Ok</button>
 
         </form>

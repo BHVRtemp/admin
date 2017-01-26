@@ -15,6 +15,6 @@ export class LoginPage {
 	}
 
 	goForgotPassword() {
-		this.navCtrl.push(SendResetPasswordPage);
+		this.navCtrl.push(SendResetPasswordPage, null, { animate: false });
 	}
 }
