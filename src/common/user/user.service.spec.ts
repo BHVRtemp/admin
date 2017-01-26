@@ -1,18 +1,9 @@
 import { NgZone } from '@angular/core';
 import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
-import {
-	BaseRequestOptions,
-	HttpModule,
-	Http,
-	Response,
-	ResponseOptions,
-} from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 import { Storage } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 
 import { UserService } from './user.service';
-import { Api } from '../api/api';
 
 describe('User Service', () => {
 
@@ -36,24 +27,9 @@ describe('User Service', () => {
 		};
 
 		TestBed.configureTestingModule({
-			imports: [HttpModule],
+			imports: [],
 			providers: [
 				UserService,
-				{
-					provide: Api,
-					useFactory: (mockBackend, options) => {
-						return new Api(
-							new Http(mockBackend, options),
-							new UserService(
-								new Storage(),
-								new NgZone({ enableLongStackTrace: true }),
-							),
-						);
-					},
-					deps: [MockBackend, BaseRequestOptions],
-				},
-				MockBackend,
-				BaseRequestOptions,
 				{
 					provide: Storage,
 					useValue: storageStub,
