@@ -17,8 +17,8 @@ describe('stations-dialog Component', () => {
 	let apiStub;
 	let dialogRefStub;
 	let stationUpdate;
-	const apiResponse = { status: 1, station: { a: "b"} };
-	const apiResponsePut = { status: 1, station: { b: "b"} };
+	const apiResponse = { status: 1, station: { a: 'b' } };
+	const apiResponsePut = { status: 1, station: { b: 'b' } };
 	const validStation = {
 		name: 'Jawhara',
 		language: 'fr_CA',
@@ -152,25 +152,25 @@ describe('stations-dialog Component', () => {
 			comp.submit();
 			expect(comp.submitted).toBe(true);
 		});
-			it('should be valid if station is defined', () => {
-				updateForm(validStation);
-				comp.station = validStation;
-				expect(comp.station).not.toBe(undefined);
-			});
-			it('should return the sub and call api put if form is valid', () => {
+		it('should be valid if station is defined', () => {
 			updateForm(validStation);
-			validStation.id=4;
 			comp.station = validStation;
-			const result = comp.submit();
-			expect(result).toBeDefined();
-
-			result.subscribe(() => {
-				expect(apiStub.put).toHaveBeenCalledWith('/station', validStation);
-				expect(apiStub.post).not.toHaveBeenCalled();
-				expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponsePut.station);
-			});
-
+			expect(comp.station).not.toBe(undefined);
 		});
+		it('should return the sub and call api put if form is valid', () => {
+		updateForm(validStation);
+		validStation.id = 4;
+		comp.station = validStation;
+		const result = comp.submit();
+		expect(result).toBeDefined();
+
+		result.subscribe(() => {
+			expect(apiStub.put).toHaveBeenCalledWith('/station', validStation);
+			expect(apiStub.post).not.toHaveBeenCalled();
+			expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponsePut.station);
+		});
+
+	});
 	
 	});
 });

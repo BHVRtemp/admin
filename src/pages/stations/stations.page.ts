@@ -30,8 +30,11 @@ export class StationsPage {
 	addStation() { // Add Station
 		let dialogRef = this.dialog.open(StationsDialogComponent, this.dialogConfig);
 		dialogRef.afterClosed().subscribe(result => {
-		this.stations.push(result);
-		this.temp.push(result);
+			if (typeof result !== 'undefined') { // A Station is Added and the User didn't Canceled the Operation
+				this.stations.push(result);
+				this.temp.push(result);
+			}
+		
 		});
 	}
 	editStation(station: Station) {// Edit Selected Station
