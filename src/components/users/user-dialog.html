@@ -1,7 +1,7 @@
 
 
     <h2 md-dialog-title *ngIf="user">Edit {{user.firstName}} {{user.lastName}}</h2>
-    <h2 md-dialog-title *ngIf="!user">Create an user</h2>
+    <h2 md-dialog-title *ngIf="!user">Invite an user</h2>
 
     <md-dialog-content style="font-size: 16px;">
 
@@ -12,20 +12,23 @@
             </md-input-container>
             <form-error [field]="email" [formSubmitted]="submitted"></form-error>
 
-            <md-input-container style="width: 100%">
-                <input md-input placeholder="{{ 'USERNAME' | translate }}" type="text" name="username" id="username" [formControl]="username">
-            </md-input-container>
-            <form-error [field]="username" [formSubmitted]="submitted"></form-error>
 
-            <md-input-container style="width: 100%">
-                <input md-input placeholder="{{ 'FIRSTNAME' | translate }}" type="text" name="firstName" id="firstName" [formControl]="firstName">
-            </md-input-container>
-            <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+            <div *ngIf="user">
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'USERNAME' | translate }}" type="text" name="username" id="username" [formControl]="username">
+                </md-input-container>
+                <form-error [field]="username" [formSubmitted]="submitted"></form-error>
 
-            <md-input-container style="width: 100%">
-                <input md-input placeholder="{{ 'LASTNAME' | translate }}" type="text" name="lastName" id="lastName" [formControl]="lastName">
-            </md-input-container>
-            <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'FIRSTNAME' | translate }}" type="text" name="firstName" id="firstName" [formControl]="firstName">
+                </md-input-container>
+                <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'LASTNAME' | translate }}" type="text" name="lastName" id="lastName" [formControl]="lastName">
+                </md-input-container>
+                <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+            </div>
 
             <hr>
 

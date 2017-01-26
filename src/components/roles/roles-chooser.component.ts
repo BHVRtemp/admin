@@ -40,7 +40,7 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 				e => { logger.warn(e); },
 			);
 
-		api.get('/station')
+		api.get('/stations')
 			.map(r => r.json())
 			.subscribe(
 				res => { this.stationsList = res.data; },
@@ -48,6 +48,22 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 			);
 		
 	}
+	/**
+	 * Implements ControlValueAccessor
+	 */
+	public writeValue(value) {
+		if (value) {
+			this.value = value;
+		}
+	}
+	public ngOnChanges(inputs) {}
+	private propagateChange: any = () => {};
+	public registerOnChange(fn) {
+		this.propagateChange = fn;
+	}
+	public registerOnTouched() {}
+
+
 
 	private remove(roleId) {
 		this.value = [...this.value.filter(r => r.roleId !== roleId)];
@@ -101,19 +117,6 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 		this._value = val;
 		this.propagateChange(val);
 	}
-
-	private propagateChange: any = () => {};
-	private ngOnChanges(inputs) {}
-	private writeValue(value) {
-		if (value) {
-			this.value = value;
-		}
-	}
-	private registerOnChange(fn) {
-		this.propagateChange = fn;
-	}
-	private registerOnTouched() {}
-
 
 
 	private getRoleLabel(roleId) {
