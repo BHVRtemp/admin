@@ -2,6 +2,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { GlobalValidator, Api, Station } from '../../common';
+import { TranslateModule, TranslateService } from 'ng2-translate';
 
 @Component({
 	selector: 'stations-dialog',
@@ -28,7 +29,12 @@ export class StationsDialogComponent {
 		theme: this.theme,
 	});
 
-	// Themes and Styles to be added to the two Select Input Fields dynamically
+	// Languages, Themes and Styles to be added to the two Select Input Fields dynamically
+	languages = [
+		{ value: 'fr', viewValue: 'STATIONS_DIALOG_LANGUAGE_FR' },
+		{ value: 'en', viewValue: 'STATIONS_DIALOG_LANGUAGE_EN' },
+		
+	];
 	themes = [
 		{ value: 'sidebar_menu', viewValue: 'Sidebar Menu' },
 		{ value: 'no_sidebar_menu', viewValue: 'No Sidebar Menu' },
@@ -47,6 +53,7 @@ export class StationsDialogComponent {
 	];
 	constructor(public dialogRef: MdDialogRef<StationsDialogComponent>,
 		private formBuilder: FormBuilder,
+		private translation: TranslateService,
 		public api: Api) { }
 
 	ngOnInit() {

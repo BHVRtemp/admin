@@ -47,7 +47,8 @@
     "STATIONS_DIALOG_ACTION_OK":"Add",
     "STATIONS_DIALOG_ACTION_VALIDATE":"Validate",
     "STATIONS_DIALOG_ACTION_CANCEL":"Cancel",
-    
+    "STATIONS_DIALOG_LANGUAGE_FR":"French Canada",
+    "STATIONS_DIALOG_LANGUAGE_EN":"English Canada",
     "ADMIN": "Administrateur",
     "SU": "Super utilisateur",
     "ANIMATOR": "Animateur"

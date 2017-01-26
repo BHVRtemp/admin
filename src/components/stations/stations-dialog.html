@@ -14,9 +14,11 @@
             </tr>
             <tr>
                 <td>
-                    <md-input-container name='language' id="language" class="full-width">
-                        <input md-input placeholder="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}" name='language' id="language" [formControl]="language">
-                    </md-input-container>
+                    <md-select name='language' id="language" placeholder="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}"  class="md-dialog-select full-width" [formControl]="language">
+                        <md-option *ngFor="let language of languages" [value]="language.value">
+                            {{language.viewValue | translate }}
+                        </md-option>
+                        </md-select>
                     <form-error [field]="language" [formSubmitted]="submitted"></form-error>
                 </td>
             </tr>

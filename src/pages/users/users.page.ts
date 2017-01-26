@@ -38,8 +38,10 @@ export class UsersPage {
 		const dialogRef: MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
 
 		dialogRef.afterClosed().subscribe(result => {
-			this.users.push(result);
-			this.temp.push(result);
+			if (typeof result !== 'undefined') { // A User is Added and the User didn't Canceled the Operation
+				this.users.push(result);
+				this.temp.push(result);
+			}
 		});
 	}
  
