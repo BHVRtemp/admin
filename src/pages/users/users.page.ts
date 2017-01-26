@@ -11,12 +11,13 @@ export class UsersPage {
 	public users: User[];
 	public temp: User[];
 	public ready: Boolean = false;
-	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 	private subscription;
+	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 
 	constructor(private api: Api, private dialog: MdDialog) {
 
-		this.subscription = this.api.get('/users')
+
+		this.subscription = api.get('/users')
 			.map(r => r.json())
 			.subscribe(resp => {
 				this.users = resp.data;
@@ -29,8 +30,7 @@ export class UsersPage {
 			});
 
 	}
-
- 	ionViewWillLeave() {
+	ionViewWillLeave() {
 		this.subscription.unsubscribe();
 	}
 
@@ -38,7 +38,10 @@ export class UsersPage {
 		const dialogRef: MdDialogRef<any> = this.dialog.open(UserDialogComponent, this.dialogConfig);
 
 		dialogRef.afterClosed().subscribe(result => {
-			this.users.push(result);
+			if (typeof result !== 'undefined') { // A User is Added and the User didn't Canceled the Operation
+				this.users.push(result);
+				this.temp.push(result);
+			}
 		});
 	}
  

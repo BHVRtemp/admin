@@ -1,4 +1,5 @@
-<h1 class="text-center" *ngIf="!ready">Loading...</h1>
+<md-toolbar color="accent">{{ 'PAGE_USERS' | translate }}</md-toolbar>
+<h1 class="text-center" *ngIf="!ready">{{ 'PAGE_LOADING' | translate }} </h1>
 
 <div *ngIf="ready" padding>
 
@@ -7,7 +8,7 @@
     </button>
 
     <md-input-container>
-        <input md-input placeholder="Type to filter..." (keyup)="updateFilter($event)">
+        <input md-input placeholder="{{ 'STATIONS_PAGE_FILTER_TEXT' | translate }} " (keyup)="updateFilter($event)">
     </md-input-container>
 
 
