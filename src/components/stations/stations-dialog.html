@@ -2,7 +2,7 @@
 <h2 md-dialog-title *ngIf="station"> {{ 'STATIONS_DIALOG_EDIT' | translate }} {{station.name}}</h2>
     
 <md-dialog-content class="dialog-form">
-    <form ((ngSubmit)="submit()" class="full-width">
+    <form ((ngSubmit)="submit()" class="full-width" [formGroup]="form" >
         <table cellspacing="0" class="full-width">
             <tr>
                 <td>
