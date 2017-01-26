@@ -1,0 +1,48 @@
+<div *ngIf="rolesList && stationsList">
+    <h3 class="text-center">Gérer les rôles</h3>
+
+    <md-grid-list cols="3">
+        <md-grid-tile style="border-right: 1px dashed #ddd;">
+            <div style="padding: 0 10px;width: 100%">
+                <md-button-toggle-group vertical style="width: 100%" #roleValue="mdButtonToggleGroup">
+                    <md-button-toggle [value]="role" *ngFor="let role of rolesList" color="primary">
+                        {{role.name}}
+                    </md-button-toggle>
+                </md-button-toggle-group>    
+            </div>
+        </md-grid-tile>
+        <md-grid-tile style="border-right: 1px dashed #ddd;padding: 0 10px;">
+            <div style="padding: 0 10px;width: 100%">
+                <md-button-toggle-group vertical multiple style="width: 100%">
+                    <md-button-toggle (change)="changeStation(station, $event)" #stationsView *ngFor="let station of stationsList">
+                        {{station.name}}
+                    </md-button-toggle>
+                </md-button-toggle-group>
+            </div>
+        </md-grid-tile>
+        <md-grid-tile>
+            <div style="padding: 0 10px;width: 100%">
+                <button md-raised-button (click)="addStation($event)" [disabled]="!roleValue.value || stationValues.length === 0" style="width: 100%;">Add</button>
+            </div>
+        </md-grid-tile>
+    </md-grid-list>
+
+    <br>
+
+    <md-list *ngIf="value.length !== 0">
+        <h3 md-subheader>Rôles</h3>
+        <md-list-item *ngFor="let role of value">
+            <md-icon md-list-avatar>accessibility</md-icon>
+            <h4 md-line>{{getRoleLabel(role.roleId)}}</h4>
+            <p md-line>
+                <span *ngFor="let stationId of role.stationIds; let isLast = last">
+                    {{getStationLabel(stationId)}}
+                    <span *ngIf="!isLast"> - </span> 
+                </span>
+            </p>
+            <button md-icon-button (click)="remove(role.roleId)"><md-icon>clear</md-icon></button>
+        </md-list-item>
+    </md-list>
+
+
+</div>

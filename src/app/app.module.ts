@@ -26,6 +26,7 @@ import { SendResetPasswordPage } from '../pages/reset-password/send-reset-passwo
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
 
 import { TranslateComponent } from '../components/translate/translate.component';
+import { RolesChooserComponent } from '../components/roles/roles-chooser.component';
 
 import { Environnement } from '../env/main';
 
@@ -48,6 +49,7 @@ export function createTranslateLoader(http: Http) {
 		StationsPage,
 		NavigationLink,
 		UserDialogComponent,
+		RolesChooserComponent,
 	],
 	entryComponents: [
 		MyApp,

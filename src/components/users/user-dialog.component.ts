@@ -15,6 +15,8 @@ export class UserDialogComponent {
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
 	firstName: FormControl = new FormControl('', [Validators.required]);
 	lastName: FormControl = new FormControl('', [Validators.required]);
+	roles: FormControl = new FormControl([]);
+
 
 	submitted: Boolean = false;
 	error: string;
@@ -24,6 +26,7 @@ export class UserDialogComponent {
 		email: this.email,
 		firstName: this.firstName,
 		lastName: this.firstName,
+		roles: this.roles,
 	});
 
 	constructor(
@@ -45,11 +48,16 @@ export class UserDialogComponent {
 		this.error = null;
 		if (!this.form.valid) return;
 
+		console.log(this.form.value);
+		return;
+		/*
+
 		if (this.user) {
 			return this.put();
 		} else {
 			return this.post();
 		}
+		*/
 
 	}
 
