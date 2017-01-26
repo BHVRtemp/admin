@@ -46,5 +46,9 @@
     "STATIONS_DIALOG_THEME":"Theme",
     "STATIONS_DIALOG_ACTION_OK":"Add",
     "STATIONS_DIALOG_ACTION_VALIDATE":"Validate",
-    "STATIONS_DIALOG_ACTION_CANCEL":"Cancel"
+    "STATIONS_DIALOG_ACTION_CANCEL":"Cancel",
+    
+    "ADMIN": "Administrateur",
+    "SU": "Super utilisateur",
+    "ANIMATOR": "Animateur"
 }

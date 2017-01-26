@@ -25,16 +25,23 @@ export class EditProfileComponent {
 	constructor(
 		private formBuilder: FormBuilder,
 		public api: Api,
-		public userService: UserService) {
+		public userService: UserService) {}
 
-			if (userService.user) {
-				this.firstName.setValue(userService.user.firstName);
-				this.lastName.setValue(userService.user.lastName);
+	ngOnInit() {
+		// hack bugfix
+		this.firstName.setValue(' ');
+		this.lastName.setValue(' ');
+
+		this.userService.waitUntilReady(() => {
+			if (this.userService.user) {
+				this.firstName.setValue(this.userService.user.firstName);
+				this.lastName.setValue(this.userService.user.lastName);
 			}
-		}
+		});
+	}
 
 	editProfile() {
-		const sub = this.api.put('/user', this.form.value);
+		const sub = this.api.put('/profile', this.form.value);
 		
 		sub.map(res => res.json())
 			.subscribe(res => {

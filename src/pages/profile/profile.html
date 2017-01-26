@@ -1,34 +1,18 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      My profile
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<md-toolbar color="accent">
+  Mon profil
+</md-toolbar>
+<div class="grey-background" style="padding: 20px 0;">
 
-<ion-content>
-  <ion-list *ngIf="!userService.token">
-    <ion-list-header>Not logged in.</ion-list-header>
-    <div padding>
-      <button ion-button block outline color="dark" (click)="goEntry()">Login</button>
-    </div>
-  </ion-list>
-  
-  <ion-list *ngIf="userService.token">
-    <ion-list-header>{{userService.user?.firstName}} {{userService.user?.lastName}}</ion-list-header>
-    <ion-item>
-      <ion-icon name="mail" item-left></ion-icon>
-      {{userService.user?.email}}
-    </ion-item>
-    <div padding>
-      <button ion-button block outline color="dark" (click)="goEditProfile()">Change name</button>
-      <button ion-button block outline color="dark" (click)="goChangePassword()">Change password</button>
-      <logout-component (onSuccess)="goEntry()"></logout-component>
-    </div>
+  <md-card class="centered-card" style="margin-bottom: 40px;">
+    <md-card-content>
+      <edit-profile></edit-profile>
+    </md-card-content>
+  </md-card>
 
-    
-  </ion-list>
+  <md-card class="centered-card">
+    <md-card-content>
+      <change-password></change-password>
+    </md-card-content>
+  </md-card>
 
-
-  
-</ion-content>
+</div>

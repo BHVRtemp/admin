@@ -44,9 +44,7 @@ module.exports = {
 		// 'node_modules/ionic-angular/themes',
 		// 'node_modules/ionicons/dist/scss',
 		// 'node_modules/ionic-angular/fonts',
-		'node_modules/bootstrap/scss',
-		'node_modules/@angular/material/core/theming',
-		'node_modules/@swimlane/ngx-datatable/release'
+		'node_modules/@angular/material/core/theming'
 	],
 
 	/**

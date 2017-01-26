@@ -11,6 +11,7 @@ import { Platform } from 'ionic-angular';
 
 import { Api } from './api';
 import { UserService } from '../user/user.service';
+import { Environnement } from '../../env/main';
 
 describe('Api Service', () => {
 
@@ -33,6 +34,10 @@ describe('Api Service', () => {
 					provide: UserService,
 					useValue: { token: 'a' },
 				},
+				{
+					provide: Environnement,
+					useValue: { url: 'urltest' },
+				},
 			],
 		});
 
@@ -42,8 +47,8 @@ describe('Api Service', () => {
 		expect(service).toBeDefined();
 	}));
 
-	it('url should be defined', inject([Api], (service) => {
-		expect(service.url).toBeDefined();
+	it('url should be defined to url provided by environnement', inject([Api], (service) => {
+		expect(service.url).toBe('urltest');
 	}));
 
 	it('should contain a get method', inject([Api], (service) => {
