@@ -57,11 +57,11 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 		}
 	}
 	public ngOnChanges(inputs) {}
-	private propagateChange: any = () => {};
 	public registerOnChange(fn) {
 		this.propagateChange = fn;
 	}
 	public registerOnTouched() {}
+	private propagateChange: any = () => {};
 
 
 

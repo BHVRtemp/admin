@@ -12,7 +12,7 @@ import { GlobalValidator } from '../../form/global-validator';
 export class LoginComponent {
 	@Output() onSuccess = new EventEmitter();
 	@Input('maximum-level') maximumLevel: number;
-	@Input('type') type: "email"|"username" = "email";
+	@Input('type') type: 'email'|'username' = 'email';
 
 	username: FormControl = new FormControl('', [Validators.required]);
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
