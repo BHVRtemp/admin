@@ -12,22 +12,35 @@ import { GlobalValidator } from '../../form/global-validator';
 export class LoginComponent {
 	@Output() onSuccess = new EventEmitter();
 	@Input('maximum-level') maximumLevel: number;
+	@Input('type') type: 'email'|'username' = 'email';
 
+	username: FormControl = new FormControl('', [Validators.required]);
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
 	password: FormControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
 
 	submitted: Boolean = false;
 	error: string;
 
-	form: FormGroup = this.formBuilder.group({
-		email: this.email,
-		password: this.password,
-	});
+	form: FormGroup;
 
 	constructor(
 		private formBuilder: FormBuilder,
 		public api: Api,
 		public userService: UserService) {}
+
+	ngOnInit() {
+		if(this.type == "username") {
+			this.form = this.formBuilder.group({
+				username: this.username,
+				password: this.password,
+			});
+		} else {
+			this.form = this.formBuilder.group({
+				email: this.email,
+				password: this.password,
+			});
+		}
+	}
 
 	// Attempt to login in through our User service
 	login() {

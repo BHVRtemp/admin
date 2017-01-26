@@ -67,7 +67,7 @@ export class StationsDialogComponent {
 	}
 
 	post() {
-		const sub = this.api.post('/station', this.form.value);
+		const sub = this.api.post('/stations', this.form.value);
 
 		sub.map(res => res.json())
 			.subscribe(res => {
@@ -83,7 +83,7 @@ export class StationsDialogComponent {
 
 	put() {
 		this.form.value.id = this.station.id;
-		const sub = this.api.put('/station', this.form.value);
+		const sub = this.api.put('/stations', this.form.value);
 
 		sub.map(res => res.json())
 			.subscribe(res => {

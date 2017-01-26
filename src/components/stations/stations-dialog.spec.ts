@@ -135,7 +135,7 @@ describe('stations-dialog Component', () => {
 			expect(result).toBeDefined();
 
 			result.subscribe(() => {
-				expect(apiStub.post).toHaveBeenCalledWith('/station', validStation);
+				expect(apiStub.post).toHaveBeenCalledWith('/stations', validStation);
 				expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponse.station);
 			});
 
@@ -165,7 +165,7 @@ describe('stations-dialog Component', () => {
 		expect(result).toBeDefined();
 
 		result.subscribe(() => {
-			expect(apiStub.put).toHaveBeenCalledWith('/station', validStation);
+			expect(apiStub.put).toHaveBeenCalledWith('/stations', validStation);
 			expect(apiStub.post).not.toHaveBeenCalled();
 			expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponsePut.station);
 		});

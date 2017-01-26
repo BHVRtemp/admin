@@ -1,2 +1,11 @@
-<button ion-button (click)="changeLang('fr')">Français</button>
-<button ion-button (click)="changeLang('en')">English</button>
+<button [md-menu-trigger-for]="language" md-icon-button>
+    <md-icon>language</md-icon>
+  </button>
+  <md-menu #language="mdMenu" x-position="before">
+    <button md-menu-item (click)="changeLang('en')">
+      {{"ENGLISH" | translate}}
+    </button>
+    <button md-menu-item (click)="changeLang('fr')">
+      {{"FRENCH" | translate}}
+    </button>
+  </md-menu>
