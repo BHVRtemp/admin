@@ -12,5 +12,9 @@
     <small [hidden]="!field.hasError('email')">
         Not an email.
     </small>
+    <small [hidden]="!field.hasError('notEmpty')">
+        Ne peut être vide.
+    </small>
+    
 
 </div>
