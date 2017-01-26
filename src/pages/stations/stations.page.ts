@@ -13,7 +13,7 @@ export class StationsPage {
 	private subscription;
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 	constructor(private api: Api, public dialog: MdDialog) { 
-		this.subscription = api.get('/station')
+		this.subscription = api.get('/stations')
 			.map(r => r.json())
 			.subscribe(resp => {
 				this.stations = resp.data;
@@ -51,7 +51,7 @@ export class StationsPage {
 		});	
 	}
 	private setActive(station: Station, isActive: Boolean ) {
-		this.api.put('/station', { id: station.id, isActive })
+		this.api.put('/stations', { id: station.id, isActive })
 			.subscribe(() => {
 				station.isActive = isActive;
 			});
