@@ -47,8 +47,10 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
-						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage,{message:'INVALID_TOKEN'});
+						if(e.status == 403 && e._body.indexOf('INVALID_TOKEN') > 1) {
+							this.userService.logout();
+							this.app.getRootNav().setRoot(LoginPage, {message:'INVALID_TOKEN'});
+						}
 						observer.error(e);
 					});
 			});
@@ -69,8 +71,10 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
-						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage, {message:'INVALID_TOKEN'});
+						if(e.status == 403 && e._body.indexOf('INVALID_TOKEN') > 1) {
+							this.userService.logout();
+							this.app.getRootNav().setRoot(LoginPage, {message:'INVALID_TOKEN'});
+						}
 						observer.error(e);
 					});
 			});
