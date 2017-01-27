@@ -8,7 +8,6 @@ import { GlobalValidator, UserService, Api } from '../../common';
 	templateUrl: 'signup.html',
 })
 export class SignupPage {
-	constructor(private userService: UserService, private api: Api, private formBuilder: FormBuilder, private navCtrl: NavController) {}
 	
 	username: FormControl = new FormControl('', [Validators.required, Validators.minLength(4)]);
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
@@ -31,7 +30,20 @@ export class SignupPage {
 		defaultLanguage: this.defaultLanguage,
 	}, { validator: GlobalValidator.areEqual('password', 'password2') });
 
-	signup() {
+	
+
+	constructor(private userService: UserService, private api: Api, private formBuilder: FormBuilder, private navCtrl: NavController) {}
+
+	submit() {
+		this.submitted = true;
+		this.error = null;
+		if (!this.form.valid) return;
+
+		return this.signup();
+
+	}
+
+	private signup() {
 		this.form.value.token = this.navCtrl.getActive().getNavParams().data.token;
 		const sub = this.api.post('/users', this.form.value);
 		
@@ -47,14 +59,4 @@ export class SignupPage {
 		return sub;
 	}
 
-
-
-	submit() {
-		this.submitted = true;
-		this.error = null;
-		if (!this.form.valid) return;
-
-		return this.signup();
-
-	}
 }

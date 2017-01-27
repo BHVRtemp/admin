@@ -8,7 +8,7 @@ import { SendResetPasswordPage } from '../reset-password/send-reset-password.pag
 	templateUrl: 'login.html',
 })
 export class LoginPage {
-  invalidToken: boolean = false;
+	invalidToken: boolean = false;
 	errorMessage: string;
 
 	constructor(public navCtrl: NavController, private _app: App, public params: NavParams) {
