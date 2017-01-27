@@ -13,7 +13,7 @@ export class UsersPage {
 	public ready: Boolean = false;
 	private subscription;
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
-	
+
 	constructor(private api: Api, private dialog: MdDialog) {
 
 
