@@ -46,10 +46,10 @@ export class LoginComponent {
 		let res;
 		user.stations.forEach(station => {
 			const level = station.role.level;
-			if(!res || level < res) {
+			if (!res || level < res) {
 				res = level;
 			}
-		})
+		});
 		return res;
 	}
 
