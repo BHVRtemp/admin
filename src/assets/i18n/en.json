@@ -9,6 +9,10 @@
     "USERNAME": "Username",
     "FIRSTNAME": "First name",
     "LASTNAME": "Last name",
+    "ENGLISH": "English",
+    "FRENCH": "French",
+    "SIGNOUT": "Sign Out",
+        
 
     "LOGIN_BUTTON": "Login",
     "BAD_CREDENTIALS": "Bad credentials",
@@ -35,6 +39,26 @@
     "PAGE_USERS":"Users",
     "PAGE_DASHBOARD":"Dashboard",
 
+    "USERS_PAGE_INVITE":"Invite",
+
+    "PROFILE_PAGE_TITLE":"My Profile",
+
+    "ROLE_CHOOSER_TITLE":"Manage Roles",
+    "ROLE_CHOOSER_ROLES":"Roles",
+
+    "DATA_OPERATIONS_EDIT":"Edit",
+    "DATA_OPERATIONS_DESACTIVATE":"Desactivate",
+    "DATA_OPERATIONS_ACTIVATE":"Activate",
+    "DATA_OPERATIONS_ADD":"Add",
+    "DATA_OPERATIONS_CLEAR":"Clear",
+
+    "LOGIN_PAGE_HEAD_TITLE":"Sign in with your app id to continue.",
+    "LOGIN_PAGE_FORGOT_PASS":"Forgot Password ?",
+
+    "USERS_DIALOG_TITLE":"Invite a user ",
+    "USERS_DIALOG__ACTION_CANCEL":"Cancel",
+    "USERS_DIALOG_ACTION_OK":"Ok",
+
     "STATIONS_PAGE_ADD":"Add",
     "STATIONS_PAGE_FILTER_TEXT":"Type to filter...",
     "STATIONS_DIALOG_TITLE":"Add new station",
@@ -49,7 +73,8 @@
     "STATIONS_DIALOG_ACTION_CANCEL":"Cancel",
     "STATIONS_DIALOG_LANGUAGE_FR":"French Canada",
     "STATIONS_DIALOG_LANGUAGE_EN":"English Canada",
-    "ADMIN": "Administrateur",
-    "SU": "Super utilisateur",
-    "ANIMATOR": "Animateur"
+    "ADMIN": "Administrator",
+    "SU": "Super user",
+    "USER": "User",
+    "ANIMATOR": "Animator"
 }

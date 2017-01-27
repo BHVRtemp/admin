@@ -8,14 +8,14 @@ import { SendResetPasswordPage } from '../reset-password/send-reset-password.pag
 	templateUrl: 'login.html',
 })
 export class LoginPage {
-	invalidToken:boolean=false;
-	errorMessage:String;
-	constructor(public navCtrl: NavController, private _app: App, public params:NavParams) {
-		if(typeof params !== "undefined" ){
-			this.errorMessage=params.get('message');
-			this.invalidToken=true;
+	invalidToken: boolean = false;
+	errorMessage: String;
+	constructor(public navCtrl: NavController, private _app: App, public params: NavParams) {
+		if (typeof params !== 'undefined') {
+			this.errorMessage = params.get('message');
+			this.invalidToken = true;
 		}
-		
+
 	}
 
 	goHome() {

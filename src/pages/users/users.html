@@ -4,7 +4,7 @@
 <div *ngIf="ready" padding>
 
     <button md-raised-button class="pull-right" color="primary" (click)="add()">
-        Invite <md-icon>add</md-icon>
+        {{ 'USERS_PAGE_INVITE' | translate }}  <md-icon>add</md-icon>
     </button>
 
     <md-input-container>
@@ -20,10 +20,10 @@
                 <md-icon *ngIf="!user.isActive">clear</md-icon>
             </template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Username"></ngx-datatable-column>
-        <ngx-datatable-column name="First Name"></ngx-datatable-column>
-        <ngx-datatable-column name="Last Name"></ngx-datatable-column>
-        <ngx-datatable-column name="Email"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'USERNAME' | translate }}" prop="username"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'FIRSTNAME' | translate }}" prop="firstName"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'LASTNAME' | translate }}" prop="lastName"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email"></ngx-datatable-column>
 
         <ngx-datatable-column maxWidth="80">
             <template let-user="row" ngx-datatable-cell-template>
@@ -34,15 +34,15 @@
                     <md-menu #menu="mdMenu">
                         <button md-menu-item (click)="edit(user)">
                             <md-icon>mode_edit</md-icon>
-                            <span>Edit</span>
+                            <span>{{ 'DATA_OPERATIONS_EDIT' | translate }}</span>
                         </button>
                         <button md-menu-item (click)="setActive(user, false)" *ngIf="user.isActive">
                             <md-icon>visibility_off</md-icon>
-                            <span>Desactivate</span>
+                            <span>{{ 'DATA_OPERATIONS_DESACTIVATE' | translate }}</span>
                         </button>
                         <button md-menu-item (click)="setActive(user, true)" *ngIf="!user.isActive">
                             <md-icon>visibility_on</md-icon>
-                            <span>Activate</span>
+                            <span>{{ 'DATA_OPERATIONS_ACTIVATE' | translate }}</span>
                         </button>
                     </md-menu>
                 </div>
