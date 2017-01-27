@@ -33,7 +33,7 @@ export class UserDialogComponent {
 		let res = [];
 		user.stations.map(station => {
 			const roleId = station.role.id;
-			const index = res.findIndex(res => res.roleId === roleId);
+			const index = res.findIndex(r => r.roleId === roleId);
 			if(index > -1) {
 				res[index].stationsIds.push(station.id);
 			} else {

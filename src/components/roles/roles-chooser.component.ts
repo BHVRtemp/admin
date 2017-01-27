@@ -126,7 +126,7 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 
 		// remove empty stations
 		const index = res.findIndex(role => role.stationIds.length === 0);
-		if(index > -1) {
+		if (index > -1) {
 			res.splice(index, 1);
 		}
 
