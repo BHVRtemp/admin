@@ -15,6 +15,7 @@ export class UserService {
 
 		storage.get('user').then(user => {
 			this.zone.run(() => { this._user = user; });
+			logger.info(user);
 			this.callIsReady();
 		});
 		storage.get('jsonwebtoken').then(token => {
