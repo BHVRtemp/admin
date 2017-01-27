@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { TranslateService } from 'ng2-translate';
 
 import { UserService } from '../user.service';
 import { Api } from '../../api/api';
@@ -12,6 +13,7 @@ export class EditProfileComponent {
 
 	firstName: FormControl = new FormControl('', [Validators.required]);
 	lastName: FormControl = new FormControl('', [Validators.required]);
+	defaultLanguage: FormControl = new FormControl('', [Validators.required]);
 
 	submitted: Boolean = false;
 	success: Boolean;
@@ -20,12 +22,14 @@ export class EditProfileComponent {
 	form: FormGroup = this.formBuilder.group({
 		firstName: this.firstName,
 		lastName: this.lastName,
+		defaultLanguage: this.defaultLanguage,
 	});
 
 	constructor(
 		private formBuilder: FormBuilder,
 		public api: Api,
-		public userService: UserService) {}
+		public userService: UserService,
+		private translateService: TranslateService) {}
 
 	ngOnInit() {
 		// hack bugfix
@@ -36,12 +40,15 @@ export class EditProfileComponent {
 			if (this.userService.user) {
 				this.firstName.setValue(this.userService.user.firstName);
 				this.lastName.setValue(this.userService.user.lastName);
+				this.defaultLanguage.setValue(this.userService.user.defaultLanguage);
 			}
 		});
 	}
 
 	editProfile() {
 		const sub = this.api.put('/profile', this.form.value);
+
+		this.translateService.use(this.form.value.defaultLanguage);
 		
 		sub.map(res => res.json())
 			.subscribe(res => {

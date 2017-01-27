@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, App } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
 import { Logger } from '../common';
 
 import { EntryPage } from '../pages/entry/entry.page';
+import { LoginPage } from '../pages/login/login.page';
 
 @Component({
 	template: `
@@ -15,7 +16,7 @@ import { EntryPage } from '../pages/entry/entry.page';
 export class MyApp {
 	rootPage = EntryPage;
 
-	constructor(platform: Platform, translate: TranslateService, logger: Logger) {
+	constructor(platform: Platform, translate: TranslateService, logger: Logger, app: App) {
 		console.log(platform.platforms());
 
 		translate.setDefaultLang('en');
@@ -27,5 +28,9 @@ export class MyApp {
 				Splashscreen.hide();
 			}
 		});
+
+		window.goToLoginPage = () => {
+			app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
+		};
 	}
 }
