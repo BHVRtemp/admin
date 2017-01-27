@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from 'ng2-translate';
 import { ToastController } from 'ionic-angular';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { FormBuilder } from '@angular/forms';
 import * as Rx from 'rxjs/Rx';
 import { Api, Station } from '../../common';
 
@@ -19,13 +20,8 @@ describe('stations-dialog Component', () => {
 	let stationUpdate;
 	const apiResponse = { status: 1, station: { a: 'b' } };
 	const apiResponsePut = { status: 1, station: { b: 'b' } };
-	const validStation = {
-		name: 'Jawhara',
-		language: 'fr_CA',
-		domain: 'jawharafm.com',
-		style: 'blue',
-		theme: 'sidebar_menu',		
-	};
+	let validStation;
+
 	const updateForm = station => {
 		comp.form.controls['name'].setValue(station.name);
 		comp.form.controls['language'].setValue(station.language);
@@ -37,6 +33,14 @@ describe('stations-dialog Component', () => {
 		comp.form.controls[field].setValue(value);
 	};
 	const configure = () => {
+		validStation = {
+			name: 'Jawhara',
+			language: 'fr_CA',
+			domain: 'jawharafm.com',
+			style: 'blue',
+			theme: 'sidebar_menu',
+		};
+
 		TestBed.configureTestingModule({
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			declarations: [StationsDialogComponent],
@@ -44,6 +48,7 @@ describe('stations-dialog Component', () => {
 			providers: [
 				{ provide: Api, useValue: apiStub },
 				{ provide: MdDialogRef, useValue: dialogRefStub },
+				FormBuilder,
 			],
 		});
 		fixture = TestBed.createComponent(StationsDialogComponent);
@@ -103,7 +108,7 @@ describe('stations-dialog Component', () => {
 			updateField('theme', '');
 			expect(comp.form.valid).toBe(false);
 		});
-		
+
 	});
 	describe('submit()', () => {
 		beforeEach(() => {
@@ -115,22 +120,22 @@ describe('stations-dialog Component', () => {
 				json: () => apiResponsePut,
 			}));
 			dialogRefStub = jasmine.createSpyObj('dialogRef', ['close']);
-			
+
 			configure();
 		});
-	
-		it('should return undefined and not call api if form is invalid', () => {
+
+		it('should return undefined and not call api post if form is invalid', () => {
 			updateForm(validStation);
 			updateField('name', '');
-			
+
 			const result = comp.submit();
 			expect(result).not.toBeDefined();
 			expect(apiStub.post).not.toHaveBeenCalled();
 
 		});
-		it('should return the sub and call api if form is valid', () => {
+		it('should return the sub and call api post if form is valid', () => {
 			updateForm(validStation);
-			
+
 			const result = comp.submit();
 			expect(result).toBeDefined();
 
@@ -158,19 +163,21 @@ describe('stations-dialog Component', () => {
 			expect(comp.station).not.toBe(undefined);
 		});
 		it('should return the sub and call api put if form is valid', () => {
-		updateForm(validStation);
-		validStation.id = 4;
-		comp.station = validStation;
-		const result = comp.submit();
-		expect(result).toBeDefined();
+			updateForm(validStation);
+			validStation.id = 5;
 
-		result.subscribe(() => {
-			expect(apiStub.put).toHaveBeenCalledWith('/stations', validStation);
-			expect(apiStub.post).not.toHaveBeenCalled();
-			expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponsePut.station);
+			comp.station = validStation;
+			comp.station.id = 5;
+			const result = comp.submit();
+			expect(result).toBeDefined();
+
+			result.subscribe(() => {
+				expect(apiStub.put).toHaveBeenCalledWith('/stations', validStation);
+				expect(apiStub.post).not.toHaveBeenCalled();
+				expect(dialogRefStub.close).toHaveBeenCalledWith(apiResponsePut.station);
+			});
+
 		});
 
-	});
-	
 	});
 });
