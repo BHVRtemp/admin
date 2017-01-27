@@ -13,13 +13,13 @@ import { Environnement } from '../../env/main';
 export class Api {
 
 	private url: string;
-	
+
 	constructor(public http: Http, public userService: UserService, private environnement: Environnement, private app: App) {
 		this.url = environnement.url;
 	}
 
 	get(endpoint: string, params?: any, options?: RequestOptions) {
-		
+
 		if (!options) {
 			options = new RequestOptions();
 		}
@@ -42,13 +42,13 @@ export class Api {
 			this.userService.waitUntilReady(() => {
 
 				options.headers = this.getAuthorizationHeaders();
-				
+
 				this.http.get(this.url + endpoint, options)
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
 						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage,{message:'INVALID_TOKEN'});
+						this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
 						observer.error(e);
 					});
 			});
@@ -64,13 +64,13 @@ export class Api {
 			this.userService.waitUntilReady(() => {
 
 				options.headers = this.getAuthorizationHeaders();
-				
+
 				this.http[type](this.url + endpoint, body, options)
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
 						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage, {message:'INVALID_TOKEN'});
+						this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
 						observer.error(e);
 					});
 			});
@@ -95,7 +95,7 @@ export class Api {
 
 	private getAuthorizationHeaders(): Headers {
 		const headers = new Headers();
-		
+
 		if (this.userService.token) {
 			headers.append('Authorization', 'Bearer ' + this.userService.token);
 		}
