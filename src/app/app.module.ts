@@ -63,8 +63,8 @@ export function createTranslateLoader(http: Http) {
 		LoginPage,
 		UsersPage,
 		StationsPage,
- 		StationsDialogComponent,
- 		UserDialogComponent,
+		StationsDialogComponent,
+		UserDialogComponent,
   
 	],
 	imports: [

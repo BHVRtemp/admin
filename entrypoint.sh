@@ -19,7 +19,7 @@ fi
 
 if [ $1 = "send-coverage" ]; then
     cp src/env/dev.ts src/env/main.ts
-    cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage  -p . --language typescript
+    cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage --language typescript  -p . 
 fi
 
 if [ $1 = "testwatch" ]; then

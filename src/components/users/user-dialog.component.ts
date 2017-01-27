@@ -21,13 +21,7 @@ export class UserDialogComponent {
 	submitted: Boolean = false;
 	error: string;
 
-	form: FormGroup = this.formBuilder.group({
-		username: this.username,
-		email: this.email,
-		firstName: this.firstName,
-		lastName: this.firstName,
-		roles: this.roles,
-	});
+	form: FormGroup;
 
 	constructor(
 		public dialogRef: MdDialogRef<UserDialogComponent>,
@@ -35,11 +29,27 @@ export class UserDialogComponent {
 		public api: Api) {}
 
 	ngOnInit() {
+		// edit
 		if (this.user) {
 			this.username.setValue(this.user.username);
 			this.email.setValue(this.user.email);
 			this.firstName.setValue(this.user.firstName);
 			this.lastName.setValue(this.user.lastName);
+
+			this.form = this.formBuilder.group({
+				username: this.username,
+				email: this.email,
+				firstName: this.firstName,
+				lastName: this.lastName,
+				roles: this.roles,
+			});
+
+		// create
+		} else {
+			this.form = this.formBuilder.group({
+				email: this.email,
+				roles: this.roles,
+			});
 		}
 	}
 

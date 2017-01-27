@@ -1,8 +1,18 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-    <md-input-container style="width: 100%">
-        <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
-    </md-input-container>
-    <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+
+    <div *ngIf="type=='email'">
+        <md-input-container style="width: 100%">
+            <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
+        </md-input-container>
+        <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+    </div>
+
+    <div *ngIf="type=='username'">
+        <md-input-container style="width: 100%">
+            <input md-input placeholder="{{ 'USERNAME' | translate }}" type="username" name="username" id="username" [formControl]="username">
+        </md-input-container>
+        <form-error [field]="username" [formSubmitted]="submitted"></form-error>
+    </div>
 
     <md-input-container style="width: 100%">
         <input md-input placeholder="{{ 'PASSWORD' | translate }}" type="password" name="password" id="password" [formControl]="password">
