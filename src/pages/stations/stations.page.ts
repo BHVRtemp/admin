@@ -14,7 +14,7 @@ export class StationsPage {
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
 	
 	constructor(private api: Api, public dialog: MdDialog) { 
-		this.subscription = api.get('/stations')
+		this.subscription = api.get('/stations') // Get The List of All Stations
 			.map(r => r.json())
 			.subscribe(resp => {
 				this.stations = resp.data;
@@ -31,7 +31,7 @@ export class StationsPage {
 	addStation() { // Add Station
 		let dialogRef = this.dialog.open(StationsDialogComponent, this.dialogConfig);
 		dialogRef.afterClosed().subscribe(result => {
-			if (typeof result !== 'undefined') { // A Station is Added and the User didn't Canceled the Operation
+			if (typeof result !== 'undefined') { // A Station is Added and the User didn't Cancel the Operation
 				this.stations.push(result);
 				this.temp.push(result);
 			}

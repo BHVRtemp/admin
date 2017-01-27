@@ -32,6 +32,14 @@
             </tr>
             <tr>
                 <td>
+                    <md-input-container name='type' id="type" class="full-width">
+                        <input md-input placeholder="Type" name='domain' id="domain" [formControl]="type">
+                    </md-input-container>
+                    <form-error [field]="type" [formSubmitted]="submitted"></form-error>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <md-select placeholder="{{ 'STATIONS_DIALOG_STYLE' | translate }}"  name="style" id="style" class="md-dialog-select full-width"  [formControl]="style">
                         <md-option *ngFor="let style of styles" [value]="style.value">
                             {{style.viewValue}}
