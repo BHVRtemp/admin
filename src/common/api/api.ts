@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 // import { Platform } from 'ionic-angular';
 import { UserService } from '../user/user.service';
-import { App, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Environnement } from '../../env/main';
 // import 'rxjs/add/operator/map';
 
@@ -13,7 +13,7 @@ export class Api {
 
 	private url: string;
 
-	constructor(public http: Http, public userService: UserService, private environnement: Environnement, private app: App) {
+	constructor(public http: Http, public userService: UserService, private environnement: Environnement) {
 		this.url = environnement.url;
 	}
 
