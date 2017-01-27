@@ -10,7 +10,7 @@ import { Api, Station } from '../../common';
 import { StationsDialogComponent } from '../../components/stations/stations-dialog.component';
 
 describe('Stations Page', () => {
-	
+
 	let comp: StationsPage;
 	let fixture: ComponentFixture<StationsPage>;
 	let de: DebugElement;
@@ -20,13 +20,13 @@ describe('Stations Page', () => {
 
 	const apiResponse = {
 		status: 1, data: [
-			{ id: 1, name: 'NRJ', language: 'en_CA', domain: 'nrj.fr', style: 'red', theme: 'no_side_bar', isActive: true },
-			{ id: 2, name: 'Beat', language: 'en_CA', domain: 'beat.ca', style: 'red', theme: 'no_side_bar', isActive: false },
-			{ id: 3, name: 'Jawhara', language: 'fr_CA', domain: 'jaw.com', style: 'blue', theme: 'no_side_bar', isActive: false },
-			{ id: 4, name: 'Knooz', language: 'fr_CA', domain: 'knooz.com', style: 'blue', theme: 'no_side_bar', isActive: true },
+			{ id: 1, name: 'NRJ', language: 'en_CA', domain: 'nrj.fr', style: 'red', theme: 'no_side_bar', isActive: true, type: 'music' },
+			{ id: 2, name: 'Beat', language: 'en_CA', domain: 'beat.ca', style: 'red', theme: 'no_side_bar', isActive: false, type: 'music' },
+			{ id: 3, name: 'Jawhara', language: 'fr_CA', domain: 'jaw.com', style: 'blue', theme: 'no_side_bar', isActive: false, type: 'music' },
+			{ id: 4, name: 'Knooz', language: 'fr_CA', domain: 'knooz.com', style: 'blue', theme: 'no_side_bar', isActive: true, type: 'music' },
 		],
 	};
-	const apiResponsePut = { status: 1, station: { id: 5, name: 'NewNRJ', language: 'en_CA', domain: 'Nenrj.fr', style: 'red', theme: 'no_side_bar', isActive: true } };
+	const apiResponsePut = { status: 1, station: { id: 5, name: 'NewNRJ', language: 'en_CA', domain: 'Nenrj.fr', style: 'red', theme: 'no_side_bar', isActive: true, type: 'music' } };
 
 	const configure = () => {
 		TestBed.configureTestingModule({
@@ -104,7 +104,7 @@ describe('Stations Page', () => {
 		});
 		it('should edit a station ', () => {
 
-			const station = { id: 1, name: 'NRJ', language: 'fr_CA', domain: 'nrj.fr', style: 'red', theme: 'no_side_bar', isActive: true };
+			const station = { id: 1, name: 'NRJ', language: 'fr_CA', domain: 'nrj.fr', style: 'red', theme: 'no_side_bar', isActive: true, type: 'music' };
 			TestBed.compileComponents().then(() => {
 				comp.editStation(station);
 				expect(comp.stations[0].language).not.toEqual('en_CA');
@@ -114,5 +114,5 @@ describe('Stations Page', () => {
 		});
 
 	});
-	
+
 });

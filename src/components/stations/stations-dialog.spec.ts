@@ -29,6 +29,7 @@ describe('StationsDialog Component', () => {
 		comp.form.controls['domain'].setValue(station.domain);
 		comp.form.controls['style'].setValue(station.style);
 		comp.form.controls['theme'].setValue(station.theme);
+		comp.form.controls['type'].setValue(station.type);
 	};
 	const updateField = (field, value) => {
 		comp.form.controls[field].setValue(value);
@@ -40,6 +41,7 @@ describe('StationsDialog Component', () => {
 			domain: 'jawharafm.com',
 			style: 'blue',
 			theme: 'sidebar_menu',
+			type: 'Music',
 		};
 
 		TestBed.configureTestingModule({
@@ -70,7 +72,7 @@ describe('StationsDialog Component', () => {
 			expect(comp.submitted).toBe(false);
 		});
 		it('should have default fields empty', () => {
-			expect(comp.form.value).toEqual({ name: '', language: '', domain: '', style: '', theme: '' });
+			expect(comp.form.value).toEqual({ name: '', language: '', domain: '', style: '', theme: '', type: '' });
 		});
 		it('form value should update from form changes', () => {
 			updateForm(validStation);
