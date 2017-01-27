@@ -5,7 +5,7 @@
       {{ 'STATIONS_PAGE_ADD' | translate }} <md-icon>add</md-icon>
    </button>
  <md-input-container>
-        <input md-input placeholder=" {{ 'STATIONS_PAGE_FILTER_TEXT' | translate }} " (keyup)="updateFilter($event)">
+        <input md-input placeholder=" {{ 'STATIONS_PAGE_FILTER_TEXT' | translate }} " (keyup)="updateFilter($event)" name="filter" id="filter">
     </md-input-container>
 
     <ngx-datatable class="material" columnMode="force" headerHeight="32" footerHeight="30" rowHeight="auto" limit="20" [rows]="stations">

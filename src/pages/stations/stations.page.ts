@@ -12,8 +12,9 @@ export class StationsPage {
 	public temp: Station[];
 	private subscription;
 	private dialogConfig: MdDialogConfig = { disableClose: true, width: '600px' };
+	
 	constructor(private api: Api, public dialog: MdDialog) { 
-		this.subscription = api.get('/station')
+		this.subscription = api.get('/stations')
 			.map(r => r.json())
 			.subscribe(resp => {
 				this.stations = resp.data;
@@ -37,7 +38,7 @@ export class StationsPage {
 		
 		});
 	}
-	editStation(station: Station) {// Edit Selected Station
+	public editStation(station: Station) {// Edit Selected Station
 		let dialogRef = this.dialog.open( StationsDialogComponent, this.dialogConfig );
 		dialogRef.componentInstance.station = station;
 		dialogRef.afterClosed().subscribe(result => {
@@ -50,13 +51,13 @@ export class StationsPage {
 			}
 		});	
 	}
-	private setActive(station: Station, isActive: Boolean ) {
-		this.api.put('/station', { id: station.id, isActive })
+	public setActive(station: Station, isActive: Boolean ) {
+		this.api.put('/stations', { id: station.id, isActive })
 			.subscribe(() => {
 				station.isActive = isActive;
 			});
 	}
-	private updateFilter(event) { // Filtring List of Stations by mame
+	public updateFilter(event) { // Filtring List of Stations by mame
 		const val = event.target.value.toLowerCase();
 		this.stations = this.temp.filter(function(station) {
 			if (!val) return true; // no value
