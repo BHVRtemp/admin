@@ -17,6 +17,7 @@ export class StationsDialogComponent {
 	domain: FormControl = new FormControl('', [Validators.required]);
 	style: FormControl = new FormControl('', [Validators.required]);
 	theme: FormControl = new FormControl('', [Validators.required]);
+	type: FormControl = new FormControl('', [Validators.required]);
 
 	submitted: Boolean = false;
 	error: string;
@@ -27,6 +28,7 @@ export class StationsDialogComponent {
 		language: this.language,
 		style: this.style,
 		theme: this.theme,
+		type: this.type,
 	});
 
 	// Languages, Themes and Styles to be added to the two Select Input Fields dynamically
@@ -63,10 +65,11 @@ export class StationsDialogComponent {
 			this.domain.setValue(this.station.domain);
 			this.style.setValue(this.station.style);
 			this.theme.setValue(this.station.theme);
+			this.type.setValue(this.station.type);
 		}
 	}
 
-	post() {
+	post() { // Create New Station
 		const sub = this.api.post('/stations', this.form.value);
 
 		sub.map(res => res.json())
@@ -81,7 +84,7 @@ export class StationsDialogComponent {
 
 	}
 
-	put() {
+	put() { // Modify Existing Station
 		this.form.value.id = this.station.id;
 		const sub = this.api.put('/stations', this.form.value);
 
