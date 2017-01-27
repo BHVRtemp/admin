@@ -8,9 +8,10 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 import * as Rx from 'rxjs/Rx';
 import { Api, Station } from '../../common';
+// import { LoginPage } from '../../pages/login/login.page';
 
 describe('StationsDialog Component', () => {
-	/*
+	
 	let comp: StationsDialogComponent;
 	let fixture: ComponentFixture<StationsDialogComponent>;
 	let de: DebugElement;
@@ -46,14 +47,15 @@ describe('StationsDialog Component', () => {
 			declarations: [StationsDialogComponent],
 			imports: [ReactiveFormsModule, TranslateModule.forRoot()],
 			providers: [
-				{ provide: Api, useValue: apiStub },
 				{ provide: MdDialogRef, useValue: dialogRefStub },
 				FormBuilder,
+				{ provide: Api, useValue: apiStub },
 			],
 		});
 		fixture = TestBed.createComponent(StationsDialogComponent);
 		comp = fixture.componentInstance;
 		de = fixture.debugElement;
+		
 	};
 	describe('component and form validity', () => {
 		beforeEach(() => {
@@ -180,5 +182,5 @@ describe('StationsDialog Component', () => {
 		});
 
 	});
-	*/
+	
 });
