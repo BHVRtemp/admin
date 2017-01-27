@@ -93,7 +93,7 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
-						this.logoutIfInvalidToken(e);
+ 						this.logoutIfInvalidToken(e);
 						observer.error(e);
 					});
 			});

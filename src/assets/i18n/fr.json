@@ -2,12 +2,51 @@
     "HELLO": "Salut {{name}} !",
     "LOGIN_BUTTON": "Se connecter",
     "LOGIN_ERROR": "Identifiants incorrects.",
-    "EMAIL": "Email",
+    "EMAIL": "Courriel",
     "PASSWORD": "Mot de passe",
+    "OLD_PASSWORD": "Ancien Mot de passe",
+    "NEW_PASSWORD1": "Nouveau Mot de passe",
+    "PASSWORD_REPEAT": "Repeter",
+    "USERNAME": "Nom d'utilisateur",
+    "ENGLISH": "Anglais",
+    "FRENCH": "Français",
+    "SIGNOUT": "Déconnexion",
+    "FIRSTNAME": "Prénom",
+    "LASTNAME": "Nom",
+
+    "SEND_RESET_PASSWORD_BUTTON": "Demander un nouveau mot de passe",
+    "SEND_RESET_PASSWORD_SUCCESS": "Si votre email existe dans notre base de données, vous recevrez des instructions pour réinitialiser votre mot de passe.",
+    "RESET_PASSWORD_BUTTON": "Réinitialiser mon mot de passe",
+    "RESET_PASSWORD_FAILED": "Le lien que vous avez utilisé n'est pas valide.",
+
+    "CHANGE_PASSWORD_BUTTON": "Changer mon mot de passe",
+    "CHANGE_PASSWORD_SUCCESS": "Votre mot de passe a été modifié avec succès.",
+
+    "EDIT_PROFILE_BUTTON": "Modifier mon profil",
+    "EDIT_PROFILE_SUCCESS": "Votre profil a été modifié avec succès.",
     
     "PAGE_LOADING":"Chargement...",
     "PAGE_USERS":"Utilisateurs",
-    "PAGE_DASHBOARD":"Tableau de board",
+    "PAGE_DASHBOARD":"Tableau de bord",
+
+    "DATA_OPERATIONS_EDIT":"Modifier",
+    "DATA_OPERATIONS_DESACTIVATE":"Désactiver",
+    "DATA_OPERATIONS_ACTIVATE":"Activer",
+
+    "LOGIN_PAGE_HEAD_TITLE":"Veuillez utiliser votre identificateur pour connecter",
+    "LOGIN_PAGE_FORGOT_PASS":"Mot de Passe Oublié ?",
+
+    "ROLE_CHOOSER_TITLE":"Gérer les rôles",
+    "ROLE_CHOOSER_ROLES":"Rôles",
+    
+    "PROFILE_PAGE_TITLE":"Mon Profil",
+
+    "USERS_PAGE_INVITE":"Inviter",
+    "USERS_DIALOG_TITLE":"Inviter un utilisateur ",
+    "USERS_DIALOG__ACTION_CANCEL":"Annuler",
+    "USERS_DIALOG_ACTION_OK":"Valider",
+    "DATA_OPERATIONS_ADD":"Ajouter",
+    "DATA_OPERATIONS_CLEAR":"Vider",
 
     "STATIONS_PAGE_ADD":"Ajouter",
     "STATIONS_PAGE_FILTER_TEXT":"Tapez pour filtrer...",
@@ -22,5 +61,9 @@
     "STATIONS_DIALOG_ACTION_VALIDATE":"Valider",
     "STATIONS_DIALOG_ACTION_CANCEL":"Annuler",
     "STATIONS_DIALOG_LANGUAGE_FR":"Français Canada",
-    "STATIONS_DIALOG_LANGUAGE_EN":"Anglais Canada"
+    "STATIONS_DIALOG_LANGUAGE_EN":"Anglais Canada",
+    "ADMIN": "Administrateur",
+    "SU": "Super utilisateur",
+    "USER": "Utilisateur",
+    "ANIMATOR": "Animateur"
 }

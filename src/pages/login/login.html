@@ -4,14 +4,14 @@
       <md-card>
         <md-card-content>
             <div class="text-center">
-              Sign in with your app id to continue.
+              {{ 'LOGIN_PAGE_HEAD_TITLE' | translate }}
             </div>
             
             <login-component (onSuccess)="goHome()" maximum-level="3" type="username"></login-component>
 
             <hr />
 
-            <a (click)="goForgotPassword()">Forgot password ?</a>
+            <a (click)="goForgotPassword()"> {{ 'LOGIN_PAGE_FORGOT_PASS' | translate }}</a>
           <div class="error-message" *ngIf="invalidToken"> {{errorMessage | translate}} </div>
         </md-card-content>
       </md-card>
