@@ -51,5 +51,6 @@
     "STATIONS_DIALOG_LANGUAGE_EN":"English Canada",
     "ADMIN": "Administrateur",
     "SU": "Super utilisateur",
-    "ANIMATOR": "Animateur"
+    "ANIMATOR": "Animateur",
+    "USER": "Utilisateur"
 }

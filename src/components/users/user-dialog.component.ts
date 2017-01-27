@@ -58,16 +58,11 @@ export class UserDialogComponent {
 		this.error = null;
 		if (!this.form.valid) return;
 
-		console.log(this.form.value);
-		return;
-		/*
-
 		if (this.user) {
 			return this.put();
 		} else {
 			return this.post();
 		}
-		*/
 
 	}
 
