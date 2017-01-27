@@ -28,6 +28,15 @@
                     <input md-input placeholder="{{ 'LASTNAME' | translate }}" type="text" name="lastName" id="lastName" [formControl]="lastName">
                 </md-input-container>
                 <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+
+
+                <hr>
+
+                <md-select placeholder="{{'LANGUAGE' | translate}}" style="width: 100%" name="defaultLanguage" id="defaultLanguage" [formControl]="defaultLanguage">
+                    <md-option value="en">English</md-option>
+                    <md-option value="fr">Français</md-option>
+                </md-select>
+                <form-error [field]="defaultLanguage" [formSubmitted]="submitted"></form-error>
             </div>
 
             <hr>

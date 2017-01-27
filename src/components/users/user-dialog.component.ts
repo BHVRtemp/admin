@@ -15,6 +15,7 @@ export class UserDialogComponent {
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
 	firstName: FormControl = new FormControl('', [Validators.required]);
 	lastName: FormControl = new FormControl('', [Validators.required]);
+	defaultLanguage: FormControl = new FormControl('', [Validators.required]);
 	roles: FormControl = new FormControl([]);
 
 
@@ -35,12 +36,14 @@ export class UserDialogComponent {
 			this.email.setValue(this.user.email);
 			this.firstName.setValue(this.user.firstName);
 			this.lastName.setValue(this.user.lastName);
+			this.defaultLanguage.setValue(this.user.defaultLanguage);
 
 			this.form = this.formBuilder.group({
 				username: this.username,
 				email: this.email,
 				firstName: this.firstName,
 				lastName: this.lastName,
+				defaultLanguage: this.defaultLanguage,
 				roles: this.roles,
 			});
 
@@ -58,16 +61,11 @@ export class UserDialogComponent {
 		this.error = null;
 		if (!this.form.valid) return;
 
-		console.log(this.form.value);
-		return;
-		/*
-
 		if (this.user) {
 			return this.put();
 		} else {
 			return this.post();
 		}
-		*/
 
 	}
 

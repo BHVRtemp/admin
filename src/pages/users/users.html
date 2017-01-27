@@ -25,6 +25,20 @@
         <ngx-datatable-column name="{{ 'LASTNAME' | translate }}" prop="lastName"></ngx-datatable-column>
         <ngx-datatable-column name="{{ 'EMAIL' | translate }}" prop="email"></ngx-datatable-column>
 
+        <ngx-datatable-column name="Roles">
+            <template let-user="row" ngx-datatable-cell-template>
+                <div *ngFor="let station of user.stations">
+                    {{station.name}} - {{station.role.name | translate}}
+                </div>
+            </template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Language">
+            <template let-user="row" ngx-datatable-cell-template>
+                {{ user.defaultLanguage | translate }}
+            </template>
+        </ngx-datatable-column>
+
         <ngx-datatable-column maxWidth="80">
             <template let-user="row" ngx-datatable-cell-template>
                 <div class="text-center">

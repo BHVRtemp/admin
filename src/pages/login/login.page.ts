@@ -9,9 +9,10 @@ import { SendResetPasswordPage } from '../reset-password/send-reset-password.pag
 })
 export class LoginPage {
 	invalidToken: boolean = false;
-	errorMessage: String;
+	errorMessage: string;
+
 	constructor(public navCtrl: NavController, private _app: App, public params: NavParams) {
-		if (typeof params !== 'undefined') {
+		if (params) {
 			this.errorMessage = params.get('message');
 			this.invalidToken = true;
 		}

@@ -12,7 +12,12 @@
     "ENGLISH": "English",
     "FRENCH": "French",
     "SIGNOUT": "Sign Out",
-        
+   "LANGUAGE": "Language",
+    "en": "English",
+    "fr": "French",
+
+    "EXISTING_USERNAME": "The username you provided already exists.",
+    "EXISTING_EMAIL": "The email you provided already exists.",
 
     "LOGIN_BUTTON": "Login",
     "BAD_CREDENTIALS": "Bad credentials",
@@ -73,6 +78,7 @@
     "STATIONS_DIALOG_ACTION_CANCEL":"Cancel",
     "STATIONS_DIALOG_LANGUAGE_FR":"French Canada",
     "STATIONS_DIALOG_LANGUAGE_EN":"English Canada",
+    
     "ADMIN": "Administrator",
     "SU": "Super user",
     "USER": "User",
