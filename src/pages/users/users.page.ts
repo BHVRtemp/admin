@@ -20,12 +20,11 @@ export class UsersPage {
 		this.subscription = api.get('/users')
 			.map(r => r.json())
 			.subscribe(resp => {
-				console.log(resp.data);
 				this.users = resp.data;
 				this.temp = [...this.users];
 				this.ready = true;
 
-				this.edit(this.users[0]);
+				// this.edit(this.users[0]);
 			}, err => {
 				logger.info(err);
 			});
