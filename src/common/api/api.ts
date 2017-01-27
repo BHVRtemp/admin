@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 // import { Platform } from 'ionic-angular';
 import { UserService } from '../user/user.service';
+import { App, NavController } from 'ionic-angular';
+import { LoginPage } from '../../pages/login/login.page';
 import { Environnement } from '../../env/main';
 // import 'rxjs/add/operator/map';
 
@@ -12,7 +14,7 @@ export class Api {
 
 	private url: string;
 	
-	constructor(public http: Http, public userService: UserService, private environnement: Environnement) {
+	constructor(public http: Http, public userService: UserService, private environnement: Environnement, private app: App) {
 		this.url = environnement.url;
 	}
 
@@ -45,6 +47,8 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
+						this.userService.logout();
+						this.app.getRootNav().setRoot(LoginPage,{message:'INVALID_TOKEN'});
 						observer.error(e);
 					});
 			});
@@ -65,6 +69,8 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
+						this.userService.logout();
+						this.app.getRootNav().setRoot(LoginPage, {message:'INVALID_TOKEN'});
 						observer.error(e);
 					});
 			});
