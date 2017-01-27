@@ -12,7 +12,7 @@ import { GlobalValidator } from '../../form/global-validator';
 export class LoginComponent {
 	@Output() onSuccess = new EventEmitter();
 	@Input('maximum-level') maximumLevel: number;
-	@Input('type') type: 'email'|'username' = 'email';
+	@Input('type') type: 'email' | 'username' = 'email';
 
 	username: FormControl = new FormControl('', [Validators.required]);
 	email: FormControl = new FormControl('', [Validators.required, GlobalValidator.isEmail]);
@@ -26,10 +26,10 @@ export class LoginComponent {
 	constructor(
 		private formBuilder: FormBuilder,
 		public api: Api,
-		public userService: UserService) {}
+		public userService: UserService) { }
 
 	ngOnInit() {
-		if(this.type == "username") {
+		if (this.type == 'username') {
 			this.form = this.formBuilder.group({
 				username: this.username,
 				password: this.password,
@@ -45,14 +45,14 @@ export class LoginComponent {
 	// Attempt to login in through our User service
 	login() {
 		const sub = this.api.post('/login', this.form.value);
-		
+
 		sub.map(res => res.json())
 			.subscribe(res => {
-				if (this.maximumLevel && res.user.role.level > this.maximumLevel) {
+				/*if (this.maximumLevel && res.user.role.level > this.maximumLevel) {
 					this.error = 'ROLE_TOO_LOW';
 					return;
-				}
-				
+				}*/
+
 				this.userService.loggedIn(res);
 				this.onSuccess.emit();
 
