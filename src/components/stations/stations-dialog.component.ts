@@ -10,7 +10,7 @@ import { TranslateModule, TranslateService } from 'ng2-translate';
 })
 
 export class StationsDialogComponent {
-	station: Station;
+	station;
 	// Validation
 	name: FormControl = new FormControl('', [Validators.required]);
 	language: FormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
@@ -51,9 +51,9 @@ export class StationsDialogComponent {
 		{ value: 'black', viewValue: 'Black' },
 		{ value: 'white', viewValue: 'White' },
 	];
-	constructor(public dialogRef: MdDialogRef<StationsDialogComponent>,
+	constructor(
+		public dialogRef: MdDialogRef<StationsDialogComponent>,
 		private formBuilder: FormBuilder,
-		private translation: TranslateService,
 		public api: Api) { }
 
 	ngOnInit() {
