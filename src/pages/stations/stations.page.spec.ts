@@ -9,7 +9,8 @@ import * as Rx from 'rxjs/Rx';
 import { Api, Station } from '../../common';
 import { StationsDialogComponent } from '../../components/stations/stations-dialog.component';
 
-describe('stations-page Component', () => {
+describe('Stations Page', () => {
+	
 	let comp: StationsPage;
 	let fixture: ComponentFixture<StationsPage>;
 	let de: DebugElement;
@@ -34,7 +35,7 @@ describe('stations-page Component', () => {
 			imports: [ReactiveFormsModule, TranslateModule.forRoot(), MaterialModule.forRoot()],
 			providers: [
 				{ provide: Api, useValue: apiStub },
-				MdDialog,
+				{ provide: MdDialog, useValue: dialogStub },
 			],
 		});
 		fixture = TestBed.createComponent(StationsPage);
@@ -113,5 +114,5 @@ describe('stations-page Component', () => {
 		});
 
 	});
-
+	
 });

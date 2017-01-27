@@ -36,7 +36,7 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 		api.get('/roles')
 			.map(r => r.json())
 			.subscribe(
-				res => { this.rolesList = res.data.filter(r => r.level !== 4); },
+				res => { this.rolesList = res.data.filter(r => r.level !== 100); },
 				e => { logger.warn(e); },
 			);
 

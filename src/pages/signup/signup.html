@@ -1,0 +1,63 @@
+<div class="session">
+  <div class="session-content">
+    <div class="session-wrapper">
+      <md-card>
+        <md-card-content>
+            <div class="text-center">
+              Complete your sign up.
+            </div>
+            
+            <form (ngSubmit)="submit()">
+
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
+                </md-input-container>
+                <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+
+
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'USERNAME' | translate }}" type="text" name="username" id="username" [formControl]="username">
+                </md-input-container>
+                <form-error [field]="username" [formSubmitted]="submitted"></form-error>
+
+    
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'NEW_PASSWORD1' | translate }}" type="password" name="password" id="password" [formControl]="password">
+                </md-input-container>
+                <form-error [field]="password" [formSubmitted]="submitted"></form-error>
+                
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'PASSWORD_REPEAT' | translate }}" type="password" name="password2" id="password2" [formControl]="password2">
+                </md-input-container>
+                <form-error [field]="password2" [formSubmitted]="submitted"></form-error>
+
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'FIRSTNAME' | translate }}" type="text" name="firstName" id="firstName" [formControl]="firstName">
+                </md-input-container>
+                <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
+
+                <md-input-container style="width: 100%">
+                    <input md-input placeholder="{{ 'LASTNAME' | translate }}" type="text" name="lastName" id="lastName" [formControl]="lastName">
+                </md-input-container>
+                <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
+
+                <hr>
+
+                <md-select placeholder="{{'LANGUAGE' | translate}}" style="width: 100%" name="defaultLanguage" id="defaultLanguage" [formControl]="defaultLanguage">
+                    <md-option value="en">English</md-option>
+                    <md-option value="fr">Français</md-option>
+                </md-select>
+                <form-error [field]="defaultLanguage" [formSubmitted]="submitted"></form-error>
+
+
+                <hr>
+                <button md-raised-button color="primary" type="submit" style="width: 100%">{{'SIGNUP_BUTTON' | translate}}</button>
+
+                <div class="error-message" *ngIf="error">{{ error | translate }}</div>
+            </form>
+
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>

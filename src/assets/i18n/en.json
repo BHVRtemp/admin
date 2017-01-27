@@ -9,6 +9,12 @@
     "USERNAME": "Username",
     "FIRSTNAME": "First name",
     "LASTNAME": "Last name",
+    "LANGUAGE": "Language",
+    "en": "English",
+    "fr": "French",
+
+    "EXISTING_USERNAME": "The username you provided already exists.",
+    "EXISTING_EMAIL": "The email you provided already exists.",
 
     "LOGIN_BUTTON": "Login",
     "BAD_CREDENTIALS": "Bad credentials",
@@ -51,5 +57,6 @@
     "STATIONS_DIALOG_LANGUAGE_EN":"English Canada",
     "ADMIN": "Administrateur",
     "SU": "Super utilisateur",
-    "ANIMATOR": "Animateur"
+    "ANIMATOR": "Animateur",
+    "USER": "Utilisateur"
 }

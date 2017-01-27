@@ -47,30 +47,7 @@ export class Api {
 					.subscribe(resp => {
 						observer.next(resp);
 					}, e => {
-						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
-						observer.error(e);
-					});
-			});
-		});
-	}
-
-	set(type: string, endpoint: string, body: any, options?: RequestOptions) {
-		if (!options) {
-			options = new RequestOptions();
-		}
-
-		return Observable.create(observer => {
-			this.userService.waitUntilReady(() => {
-
-				options.headers = this.getAuthorizationHeaders();
-
-				this.http[type](this.url + endpoint, body, options)
-					.subscribe(resp => {
-						observer.next(resp);
-					}, e => {
-						this.userService.logout();
-						this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
+						this.logoutIfInvalidToken(e);
 						observer.error(e);
 					});
 			});
@@ -91,6 +68,36 @@ export class Api {
 
 	patch(endpoint: string, body: any, options?: RequestOptions) {
 		return this.set('patch', endpoint, body, options);
+	}
+
+
+	private logoutIfInvalidToken(e) {
+		if (e.status === 403 && e._body.indexOf('INVALID_TOKEN') > 1) {
+			this.userService.logout();
+			this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
+		}
+	}
+	
+
+	private set(type: string, endpoint: string, body: any, options?: RequestOptions) {
+		if (!options) {
+			options = new RequestOptions();
+		}
+
+		return Observable.create(observer => {
+			this.userService.waitUntilReady(() => {
+
+				options.headers = this.getAuthorizationHeaders();
+
+				this.http[type](this.url + endpoint, body, options)
+					.subscribe(resp => {
+						observer.next(resp);
+					}, e => {
+						this.logoutIfInvalidToken(e);
+						observer.error(e);
+					});
+			});
+		});
 	}
 
 	private getAuthorizationHeaders(): Headers {
