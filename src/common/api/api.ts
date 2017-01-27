@@ -4,7 +4,6 @@ import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 // import { Platform } from 'ionic-angular';
 import { UserService } from '../user/user.service';
 import { App, NavController } from 'ionic-angular';
-import { LoginPage } from '../../pages/login/login.page';
 import { Environnement } from '../../env/main';
 // import 'rxjs/add/operator/map';
 
@@ -74,7 +73,7 @@ export class Api {
 	private logoutIfInvalidToken(e) {
 		if (e.status === 403 && e._body.indexOf('INVALID_TOKEN') > 1) {
 			this.userService.logout();
-			this.app.getRootNav().setRoot(LoginPage, { message: 'INVALID_TOKEN' });
+			window.goToLoginPage();
 		}
 	}
 	
