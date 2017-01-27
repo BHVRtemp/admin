@@ -26,11 +26,11 @@
   <md-menu #user="mdMenu" x-position="before">
     <button md-menu-item (click)="goProfile(nav)">
       <md-icon>account_box</md-icon>
-      Profile
+      {{ 'PROFILE_PAGE_TITLE' | translate }}
     </button>
     <button md-menu-item (click)="logout()">
       <md-icon>exit_to_app</md-icon>
-      Sign Out
+      {{ 'SIGNOUT' | translate }}
     </button>
   </md-menu>
 </md-toolbar>
@@ -39,8 +39,8 @@
 
   <md-sidenav #start [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" class="left-sidenav">
     <md-nav-list>
-      <navigation-link page="DashboardPage" icon="dashboard" title="Dashboard" [nav]="nav"></navigation-link>
-      <navigation-link page="UsersPage" icon="people" title="Users" [nav]="nav"></navigation-link>
+      <navigation-link page="DashboardPage" icon="dashboard" title="{{ 'PAGE_DASHBOARD' | translate }}" [nav]="nav"></navigation-link>
+      <navigation-link page="UsersPage" icon="people" title="{{ 'PAGE_USERS' | translate }}" [nav]="nav"></navigation-link>
       <navigation-link page="StationsPage" icon="radio" title="Stations" [nav]="nav"></navigation-link>
     </md-nav-list>
   </md-sidenav>

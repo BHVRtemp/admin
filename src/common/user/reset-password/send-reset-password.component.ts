@@ -20,10 +20,6 @@ export class SendResetPasswordComponent {
 		email: this.email,
 	});
 
-
-	// TODO delete this
-	token: string;
-
 	constructor(
 		private formBuilder: FormBuilder,
 		public api: Api) {}
@@ -37,11 +33,7 @@ export class SendResetPasswordComponent {
 				this.success = true;
 
 			}, err => {
-				// TODO : change this
-				console.log(err.json());
-				this.success = true;
-				this.token = window.location.protocol + '//' + window.location.hostname + '/#/reset-password/' + err.json().token;
-
+				this.error = err.json().message;
 				logger.error(err);
 			});
 

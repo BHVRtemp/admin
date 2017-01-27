@@ -52,9 +52,10 @@ declare var logger: {
 declare var gapi: any;
 
 interface Window {
-	initGooglePlusCallback: any,
-	twitterCallback: any,
-	twitterResolve: any
+	initGooglePlusCallback: any;
+	twitterCallback: any;
+	twitterResolve: any;
+	goToLoginPage: () => void;
 }
 interface Screen {
 	left: any,
