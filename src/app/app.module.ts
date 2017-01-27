@@ -6,29 +6,31 @@ import { MaterialModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // import { CloudModule } from '@ionic/cloud-angular';
 
+
+import { Environnement } from '../env/main';
 import { CommonModule } from '../common';
 
 import { MyApp } from './app.component';
 
 import { NavigationLink } from '../components/navigation/link.component';
-import { UserDialogComponent } from '../components/users/user-dialog.component';
+import { TranslateComponent } from '../components/translate/translate.component';
 
 import { EntryPage } from '../pages/entry/entry.page';
 
 import { LoginPage } from '../pages/login/login.page';
-import { UsersPage } from '../pages/users/users.page';
-import { StationsPage } from '../pages/stations/stations.page';
-
-import { DashboardPage } from '../pages/dashboard/dashboard.page';
-import { ProfilePage } from '../pages/profile/profile.page';
-import { AuthPage } from '../pages/auth/auth.page';
 import { SendResetPasswordPage } from '../pages/reset-password/send-reset-password.page';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password.page';
+import { SignupPage } from '../pages/signup/signup.page';
 
-import { TranslateComponent } from '../components/translate/translate.component';
-import { StationsDialogComponent } from '../components/stations/stations-dialog.component';
+import { ProfilePage } from '../pages/profile/profile.page';
+
+import { AuthPage } from '../pages/auth/auth.page';
+import { DashboardPage } from '../pages/dashboard/dashboard.page';
+import { UsersPage } from '../pages/users/users.page';
+import { UserDialogComponent } from '../components/users/user-dialog.component';
 import { RolesChooserComponent } from '../components/roles/roles-chooser.component';
-import { Environnement } from '../env/main';
+import { StationsPage } from '../pages/stations/stations.page';
+import { StationsDialogComponent } from '../components/stations/stations-dialog.component';
 
 export function createTranslateLoader(http: Http) {
 	return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -51,6 +53,7 @@ export function createTranslateLoader(http: Http) {
 		NavigationLink,
 		UserDialogComponent,
 		RolesChooserComponent,
+		SignupPage,
 	],
 	entryComponents: [
 		MyApp,
@@ -65,7 +68,7 @@ export function createTranslateLoader(http: Http) {
 		StationsPage,
 		StationsDialogComponent,
 		UserDialogComponent,
-  
+		SignupPage,
 	],
 	imports: [
 		IonicModule.forRoot(MyApp, {
@@ -75,7 +78,6 @@ export function createTranslateLoader(http: Http) {
 				{ component: EntryPage, name: 'Entry', segment: 'entry' },
 
 				{ component: AuthPage, name: 'Auth', segment: 'auth' },
-
 				{ component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
 				{ component: UsersPage, name: 'Users', segment: 'users' },
 				{ component: StationsPage, name: 'Stations', segment: 'stations' },
@@ -85,6 +87,7 @@ export function createTranslateLoader(http: Http) {
 				{ component: LoginPage, name: 'Login', segment: 'login' },
 				{ component: SendResetPasswordPage, name: 'Send reset password', segment: 'send-reset-password', defaultHistory: [EntryPage] },
 				{ component: ResetPasswordPage, name: 'Reset Password', segment: 'reset-password/:token' },
+				{ component: SignupPage, name: 'Signup Page', segment: 'signup/:token' },
 				
 			],
 		}),
