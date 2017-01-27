@@ -88,10 +88,49 @@ export class RolesChooserComponent implements ControlValueAccessor, OnChanges {
 			}];
 		}
 
+		this.checkValueForDuplicateRolesForOneStation();
+
 		// re-init html components
 		this.roleValue.value = null;
 		this.stationValues = [];
 		this.stationsView.toArray().forEach(s => s.checked = false);
+	}
+
+	private checkValueForDuplicateRolesForOneStation() {
+		let res = [...this.value];
+
+		this.stationsList.forEach(station => {
+			let found = [];
+			this.value.forEach(role => {
+				if (role.stationIds.indexOf(station.id) > -1) {
+					found.push(role.roleId);
+				}
+			});
+			if (found.length > 1) {
+				// keep better role
+				let betterRole;
+				found.forEach(roleId => {
+					const role = this.rolesList.find(r => r.id === roleId);
+					if (!betterRole || betterRole.level > role.level) {
+						betterRole = role; 
+					}
+				});
+				found.forEach(roleId => {
+					if (roleId !== betterRole.id) {
+						const role = res.find(r => r.roleId === roleId);
+						role.stationIds.splice(role.stationIds.indexOf(station.id), 1);
+					}
+				});
+			}
+		});
+
+		// remove empty stations
+		const index = res.findIndex(role => role.stationIds.length === 0);
+		if(index > -1) {
+			res.splice(index, 1);
+		}
+
+		this.value = res;
 	}
 
 	private changeStation(station, $event) {
