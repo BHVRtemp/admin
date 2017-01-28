@@ -1,5 +1,7 @@
+<md-spinner style="margin: 0 auto;" *ngIf="!rolesList || !stationsList"></md-spinner>
+
 <div *ngIf="rolesList && stationsList">
-    <h3 class="text-center">Gérer les rôles</h3>
+    <h3 class="text-center">{{ 'ROLE_CHOOSER_TITLE' | translate }}</h3>
 
     <md-grid-list cols="3">
         <md-grid-tile style="border-right: 1px dashed #ddd;">
@@ -22,7 +24,7 @@
         </md-grid-tile>
         <md-grid-tile>
             <div style="padding: 0 10px;width: 100%">
-                <button md-raised-button (click)="addStation($event)" [disabled]="!roleValue.value || stationValues.length === 0" style="width: 100%;">Add</button>
+                <button md-raised-button (click)="addStation($event)" [disabled]="!roleValue.value || stationValues.length === 0" style="width: 100%;">{{ 'DATA_OPERATIONS_ADD' | translate }}</button>
             </div>
         </md-grid-tile>
     </md-grid-list>
@@ -30,7 +32,7 @@
     <br>
 
     <md-list *ngIf="value.length !== 0">
-        <h3 md-subheader>Rôles</h3>
+        <h3 md-subheader>{{ 'ROLE_CHOOSER_ROLES' | translate }}</h3>
         <md-list-item *ngFor="let role of value">
             <md-icon md-list-avatar>accessibility</md-icon>
             <h4 md-line>{{getRoleLabel(role.roleId) | translate}}</h4>

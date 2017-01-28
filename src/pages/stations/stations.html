@@ -16,11 +16,11 @@
                 <md-icon *ngIf="!station.isActive">clear</md-icon>
             </template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_NAME' | translate }} "></ngx-datatable-column>
-        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }} "></ngx-datatable-column>
-        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_DOMAIN' | translate }} "></ngx-datatable-column>
-        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_STYLE' | translate }} "></ngx-datatable-column>
-        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_THEME' | translate }} "></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_NAME' | translate }}" prop="name"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}" prop="language"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_DOMAIN' | translate }}" prop="domain"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_STYLE' | translate }}" prop="style"></ngx-datatable-column>
+        <ngx-datatable-column name="{{ 'STATIONS_DIALOG_THEME' | translate }}" prop="theme"></ngx-datatable-column>
         <ngx-datatable-column name="Type" prop="type"></ngx-datatable-column>
         
         <ngx-datatable-column maxWidth="80">
@@ -32,15 +32,15 @@
                     <md-menu #menu="mdMenu">
                         <button md-menu-item (click)="editStation(station)">
                             <md-icon>mode_edit</md-icon>
-                            <span>Edit</span>
+                            <span>{{ 'DATA_OPERATIONS_EDIT' | translate }}</span>
                         </button>
                         <button md-menu-item (click)="setActive(station, false)" *ngIf="station.isActive">
                             <md-icon>visibility_off</md-icon>
-                            <span>Desactivate</span>
+                            <span>{{ 'DATA_OPERATIONS_DESACTIVATE' | translate }}</span>
                         </button>
                         <button md-menu-item (click)="setActive(station, true)" *ngIf="!station.isActive">
                             <md-icon>visibility_on</md-icon>
-                            <span>Activate</span>
+                            <span>{{ 'DATA_OPERATIONS_ACTIVATE' | translate }}</span>
                         </button>
                     </md-menu>
                 </div>
