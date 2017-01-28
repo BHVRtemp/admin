@@ -11,9 +11,11 @@ import { TranslateModule, TranslateService } from 'ng2-translate';
 
 export class StationsDialogComponent {
 	station;
+	styles;
+	private subscription;
 	// Validation
 	name: FormControl = new FormControl('', [Validators.required]);
-	language: FormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+	language: FormControl = new FormControl('', [Validators.required, Validators.minLength(2)]);
 	domain: FormControl = new FormControl('', [Validators.required]);
 	style: FormControl = new FormControl('', [Validators.required]);
 	theme: FormControl = new FormControl('', [Validators.required]);
@@ -35,30 +37,21 @@ export class StationsDialogComponent {
 	languages = [
 		{ value: 'fr', viewValue: 'STATIONS_DIALOG_LANGUAGE_FR' },
 		{ value: 'en', viewValue: 'STATIONS_DIALOG_LANGUAGE_EN' },
-		
+
 	];
-	themes = [
-		{ value: 'sidebar_menu', viewValue: 'Sidebar Menu' },
-		{ value: 'no_sidebar_menu', viewValue: 'No Sidebar Menu' },
-		{ value: 'no_sidebar_no_menu', viewValue: 'No Sidebar No Menu' },
-		{ value: 'sidebar_no_menu', viewValue: 'Sidebar No Menu' },
-	];
-	styles = [
-		{ value: 'red', viewValue: 'Red' },
-		{ value: 'blue', viewValue: 'Blue' },
-		{ value: 'green', viewValue: 'Green' },
-		{ value: 'purple', viewValue: 'Purple' },
-		{ value: 'orange', viewValue: 'Orange' },
-		{ value: 'yellow', viewValue: 'Yellow' },
-		{ value: 'black', viewValue: 'Black' },
-		{ value: 'white', viewValue: 'White' },
-	];
+
 	constructor(
 		public dialogRef: MdDialogRef<StationsDialogComponent>,
 		private formBuilder: FormBuilder,
-		public api: Api) { }
+		public api: Api) {
+		this.getDataFromApi('/stations/styles', "styles");
+		this.getDataFromApi('/stations/themes', "themes");
+		this.getDataFromApi('/stations/types', "types");
+
+	}
 
 	ngOnInit() {
+
 		if (this.station) {
 			this.name.setValue(this.station.name);
 			this.language.setValue(this.station.language);
@@ -109,6 +102,19 @@ export class StationsDialogComponent {
 		} else {
 			return this.post();
 		}
+	}
+
+	getDataFromApi(fromApi: string, type: string) { // Getting the Data Based on the Provided API (Used for Types, Themes and Themes)
+
+		this.subscription = this.api.get(fromApi)
+			.map(r => r.json())
+			.subscribe(resp => {
+				this[type] = resp.data;
+			}, err => {
+				logger.info(err);
+
+			});
+
 	}
 }
 
