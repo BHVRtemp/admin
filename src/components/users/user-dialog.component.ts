@@ -28,6 +28,23 @@ export class UserDialogComponent {
 		public dialogRef: MdDialogRef<UserDialogComponent>,
 		public formBuilder: FormBuilder,
 		public api: Api) {}
+	
+	getRoles(user) {
+		let res = [];
+		user.stations.map(station => {
+			const roleId = station.role.id;
+			const index = res.findIndex(r => r.roleId === roleId);
+			if(index > -1) {
+				res[index].stationsIds.push(station.id);
+			} else {
+				res.push({
+					roleId,
+					stationIds: [station.id],
+				});
+			}
+		});
+		return res;
+	}
 
 	ngOnInit() {
 		// edit
@@ -37,6 +54,7 @@ export class UserDialogComponent {
 			this.firstName.setValue(this.user.firstName);
 			this.lastName.setValue(this.user.lastName);
 			this.defaultLanguage.setValue(this.user.defaultLanguage);
+			this.roles.setValue(this.getRoles(this.user));
 
 			this.form = this.formBuilder.group({
 				username: this.username,
@@ -71,7 +89,7 @@ export class UserDialogComponent {
 
 	put() {
 		this.form.value.id = this.user.id;
-
+		console.log(this.form.value);
 		const sub = this.api.put('/users', this.form.value);
 		
 		sub.map(res => res.json())

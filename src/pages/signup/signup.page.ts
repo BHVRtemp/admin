@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { App, NavController } from 'ionic-angular';
+import { AuthPage } from '../auth/auth.page';
 
 import { GlobalValidator, UserService, Api } from '../../common';
 
@@ -32,7 +33,7 @@ export class SignupPage {
 
 	
 
-	constructor(private userService: UserService, private api: Api, private formBuilder: FormBuilder, private navCtrl: NavController) {}
+	constructor(private userService: UserService, private api: Api, private formBuilder: FormBuilder, private _app: App, private navCtrl: NavController) {}
 
 	submit() {
 		this.submitted = true;
@@ -50,7 +51,7 @@ export class SignupPage {
 		sub.map(res => res.json())
 			.subscribe(res => {
 				this.userService.loggedIn(res);
-				logger.info(res);
+				this._app.getRootNav().setRoot(AuthPage);
 
 			}, e => {
 				this.error = e.json().message;

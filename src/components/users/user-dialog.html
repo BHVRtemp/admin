@@ -1,7 +1,7 @@
 
 
-    <h2 md-dialog-title *ngIf="user">Edit {{user.firstName}} {{user.lastName}}</h2>
-    <h2 md-dialog-title *ngIf="!user">Invite an user</h2>
+    <h2 md-dialog-title *ngIf="user">{{ 'DATA_OPERATIONS_EDIT' | translate }} {{user.firstName}} {{user.lastName}}</h2>
+    <h2 md-dialog-title *ngIf="!user">{{ 'USERS_DIALOG_TITLE' | translate }}</h2>
 
     <md-dialog-content style="font-size: 16px;">
 
@@ -61,6 +61,7 @@
     
 
     <md-dialog-actions class="pull-right">
-        <button md-raised-button md-dialog-close>Annuler</button>
-        <button md-raised-button color="primary" (click)="submit()">Ok</button>
+        <button md-raised-button md-dialog-close>{{ 'USERS_DIALOG__ACTION_CANCEL' | translate }}</button>
+        <button md-raised-button color="primary" (click)="submit()"  *ngIf="user">{{ 'USERS_DIALOG_ACTION_OK' | translate }}</button>
+        <button md-raised-button color="primary" (click)="submit()"  *ngIf="!user">{{ 'USERS_PAGE_INVITE' | translate }}</button>
     </md-dialog-actions>

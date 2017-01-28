@@ -1,6 +1,16 @@
 <form [formGroup]="form" (submit)="submit()">
 
     <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'EMAIL' | translate }}" type="email" name="email" id="email" [formControl]="email">
+    </md-input-container>
+    <form-error [field]="email" [formSubmitted]="submitted"></form-error>
+
+    <md-input-container style="width: 100%">
+        <input md-input placeholder="{{ 'USERNAME' | translate }}" type="text" name="username" id="username" [formControl]="username">
+    </md-input-container>
+    <form-error [field]="username" [formSubmitted]="submitted"></form-error>
+
+    <md-input-container style="width: 100%">
         <input md-input placeholder="{{ 'FIRSTNAME' | translate }}" type="text" name="firstName" id="firstName" [formControl]="firstName">
     </md-input-container>
     <form-error [field]="firstName" [formSubmitted]="submitted"></form-error>
@@ -10,6 +20,15 @@
     </md-input-container>
     <form-error [field]="lastName" [formSubmitted]="submitted"></form-error>
 
+    <hr>
+
+    <md-select placeholder="{{'LANGUAGE' | translate}}" style="width: 100%" name="defaultLanguage" id="defaultLanguage" [formControl]="defaultLanguage">
+        <md-option value="en">English</md-option>
+        <md-option value="fr">Français</md-option>
+    </md-select>
+    <form-error [field]="defaultLanguage" [formSubmitted]="submitted"></form-error>
+
+    <hr>
 
     <button md-raised-button color="primary" type="submit" style="width: 100%">{{ 'EDIT_PROFILE_BUTTON' | translate }}</button>
 
