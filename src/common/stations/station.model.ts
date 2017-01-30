@@ -5,5 +5,6 @@ export class Station {
 	domain: String;
 	style: String;
 	theme: String;
+	type: String;
 	isActive: Boolean;	
 };

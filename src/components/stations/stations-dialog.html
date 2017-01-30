@@ -32,9 +32,19 @@
             </tr>
             <tr>
                 <td>
+                    <md-select name='type' id="type" placeholder="Type"  class="md-dialog-select full-width" [formControl]="type">
+                        <md-option *ngFor="let type of types" [value]="type">
+                            {{type}}
+                        </md-option>
+                        </md-select>
+                    <form-error [field]="type" [formSubmitted]="submitted"></form-error>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <md-select placeholder="{{ 'STATIONS_DIALOG_STYLE' | translate }}"  name="style" id="style" class="md-dialog-select full-width"  [formControl]="style">
-                        <md-option *ngFor="let style of styles" [value]="style.value">
-                            {{style.viewValue}}
+                        <md-option *ngFor="let style of styles" [value]="style">
+                            {{style}}
                         </md-option>
                         </md-select>
                     <form-error [field]="style" [formSubmitted]="submitted"></form-error>
@@ -43,8 +53,8 @@
             <tr>
                 <td>
                     <md-select placeholder="{{ 'STATIONS_DIALOG_THEME' | translate }}" name="theme" id="theme" class="md-dialog-select full-width" [formControl]="theme">
-                        <md-option *ngFor="let theme of themes" [value]="theme.value">
-                            {{theme.viewValue}}
+                        <md-option *ngFor="let theme of themes" [value]="theme">
+                            {{theme}}
                         </md-option>
                     </md-select>
                    <form-error [field]="theme" [formSubmitted]="submitted"></form-error> 
