@@ -61,6 +61,20 @@ export class Logger implements LoggerI {
 
 	}
 
+	getMessage(e) {
+		let errorMessage = 'UNKNOWN_ERROR';
+		try {
+			const err = e.json();
+			if (err && err.message) {
+				errorMessage = err.message;
+			}
+			
+		} catch (e) {
+			logger.warn('error', e);
+		}
+		return errorMessage;
+	}
+
 	stringify(args: IArguments) {
 
 		if (!this.platform.is('cordova')) {

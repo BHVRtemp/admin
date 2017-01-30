@@ -47,6 +47,7 @@ declare var logger: {
 	store: () => void;
 	unstore: () => void;
     level: Number;
+	getMessage: (e: any) => string;
 };
 
 declare var gapi: any;
