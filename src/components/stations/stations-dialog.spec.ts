@@ -11,7 +11,7 @@ import { Api, Station } from '../../common';
 // import { LoginPage } from '../../pages/login/login.page';
 
 describe('StationsDialog Component', () => {
-	
+
 	let comp: StationsDialogComponent;
 	let fixture: ComponentFixture<StationsDialogComponent>;
 	let de: DebugElement;
@@ -21,6 +21,7 @@ describe('StationsDialog Component', () => {
 	let stationUpdate;
 	const apiResponse = { status: 1, station: { a: 'b' } };
 	const apiResponsePut = { status: 1, station: { b: 'b' } };
+	const apiResponseGet = { status: 1, station: ['a', 'b', 'c'] };
 	let validStation;
 
 	const updateForm = station => {
@@ -57,11 +58,14 @@ describe('StationsDialog Component', () => {
 		fixture = TestBed.createComponent(StationsDialogComponent);
 		comp = fixture.componentInstance;
 		de = fixture.debugElement;
-		
+
 	};
 	describe('component and form validity', () => {
 		beforeEach(() => {
-			apiStub = {};
+			apiStub = jasmine.createSpyObj('Api', ['get']);
+			apiStub.get.and.returnValue(Rx.Observable.of({
+				json: () => apiResponseGet,
+			}));
 
 			configure();
 		});
@@ -74,6 +78,24 @@ describe('StationsDialog Component', () => {
 		it('should have default fields empty', () => {
 			expect(comp.form.value).toEqual({ name: '', language: '', domain: '', style: '', theme: '', type: '' });
 		});
+
+		it('types should be auto populated', () => {
+			expect(apiStub.get).toHaveBeenCalled();
+			expect(apiStub.get).toHaveBeenCalledWith('/stations/types');
+		});
+		it('themes should be auto populated', () => {
+			expect(apiStub.get).toHaveBeenCalled();
+			expect(apiStub.get).toHaveBeenCalledWith('/stations/themes');
+		});
+		it('styles should be auto populated', () => {
+			expect(apiStub.get).toHaveBeenCalled();
+			expect(apiStub.get).toHaveBeenCalledWith('/stations/styles');
+		});
+		it('types should be auto populated', () => {
+			expect(apiStub.get).toHaveBeenCalled();
+			expect(apiStub.get).toHaveBeenCalledWith('/stations/types');
+		});
+
 		it('form value should update from form changes', () => {
 			updateForm(validStation);
 			expect(comp.form.value).toEqual(validStation);
@@ -92,9 +114,9 @@ describe('StationsDialog Component', () => {
 			updateField('language', '');
 			expect(comp.form.valid).toBe(false);
 		});
-		it('form validity should be false when language is length less than five', () => {
+		it('form validity should be false when language is length less than two', () => {
 			updateForm(validStation);
-			updateField('language', 'aaaa');
+			updateField('language', 'e');
 			expect(comp.form.valid).toBe(false);
 		});
 		it('form validity should be false when domain is empty', () => {
@@ -116,12 +138,15 @@ describe('StationsDialog Component', () => {
 	});
 	describe('submit()', () => {
 		beforeEach(() => {
-			apiStub = jasmine.createSpyObj('Api', ['post', 'put']);
+			apiStub = jasmine.createSpyObj('Api', ['post', 'put', 'get']);
 			apiStub.post.and.returnValue(Rx.Observable.of({
 				json: () => apiResponse,
 			}));
 			apiStub.put.and.returnValue(Rx.Observable.of({
 				json: () => apiResponsePut,
+			}));
+			apiStub.get.and.returnValue(Rx.Observable.of({
+				json: () => apiResponseGet,
 			}));
 			dialogRefStub = jasmine.createSpyObj('dialogRef', ['close']);
 
@@ -184,5 +209,5 @@ describe('StationsDialog Component', () => {
 		});
 
 	});
-	
+
 });

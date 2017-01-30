@@ -44,9 +44,9 @@ export class StationsDialogComponent {
 		public dialogRef: MdDialogRef<StationsDialogComponent>,
 		private formBuilder: FormBuilder,
 		public api: Api) {
-		this.getDataFromApi('/stations/styles', "styles");
-		this.getDataFromApi('/stations/themes', "themes");
-		this.getDataFromApi('/stations/types', "types");
+		this.getDataFromApi('/stations/styles', 'styles');
+		this.getDataFromApi('/stations/themes', 'themes');
+		this.getDataFromApi('/stations/types', 'types');
 
 	}
 
