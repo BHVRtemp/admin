@@ -16,12 +16,12 @@
                 <md-icon *ngIf="!station.isActive">clear</md-icon>
             </template>
         </ngx-datatable-column>
-        
         <ngx-datatable-column name="{{ 'STATIONS_DIALOG_NAME' | translate }}" prop="name"></ngx-datatable-column>
         <ngx-datatable-column name="{{ 'STATIONS_DIALOG_LANGUAGE' | translate }}" prop="language"></ngx-datatable-column>
         <ngx-datatable-column name="{{ 'STATIONS_DIALOG_DOMAIN' | translate }}" prop="domain"></ngx-datatable-column>
         <ngx-datatable-column name="{{ 'STATIONS_DIALOG_STYLE' | translate }}" prop="style"></ngx-datatable-column>
         <ngx-datatable-column name="{{ 'STATIONS_DIALOG_THEME' | translate }}" prop="theme"></ngx-datatable-column>
+        <ngx-datatable-column name="Type" prop="type"></ngx-datatable-column>
         
         <ngx-datatable-column maxWidth="80">
             <template let-station="row" ngx-datatable-cell-template>
